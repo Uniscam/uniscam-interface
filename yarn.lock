@@ -1635,6 +1635,19 @@
     "@ethersproject/properties" "^5.0.0"
     "@ethersproject/strings" "^5.0.0"
 
+"@haneko/uniswap-sdk@3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@haneko/uniswap-sdk/-/uniswap-sdk-3.0.5.tgz#db40fe4d5523656637770c3e04d3fc14da3959d4"
+  integrity sha512-rF7q4diQjJU0U2Uxdp9xGBycWQjVvGDzRBxN8eSVAPSJCERYGrJcdsz+jXx0488dcU2CnfR6mWpbauxl2GqRXw==
+  dependencies:
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -2573,19 +2586,6 @@
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@uniswap/lib/-/lib-1.1.1.tgz#0afd29601846c16e5d082866cbb24a9e0758e6bc"
   integrity sha512-2yK7sLpKIT91TiS5sewHtOa7YuM8IuBXVl4GZv2jZFys4D2sY7K5vZh6MqD25TPA95Od+0YzCVq6cTF2IKrOmg==
-
-"@uniswap/sdk@3.0.3-beta.1":
-  version "3.0.3-beta.1"
-  resolved "https://registry.yarnpkg.com/@uniswap/sdk/-/sdk-3.0.3-beta.1.tgz#ef758f45e1f7050e098956fce097aedb87e0ceed"
-  integrity sha512-8MqfVDXAHHcAnUxBAaoHdeGmLUc8Tu4GZ4n7kLabKlF2b4RUS/jnuUIdzOR9QPMdY/avw3gH/OtTxH2elDNShw==
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
 
 "@uniswap/token-lists@^1.0.0-beta.16":
   version "1.0.0-beta.16"

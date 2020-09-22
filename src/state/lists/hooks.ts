@@ -1,4 +1,4 @@
-import { ChainId, Token } from '@uniswap/sdk'
+import { ChainId, Token } from '@haneko/uniswap-sdk'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
@@ -35,7 +35,8 @@ const EMPTY_LIST: TokenAddressMap = {
   [ChainId.RINKEBY]: {},
   [ChainId.ROPSTEN]: {},
   [ChainId.GÖRLI]: {},
-  [ChainId.MAINNET]: {}
+  [ChainId.MAINNET]: {},
+  [ChainId.BSC_TESTNET]: {}
 }
 
 const listCache: WeakMap<TokenList, TokenAddressMap> | null =
@@ -45,7 +46,7 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
   const result = listCache?.get(list)
   if (result) return result
 
-  const map = list.tokens.reduce<TokenAddressMap>(
+  const map = list.tokens.filter(tokenInfo => tokenInfo.chainId === 97).reduce<TokenAddressMap>(
     (tokenMap, tokenInfo) => {
       const tags: TagInfo[] =
         tokenInfo.tags
