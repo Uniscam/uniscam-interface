@@ -32,7 +32,7 @@ describe('Swap', () => {
       .should('have.value', '0.0')
   })
 
-  it('can swap ETH for DAI', () => {
+  it('can swap BNB for DAI', () => {
     cy.get('#swap-currency-output .open-currency-select-button').click()
     cy.get('#list-introduction-choose-a-list').click()
     cy.get('#list-row-tokens-uniswap-eth .select-button').click()

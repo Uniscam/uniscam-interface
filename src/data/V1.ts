@@ -111,7 +111,7 @@ export function useV1Trade(
   const inputIsETH = inputCurrency === ETHER
   const outputIsETH = outputCurrency === ETHER
 
-  // construct a direct or through ETH v1 route
+  // construct a direct or through BNB v1 route
   let pairs: Pair[] = []
   if (inputIsETH && outputPair) {
     pairs = [outputPair]
