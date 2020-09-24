@@ -36,6 +36,7 @@ const EMPTY_LIST: TokenAddressMap = {
   [ChainId.ROPSTEN]: {},
   [ChainId.GÖRLI]: {},
   [ChainId.MAINNET]: {},
+  [ChainId.BSC_MAINNET]: {},
   [ChainId.BSC_TESTNET]: {}
 }
 
@@ -46,7 +47,7 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
   const result = listCache?.get(list)
   if (result) return result
 
-  const map = list.tokens.filter(tokenInfo => tokenInfo.chainId === 97).reduce<TokenAddressMap>(
+  const map = list.tokens.reduce<TokenAddressMap>(
     (tokenMap, tokenInfo) => {
       const tags: TagInfo[] =
         tokenInfo.tags

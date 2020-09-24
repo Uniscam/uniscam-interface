@@ -1635,10 +1635,10 @@
     "@ethersproject/properties" "^5.0.0"
     "@ethersproject/strings" "^5.0.0"
 
-"@haneko/uniswap-sdk@3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@haneko/uniswap-sdk/-/uniswap-sdk-3.0.5.tgz#db40fe4d5523656637770c3e04d3fc14da3959d4"
-  integrity sha512-rF7q4diQjJU0U2Uxdp9xGBycWQjVvGDzRBxN8eSVAPSJCERYGrJcdsz+jXx0488dcU2CnfR6mWpbauxl2GqRXw==
+"@haneko/uniswap-sdk@3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@haneko/uniswap-sdk/-/uniswap-sdk-3.0.6.tgz#2a3b23a02829916a908bf17a332f89e1b5b99958"
+  integrity sha512-4QPJp9dBmWaCPiRKyxGojYF3YG3o06PFE8LC1iQhmJr4h4duy8QSwXF2HMhJYGllXVKyTv1ddqfmaD/22BYLhg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
