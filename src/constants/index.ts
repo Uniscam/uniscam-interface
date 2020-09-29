@@ -42,7 +42,13 @@ export const UNI: { [chainId in ChainId]: Token } = {
     'BEST',
     'Bestswap'
   ),
-  [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, '0x36eb1b02cB7Be3ffA1eE7Bd2A3c7D036002730F7', 18, 'BEST', 'Bestswap')
+  [ChainId.BSC_TESTNET]: new Token(
+    ChainId.BSC_TESTNET,
+    '0x36eb1b02cB7Be3ffA1eE7Bd2A3c7D036002730F7',
+    18,
+    'BEST',
+    'Bestswap'
+  )
 }
 
 // TODO: specify merkle distributor for mainnet
