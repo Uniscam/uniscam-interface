@@ -27,7 +27,7 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   97: 'testnet.bscscan.com'
 }
 
-export function getBscScanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
+export function getBscScanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'block' | 'address'): string {
   const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}`
 
   switch (type) {
@@ -36,6 +36,9 @@ export function getBscScanLink(chainId: ChainId, data: string, type: 'transactio
     }
     case 'token': {
       return `${prefix}/token/${data}`
+    }
+    case 'block': {
+      return `${prefix}/block/${data}`
     }
     case 'address':
     default: {
