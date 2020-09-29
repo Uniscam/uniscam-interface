@@ -35,8 +35,14 @@ export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
   [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
   [ChainId.KOVAN]: new Token(ChainId.KOVAN, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
-  [ChainId.BSC_MAINNET]: new Token(ChainId.BSC_MAINNET, '0x10747e2045a0ef884a0586AC81558F43285ea3c7', 18, 'UNI', 'Uniswap'),
-  [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
+  [ChainId.BSC_MAINNET]: new Token(
+    ChainId.BSC_MAINNET,
+    '0x10747e2045a0ef884a0586AC81558F43285ea3c7',
+    18,
+    'UNI',
+    'Uniswap'
+  ),
+  [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap')
 }
 
 // TODO: specify merkle distributor for mainnet
@@ -44,14 +50,49 @@ export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
   [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
 }
 
-export const B_DAI = new Token(ChainId.BSC_MAINNET, '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3', 18, 'DAI', 'Dai Token')
-export const BUSD = new Token(ChainId.BSC_MAINNET, '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', 18, 'BUSD', 'BUSD Token')
-export const B_USDT = new Token(ChainId.BSC_MAINNET, '0x55d398326f99059fF775485246999027B3197955', 18, 'USDT', 'Tether USD')
+export const B_DAI = new Token(
+  ChainId.BSC_MAINNET,
+  '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
+  18,
+  'DAI',
+  'Dai Token'
+)
+export const BUSD = new Token(
+  ChainId.BSC_MAINNET,
+  '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+  18,
+  'BUSD',
+  'BUSD Token'
+)
+export const B_USDT = new Token(
+  ChainId.BSC_MAINNET,
+  '0x55d398326f99059fF775485246999027B3197955',
+  18,
+  'USDT',
+  'Tether USD'
+)
 
-export const T_DAI = new Token(ChainId.BSC_TESTNET, '0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867', 18, 'DAI', 'Dai Token')
-export const T_BUSD = new Token(ChainId.BSC_TESTNET, '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee', 6, 'BUSD', 'BUSD Token')
-export const T_USDT = new Token(ChainId.BSC_TESTNET, '0x337610d27c682E347C9cD60BD4b3b107C9d34dDd', 6, 'USDT', 'Tether USD')
-
+export const T_DAI = new Token(
+  ChainId.BSC_TESTNET,
+  '0xEC5dCb5Dbf4B114C9d0F65BcCAb49EC54F6A0867',
+  18,
+  'DAI',
+  'Dai Token'
+)
+export const T_BUSD = new Token(
+  ChainId.BSC_TESTNET,
+  '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee',
+  6,
+  'BUSD',
+  'BUSD Token'
+)
+export const T_USDT = new Token(
+  ChainId.BSC_TESTNET,
+  '0x337610d27c682E347C9cD60BD4b3b107C9d34dDd',
+  6,
+  'USDT',
+  'Tether USD'
+)
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
