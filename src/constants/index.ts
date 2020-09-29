@@ -4,8 +4,8 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
 export const ROUTER_ADDRESSES: { [chainId: number]: string } = {
-  [ChainId.BSC_MAINNET]: '0x987493B651F91D01F5Bc8f59E9f701765E31C5b4',
-  [ChainId.BSC_TESTNET]: '0x9c54A37C693B60EBcc1Cb9b7E38902800e68BBb0'
+  [ChainId.BSC_MAINNET]: '0x5bd8D9D3ED16db68543c2d8EDb388C480Ae086Cc',
+  [ChainId.BSC_TESTNET]: '0x1B40B286F5Ef17966E1CD938Ea90cE9B5558b175'
 }
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
@@ -39,10 +39,10 @@ export const UNI: { [chainId in ChainId]: Token } = {
     ChainId.BSC_MAINNET,
     '0x10747e2045a0ef884a0586AC81558F43285ea3c7',
     18,
-    'UNI',
-    'Uniswap'
+    'BEST',
+    'Bestswap'
   ),
-  [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap')
+  [ChainId.BSC_TESTNET]: new Token(ChainId.BSC_TESTNET, '0x36eb1b02cB7Be3ffA1eE7Bd2A3c7D036002730F7', 18, 'BEST', 'Bestswap')
 }
 
 // TODO: specify merkle distributor for mainnet
