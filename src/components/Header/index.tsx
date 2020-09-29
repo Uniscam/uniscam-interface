@@ -7,8 +7,8 @@ import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
 
-import Logo from '../../assets/images/logo.png'
-import LogoDark from '../../assets/images/logo_white.png'
+import Logo from '../../assets/images/logo.jpg'
+import LogoDark from '../../assets/images/logo.jpg'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
