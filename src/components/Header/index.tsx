@@ -322,14 +322,14 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/best'}>
+          {/* <StyledNavLink id={`stake-nav-link`} to={'/best'}>
             BEST
           </StyledNavLink>
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
             Vote
-          </StyledNavLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>
-            Charts <span style={{ fontSize: '11px' }}>↗</span>
+          </StyledNavLink> */}
+          <StyledExternalLink id={`stake-nav-link`} href={'https://practical-leakey-72616f.netlify.app/'}>
+            {t('mining')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
