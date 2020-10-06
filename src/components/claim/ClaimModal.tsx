@@ -26,7 +26,7 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #fe2500 0%, #fea000 100%);
 `
 
 const ConfirmOrLoadingWrapper = styled.div<{ activeBG: boolean }>`
@@ -174,7 +174,7 @@ export default function ClaimModal() {
                 {claimConfirmed ? 'Claimed!' : 'Claiming'}
               </TYPE.largeHeader>
               {!claimConfirmed && (
-                <Text fontSize={36} color={'#ff007a'} fontWeight={800}>
+                <Text fontSize={36} color={'#fe2500'} fontWeight={800}>
                   {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} BEST
                 </Text>
               )}
