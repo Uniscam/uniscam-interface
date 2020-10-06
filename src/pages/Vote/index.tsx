@@ -154,7 +154,7 @@ export default function Vote() {
       </TopSection>
       <TopSection gap="2px">
         <WrapSmall>
-          <TYPE.mediumHeader style={{ margin: '0.5rem 0' }}>Proposals</TYPE.mediumHeader>
+          <TYPE.mediumHeader style={{ margin: '0.5rem 0', color: '#ffffff' }}>Proposals</TYPE.mediumHeader>
           {(!allProposals || allProposals.length === 0) && !availableVotes && <Loader />}
           {showUnlockVoting ? (
             <ButtonPrimary
@@ -207,8 +207,10 @@ export default function Vote() {
         )}
         {allProposals?.length === 0 && (
           <EmptyProposals>
-            <TYPE.body style={{ marginBottom: '8px' }}>No proposals found.</TYPE.body>
-            <TYPE.subHeader>
+            <TYPE.body color="text3" style={{ marginBottom: '8px' }}>
+              No proposals found.
+            </TYPE.body>
+            <TYPE.subHeader color="text3">
               <i>Proposals submitted by community members will appear here.</i>
             </TYPE.subHeader>
           </EmptyProposals>
