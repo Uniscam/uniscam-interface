@@ -1,4 +1,4 @@
-import { transparentize } from 'polished'
+// import { transparentize } from 'polished'
 import React, { useMemo } from 'react'
 import styled, {
   ThemeProvider as StyledComponentsThemeProvider,
@@ -9,6 +9,7 @@ import styled, {
 import { useIsDarkMode } from '../state/user/hooks'
 import { Text, TextProps } from 'rebass'
 import { Colors } from './styled'
+import BestswapBackground from '../assets/images/bestswap-bg.png'
 
 export * from './components'
 
@@ -41,37 +42,37 @@ export function colors(darkMode: boolean): Colors {
     black,
 
     // text
-    text1: darkMode ? '#FFFFFF' : '#000000',
-    text2: darkMode ? '#C3C5CB' : '#565A69',
-    text3: darkMode ? '#6C7284' : '#888D9B',
-    text4: darkMode ? '#565A69' : '#C3C5CB',
-    text5: darkMode ? '#2C2F36' : '#EDEEF2',
+    text1: darkMode ? '#000000' : '#000000',
+    text2: darkMode ? '#565A69' : '#565A69',
+    text3: darkMode ? '#888D9B' : '#888D9B',
+    text4: darkMode ? '#C3C5CB' : '#C3C5CB',
+    text5: darkMode ? '#EDEEF2' : '#EDEEF2',
 
     // backgrounds / greys
-    bg1: darkMode ? '#212429' : '#FFFFFF',
-    bg2: darkMode ? '#2C2F36' : '#F7F8FA',
-    bg3: darkMode ? '#40444F' : '#EDEEF2',
-    bg4: darkMode ? '#565A69' : '#CED0D9',
-    bg5: darkMode ? '#6C7284' : '#888D9B',
+    bg1: darkMode ? '#FFFFFF' : '#FFFFFF',
+    bg2: darkMode ? '#F7F8FA' : '#F7F8FA',
+    bg3: darkMode ? '#EDEEF2' : '#EDEEF2',
+    bg4: darkMode ? '#CED0D9' : '#CED0D9',
+    bg5: darkMode ? '#888D9B' : '#888D9B',
 
     //specialty colors
-    modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
-    advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
+    modalBG: darkMode ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.3)',
+    advancedBG: darkMode ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#2172E5' : '#FFBB00',
-    primary2: darkMode ? '#3680E7' : '#FFE08C',
-    primary3: darkMode ? '#4D8FEA' : '#F2CB61',
-    primary4: darkMode ? '#376bad70' : '#FFE08C',
-    primary5: darkMode ? '#153d6f70' : '#FAECC5',
+    primary1: darkMode ? '#F4C01C' : '#F4C01C',
+    primary2: darkMode ? '#FFE08C' : '#FFE08C',
+    primary3: darkMode ? '#F2CB61' : '#F2CB61',
+    primary4: darkMode ? '#FFE08C' : '#FFE08C',
+    primary5: darkMode ? '#FAECC5' : '#FAECC5',
 
     // color text
-    primaryText1: darkMode ? '#6da8ff' : '#FFBB00',
+    primaryText1: darkMode ? '#F4C01C' : '#F4C01C',
 
     // secondary colors
-    secondary1: darkMode ? '#2172E5' : '#FFBB00',
-    secondary2: darkMode ? '#17000b26' : '#FFE08C',
-    secondary3: darkMode ? '#17000b26' : '#FAECC5',
+    secondary1: darkMode ? '#FFBB00' : '#FFBB00',
+    secondary2: darkMode ? '#FFE08C' : '#FFE08C',
+    secondary3: darkMode ? '#FAECC5' : '#FAECC5',
 
     // other
     red1: '#FF6871',
@@ -190,6 +191,11 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #24272c;
+  background-image: url(${BestswapBackground});
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-y;
 }
 
 * {
@@ -207,7 +213,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
-  
+  background-color: #24272c;
 }
 `
 
@@ -219,12 +225,5 @@ html {
 
 body {
   min-height: 100vh;
-  background-position: 0 -30vh;
-  background-repeat: no-repeat;
-  background-image: ${({ theme }) =>
-    `radial-gradient(50% 50% at 50% 50%, ${transparentize(0.9, theme.primary1)} 0%, ${transparentize(
-      1,
-      theme.bg1
-    )} 100%)`};
 }
 `

@@ -2,13 +2,13 @@ import { ChainId, TokenAmount } from '@haneko/uniswap-sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
-import { darken } from 'polished'
+// import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
 
 import styled from 'styled-components'
 
-import Logo from '../../assets/images/logo.jpg'
-import LogoDark from '../../assets/images/logo.jpg'
+import Logo from '../../assets/images/bestswap-logo.png'
+import LogoDark from '../../assets/images/bestswap-logo.png'
 import { useActiveWeb3React } from '../../hooks'
 import { useDarkModeManager } from '../../state/user/hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
@@ -32,17 +32,18 @@ import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
 
 const HeaderFrame = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 120px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
   flex-direction: row;
   width: 100%;
   top: 0;
   position: relative;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1rem;
+  padding-left: 110px;
+  padding-right: 110px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  background-color: rgba(8, 8, 8, 0.25);
   z-index: 2;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
@@ -52,7 +53,7 @@ const HeaderFrame = styled.div`
   `};
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-        padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem;
   `}
 `
 
@@ -86,7 +87,7 @@ const HeaderElement = styled.div`
   gap: 8px;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
-   flex-direction: row-reverse;
+    flex-direction: row-reverse;
     align-items: center;
   `};
 `
@@ -98,7 +99,7 @@ const HeaderElementWrap = styled.div`
 
 const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
-   width: 100%;
+    width: 100%;
   `};
 `
 
@@ -114,7 +115,7 @@ const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: ${({ theme, active }) => (!active ? theme.bg1 : theme.bg3)};
+  background-color: #F4C01C;
   border-radius: 12px;
   white-space: nowrap;
   width: 100%;
@@ -158,6 +159,7 @@ const HideSmall = styled.span`
 `
 
 const NetworkCard = styled(YellowCard)`
+  white-space: nowrap;
   border-radius: 12px;
   padding: 8px 12px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -191,6 +193,8 @@ const Title = styled.a`
 `
 
 const UniIcon = styled.div`
+  height: 40px;
+  width: auto;
   transition: transform 0.3s ease;
   :hover {
     transform: rotate(-5deg);
@@ -208,7 +212,7 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text2};
+  color: #fec600;
   font-size: 1rem;
   width: fit-content;
   margin: 0 12px;
@@ -216,13 +220,13 @@ const StyledNavLink = styled(NavLink).attrs({
 
   &.${activeClassName} {
     border-radius: 12px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text1};
+    font-weight: bold;
+    color: #fec600;
   }
 
   :hover,
   :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+    color: #fec600;
   }
 `
 
@@ -235,7 +239,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text2};
+  color: #fec600;
   font-size: 1rem;
   width: fit-content;
   margin: 0 12px;
@@ -243,13 +247,13 @@ const StyledExternalLink = styled(ExternalLink).attrs({
 
   &.${activeClassName} {
     border-radius: 12px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text1};
+    font-weight: bold;
+    color: #fec600;
   }
 
   :hover,
   :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
+    color: #fec600;
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -296,9 +300,11 @@ export default function Header() {
       <HeaderRow>
         <Title href=".">
           <UniIcon>
-            <img width={'24px'} src={isDark ? LogoDark : Logo} alt="logo" />
+            <img height="40px" src={isDark ? LogoDark : Logo} alt="logo" />
           </UniIcon>
         </Title>
+      </HeaderRow>
+      <HeaderRow>
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}

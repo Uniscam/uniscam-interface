@@ -54,7 +54,7 @@ export function Countdown({ exactEnd }: { exactEnd?: Date }) {
   const seconds = timeRemaining
 
   return (
-    <TYPE.black fontWeight={400}>
+    <TYPE.black fontWeight={400} style={{ color: '#ffffff' }}>
       {message}{' '}
       {Number.isFinite(timeRemaining) && (
         <code>
