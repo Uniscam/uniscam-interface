@@ -128,9 +128,10 @@ export function ExternalLink({
   href,
   rel = 'noopener noreferrer',
   ...rest
-}: Omit<HTMLProps<HTMLAnchorElement>, 'as' | 'ref' | 'onClick'> & { href: string }) {
+}: Omit<HTMLProps<HTMLAnchorElement>, 'as' | 'ref' | 'onClick'> & { href?: string }) {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (!href || href === '#') return
       // don't prevent default, don't redirect if it's a new tab
       if (target === '_blank' || event.ctrlKey || event.metaKey) {
         ReactGA.outboundLink({ label: href }, () => {
