@@ -62,7 +62,7 @@ export default function Swap() {
     setDismissTokenWarning(true)
   }, [])
 
-  const { account, chainId } = useActiveWeb3React()
+  const { account } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
 
   // toggle wallet when disconnected
