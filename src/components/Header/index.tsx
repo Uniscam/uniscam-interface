@@ -229,6 +229,10 @@ const StyledNavLink = styled(NavLink).attrs({
   :focus {
     color: #fec600;
   }
+
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    margin: 0 8px;
+  `}
 `
 
 const StyledExternalLink = styled(ExternalLink).attrs({
@@ -258,8 +262,8 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-      display: none;
-`}
+    margin: 0 8px;
+  `}
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
@@ -304,8 +308,6 @@ export default function Header() {
             <img height="40px" src={isDark ? LogoDark : Logo} alt="logo" />
           </UniIcon>
         </Title>
-      </HeaderRow>
-      <HeaderRow>
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
