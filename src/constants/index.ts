@@ -5,7 +5,7 @@ import { fortmatic, injected, portis, walletconnect, walletlink } from '../conne
 
 export const ROUTER_ADDRESSES: { [chainId: number]: string } = {
   [ChainId.BSC_MAINNET]: '0x87978fCCBE12F0D16Be4A9AE62DBB7e9d2087d41',
-  [ChainId.BSC_TESTNET]: '0x15714a850374a0cEdA60B67E2547207bc2a3E053'
+  [ChainId.BSC_TESTNET]: '0x7805adbF0906Bce163c76208a104BfD78028D953'
 }
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
