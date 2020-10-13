@@ -278,7 +278,7 @@ export default function Swap() {
     if (filteredTokens.length) {
       onCurrencySelection(Field.OUTPUT, filteredTokens[0])
     }
-  }, [onCurrencySelection])
+  }, [onCurrencySelection, filteredTokens])
 
   return (
     <>
