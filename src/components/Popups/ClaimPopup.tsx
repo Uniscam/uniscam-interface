@@ -1,4 +1,4 @@
-import { TokenAmount } from '@haneko/uniswap-sdk'
+import { TokenAmount } from '@nekomeowww/uniscam-sdk'
 import React, { useEffect } from 'react'
 import { X } from 'react-feather'
 import styled, { keyframes } from 'styled-components'

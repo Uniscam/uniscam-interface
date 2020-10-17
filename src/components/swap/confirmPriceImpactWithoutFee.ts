@@ -1,4 +1,4 @@
-import { Percent } from '@haneko/uniswap-sdk'
+import { Percent } from '@nekomeowww/uniscam-sdk'
 import { ALLOWED_PRICE_IMPACT_HIGH, PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN } from '../../constants'
 
 /**

@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Token, TokenAmount } from '@haneko/uniswap-sdk'
+import { ChainId, JSBI, Token, TokenAmount } from '@nekomeowww/uniscam-sdk'
 import { BigNumber } from 'ethers'
 import { ZERO_ADDRESS } from '../constants'
 import { computeUniCirculation } from './computeUniCirculation'

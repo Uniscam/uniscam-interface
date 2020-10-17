@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@haneko/uniswap-sdk'
+import { ChainId, TokenAmount } from '@nekomeowww/uniscam-sdk'
 import React, { useMemo } from 'react'
 import { X } from 'react-feather'
 import styled from 'styled-components'
