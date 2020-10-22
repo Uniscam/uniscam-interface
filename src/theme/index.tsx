@@ -9,7 +9,6 @@ import styled, {
 import { useIsDarkMode } from '../state/user/hooks'
 import { Text, TextProps } from 'rebass'
 import { Colors } from './styled'
-import BestswapBackground from '../assets/images/bestswap-bg.png'
 
 export * from './components'
 
@@ -191,8 +190,6 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #24272c;
-  background-image: url(${BestswapBackground});
   background-size: cover;
   background-position: bottom;
   background-repeat: repeat-y;
