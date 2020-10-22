@@ -26,7 +26,7 @@ const PageWrapper = styled(AutoColumn)`
 `
 
 const VoteCard = styled(DataCard)`
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #fe4000 0%, #ffc000 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #25183e 0%, #0d4747 100%);
   overflow: hidden;
 `
 
