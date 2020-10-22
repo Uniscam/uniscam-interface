@@ -25,7 +25,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   height: 2.2rem;
   font-size: 20px;
   font-weight: 500;
-  background-color: ${({ selected, theme }) => (selected ? theme.bg6 : theme.primary1)};
+  background-color: ${({ selected, theme }) => (selected ? theme.bg6 : 'rgb(33, 114, 229)')};
   color: ${({ selected, theme }) => (selected ? theme.white : theme.white)};
   border-radius: 12px;
   box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
