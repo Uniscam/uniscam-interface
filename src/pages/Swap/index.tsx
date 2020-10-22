@@ -325,7 +325,7 @@ export default function Swap() {
                       setApprovalSubmitted(false) // reset 2 step UI for approvals
                       onSwitchTokens()
                     }}
-                    color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? theme.primary1 : theme.text2}
+                    color={currencies[Field.INPUT] && currencies[Field.OUTPUT] ? '#c3c5cb' : '#c3c5cb'}
                   />
                 </ArrowWrapper>
                 {recipient === null && !showWrap && isExpertMode ? (
@@ -398,8 +398,8 @@ export default function Swap() {
                   (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
               </ButtonPrimary>
             ) : noRoute && userHasSpecifiedInputOutput ? (
-              <GreyCard style={{ textAlign: 'center' }}>
-                <TYPE.main mb="4px">Insufficient liquidity for this trade.</TYPE.main>
+              <GreyCard style={{ textAlign: 'center', backgroundColor: '#40444f', color: '#888D9B' }}>
+                <TYPE.main style={{ color: '#888D9B' }} mb="4px">Insufficient liquidity for this trade.</TYPE.main>
               </GreyCard>
             ) : showApproveFlow ? (
               <RowBetween>

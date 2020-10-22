@@ -1,5 +1,5 @@
 import { Placement } from '@popperjs/core'
-import { transparentize } from 'polished'
+// import { transparentize } from 'polished'
 import React, { useCallback, useState } from 'react'
 import { usePopper } from 'react-popper'
 import styled from 'styled-components'
@@ -13,10 +13,10 @@ const PopoverContainer = styled.div<{ show: boolean }>`
   opacity: ${props => (props.show ? 1 : 0)};
   transition: visibility 150ms linear, opacity 150ms linear;
 
-  background: ${({ theme }) => theme.bg2};
-  border: 1px solid ${({ theme }) => theme.bg3};
-  box-shadow: 0 4px 8px 0 ${({ theme }) => transparentize(0.9, theme.shadow1)};
-  color: ${({ theme }) => theme.text2};
+  background: rgb(44, 47, 54);
+  border: 1px solid rgb(64, 68, 79);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px;
+  color: rgb(195, 197, 203);
   border-radius: 8px;
 `
 
@@ -36,9 +36,9 @@ const Arrow = styled.div`
     z-index: 9998;
 
     content: '';
-    border: 1px solid ${({ theme }) => theme.bg3};
+    border: 1px solid rgb(64, 68, 79);
     transform: rotate(45deg);
-    background: ${({ theme }) => theme.bg2};
+    background: rgb(44, 47, 54);
   }
 
   &.arrow-top {

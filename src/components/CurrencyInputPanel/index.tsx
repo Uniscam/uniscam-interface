@@ -25,7 +25,7 @@ const CurrencySelect = styled.button<{ selected: boolean }>`
   height: 2.2rem;
   font-size: 20px;
   font-weight: 500;
-  background-color: ${({ selected, theme }) => (selected ? theme.bg6 : theme.primary1)};
+  background-color: ${({ selected, theme }) => (selected ? theme.bg6 : 'rgb(33, 114, 229)')};
   color: ${({ selected, theme }) => (selected ? theme.white : theme.white)};
   border-radius: 12px;
   box-shadow: ${({ selected }) => (selected ? 'none' : '0px 6px 10px rgba(0, 0, 0, 0.075)')};
@@ -92,20 +92,20 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
 
 const StyledBalanceMax = styled.button`
   height: 28px;
-  background-color: ${({ theme }) => theme.primary5};
-  border: 1px solid ${({ theme }) => theme.primary5};
+  background-color: rgba(21,61,111,.44);
+  border: 1px solid rgba(21,61,111,.44);
   border-radius: 0.5rem;
   font-size: 0.875rem;
 
   font-weight: 500;
   cursor: pointer;
   margin-right: 0.5rem;
-  color: ${({ theme }) => theme.primaryText1};
+  color: #6da8ff;
   :hover {
-    border: 1px solid ${({ theme }) => theme.primary1};
+    border: 1px solid #2172e5;
   }
   :focus {
-    border: 1px solid ${({ theme }) => theme.primary1};
+    border: 1px solid #2172e5;
     outline: none;
   }
 
