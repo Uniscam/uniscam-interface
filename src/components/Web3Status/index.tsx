@@ -59,7 +59,7 @@ const Web3StatusError = styled(Web3StatusGeneric)`
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
-  background-color: #f4c01c;
+  background-color: #1a3cb0;
   border: none;
   color: #000000;
   font-weight: 500;
@@ -73,29 +73,29 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
   ${({ faded }) =>
     faded &&
     css`
-      background-color: #f4c01c;
-      border: 1px solid #f4c01c;
+      background-color: #1a3cb0;
+      border: 1px solid #1a3cb0;
       color: #000000;
 
       :hover,
       :focus {
-        border: 1px solid ${darken(0.05, '#f4c01c')};
+        border: 1px solid ${darken(0.05, '#1a3cb0')};
         color: ${darken(0.05, '#000000')};
       }
     `}
 `
 
 const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
-  background-color: #f4c01c;
-  border: 1px solid #f4c01c;
-  color: #000000;
+  background-color: #1a3cb0;
+  border: 1px solid #587dfd;
+  color: #fff;
   font-weight: 500;
   :hover,
   :focus {
-    background-color: ${({ pending }) => (pending ? darken(0.05, '#f4c01c') : lighten(0.05, '#f4c01c'))};
+    background-color: ${({ pending }) => (pending ? darken(0.05, '#1a3cb0') : lighten(0.05, '#1a3cb0'))};
 
     :focus {
-      border: 1px solid ${({ pending }) => (pending ? darken(0.1, '#f4c01c') : darken(0.1, '#f4c01c'))};
+      border: 1px solid ${({ pending }) => (pending ? darken(0.1, '#1a3cb0') : darken(0.1, '#1a3cb0'))};
     }
   }
 `
