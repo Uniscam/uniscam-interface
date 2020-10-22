@@ -16,10 +16,11 @@ export default Card
 export const LightCard = styled(Card)`
   border: 1px solid rgb(44, 47, 54);
   background-color: ${({ theme }) => theme.bg6};
+  color: #fff;
 `
 
 export const GreyCard = styled(Card)`
-  background-color: ${({ theme }) => theme.bg3};
+  background-color: ${({ theme }) => theme.bg6};
 `
 
 export const OutlineCard = styled(Card)`
