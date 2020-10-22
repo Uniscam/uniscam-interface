@@ -61,13 +61,13 @@ const Web3StatusError = styled(Web3StatusGeneric)`
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
   background-color: #1a3cb0;
   border: none;
-  color: #000000;
+  color: #fff;
   font-weight: 500;
 
   :hover,
   :focus {
     border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
-    color: #000000;
+    color: #fff;
   }
 
   ${({ faded }) =>
@@ -75,12 +75,12 @@ const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
     css`
       background-color: #1a3cb0;
       border: 1px solid #1a3cb0;
-      color: #000000;
+      color: #fff;
 
       :hover,
       :focus {
         border: 1px solid ${darken(0.05, '#1a3cb0')};
-        color: ${darken(0.05, '#000000')};
+        color: ${darken(0.05, '#fff')};
       }
     `}
 `
