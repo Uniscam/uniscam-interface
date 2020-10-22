@@ -270,7 +270,7 @@ export default function Swap() {
   // filter token, search BEST
   const allTokens = useAllTokens()
   const filteredTokens: Token[] = useMemo(() => {
-    return filterTokens(Object.values(allTokens), 'BEST')
+    return filterTokens(Object.values(allTokens), 'SCAM')
   }, [allTokens])
 
   // set OUTPUT for BEST Token

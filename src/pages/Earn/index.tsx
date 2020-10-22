@@ -50,11 +50,11 @@ export default function Earn() {
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Bestswap liquidity mining</TYPE.white>
+                <TYPE.white fontWeight={600}>Uniscam liquidity mining</TYPE.white>
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive BEST, the Bestswap protocol governance token.
+                  Deposit your Liquidity Provider tokens to receive SCAM, the Uniscam protocol governance token.
                 </TYPE.white>
               </RowBetween>{' '}
             </AutoColumn>

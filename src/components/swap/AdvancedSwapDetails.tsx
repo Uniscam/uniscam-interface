@@ -98,7 +98,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
                   <TYPE.black fontSize={14} fontWeight={400} color={theme.text2}>
                     Route
                   </TYPE.black>
-                  <QuestionHelper text="Routing through these tokens resulted in the best price for your trade." />
+                  <QuestionHelper text="Routing through these tokens resulted in the scam price for your trade." />
                 </RowFixed>
                 <SwapRoute trade={trade} />
               </AutoColumn>

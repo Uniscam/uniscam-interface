@@ -135,7 +135,7 @@ export default function Vote() {
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  BEST tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or
+                  SCAM tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or
                   delegate your votes to a third party.
                 </TYPE.white>
               </RowBetween>
@@ -226,7 +226,7 @@ export default function Vote() {
         })}
       </TopSection>
       <TYPE.subHeader color="text3">
-        A minimum threshhold of 1% of the total BEST supply is required to submit proposals
+        A minimum threshhold of 1% of the total SCAM supply is required to submit proposals
       </TYPE.subHeader>
     </PageWrapper>
   )
