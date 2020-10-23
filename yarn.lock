@@ -2031,10 +2031,10 @@
   resolved "https://registry.yarnpkg.com/@multiformats/base-x/-/base-x-4.0.1.tgz#95ff0fa58711789d53aefb2590a8b7a4e715d121"
   integrity sha512-eMk0b9ReBbV23xXU693TAIrLyeO5iTgBZGSJfpqriG8UkYvr/hC9u9pyMlAakDNHWmbhMZCDs6KQO0jzKD8OTw==
 
-"@nekomeowww/uniscam-sdk@3.0.17":
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/@nekomeowww/uniscam-sdk/-/uniscam-sdk-3.0.17.tgz#844c174648f31de82104bd1ae4e7d9c77f4b4e1a"
-  integrity sha512-uhMUx/eM0X8cfzuAiQNWUyols1v2tG0EeM+FpulwX7tygMUF/amJ6zc85odlMX5RYYkuW2MXbpNOd0v5+Aj3pQ==
+"@nekomeowww/uniscam-sdk@3.0.18":
+  version "3.0.18"
+  resolved "https://registry.yarnpkg.com/@nekomeowww/uniscam-sdk/-/uniscam-sdk-3.0.18.tgz#ffefc6b736463f11cc8468ac4484c20f05c1c85c"
+  integrity sha512-R0nx0hkry9vCeB1k3VjBQOMQp9zg0IODP5cL+OEmaF9D4NKeBU8Yjsa5uqWlB0jocgBTU04ogcjbCTpgiAylYg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
