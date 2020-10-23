@@ -126,8 +126,9 @@ export default function RemoveLiquidity({
       { name: 'chainId', type: 'uint256' },
       { name: 'verifyingContract', type: 'address' }
     ]
+    // @XXX: change according to the name of LP Token please
     const domain = {
-      name: 'Uniscam LP Token',
+      name: 'Bestswap LP Token',
       version: '1',
       chainId: chainId,
       verifyingContract: pair.liquidityToken.address
