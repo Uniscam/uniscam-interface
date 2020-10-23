@@ -330,13 +330,13 @@ export default function AddLiquidity({
                 <ColumnCenter>
                   <BlueCard>
                     <AutoColumn gap="10px">
-                      <TYPE.link fontWeight={600} color={'primaryText1'}>
+                      <TYPE.link fontWeight={600} color={'#6da8ff'}>
                         You are the first liquidity provider.
                       </TYPE.link>
-                      <TYPE.link fontWeight={400} color={'primaryText1'}>
+                      <TYPE.link fontWeight={400} color={'#6da8ff'}>
                         The ratio of tokens you add will set the price of this pool.
                       </TYPE.link>
-                      <TYPE.link fontWeight={400} color={'primaryText1'}>
+                      <TYPE.link fontWeight={400} color={'#6da8ff'}>
                         Once you are happy with the rate click supply to review.
                       </TYPE.link>
                     </AutoColumn>
@@ -356,7 +356,7 @@ export default function AddLiquidity({
               showCommonBases
             />
             <ColumnCenter>
-              <Plus size="16" color={theme.text2} />
+              <Plus size="16" color={theme.white} />
             </ColumnCenter>
             <CurrencyInputPanel
               value={formattedAmounts[Field.CURRENCY_B]}
@@ -374,7 +374,7 @@ export default function AddLiquidity({
               <>
                 <LightCard padding="0px" borderRadius={'20px'}>
                   <RowBetween padding="1rem">
-                    <TYPE.subHeader fontWeight={500} fontSize={14}>
+                    <TYPE.subHeader fontWeight={500} fontSize={14} style={{ color: '#fff' }}>
                       {noLiquidity ? 'Initial prices' : 'Prices'} and pool share
                     </TYPE.subHeader>
                   </RowBetween>{' '}

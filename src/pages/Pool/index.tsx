@@ -26,7 +26,7 @@ const PageWrapper = styled(AutoColumn)`
 `
 
 const VoteCard = styled(DataCard)`
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #fe4000 0%, #ffc000 100%);
+  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #25183e 0%, #0d4747 100%);
   overflow: hidden;
 `
 
@@ -60,6 +60,13 @@ const ResponsiveButtonSecondary = styled(ButtonSecondary)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 48%;
   `};
+  border: 1px solid rgba(55, 107, 173, 0.44);
+  color: rgb(33, 114, 229);
+  background-color: transparent;
+  &:focus {
+    box-shadow: rgba(55, 107, 173, 0.44) 0px 0px 0px 1pt;
+    border: 1px solid rgb(77, 143, 234);
+  }
 `
 
 const EmptyProposals = styled.div`
@@ -150,7 +157,7 @@ export default function Pool() {
                 <ResponsiveButtonSecondary as={Link} padding="6px 8px" to="/create/ETH">
                   Create a pair
                 </ResponsiveButtonSecondary>
-                <ResponsiveButtonPrimary id="join-pool-button" as={Link} padding="6px 8px" to="/add/ETH">
+                <ResponsiveButtonPrimary id="join-pool-button" as={Link} padding="6px 8px" to="/add/ETH" style={{ backgroundColor: 'rgb(33, 114, 229)' }}>
                   <Text fontWeight={500} fontSize={16}>
                     Add Liquidity
                   </Text>

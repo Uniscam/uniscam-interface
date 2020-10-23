@@ -89,19 +89,19 @@ export default function PoolFinder() {
           {currency0 ? (
             <Row>
               <CurrencyLogo currency={currency0} />
-              <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
+              <Text fontWeight={500} fontSize={20} marginLeft={'12px'} style={{ color: '#fff' }}>
                 {currency0.symbol}
               </Text>
             </Row>
           ) : (
-            <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
+            <Text fontWeight={500} fontSize={20} marginLeft={'12px'} style={{ color: '#fff' }}>
               Select a Token
             </Text>
           )}
         </ButtonDropdownLight>
 
         <ColumnCenter>
-          <Plus size="16" color="#888D9B" />
+          <Plus size="16" color="#fff" />
         </ColumnCenter>
 
         <ButtonDropdownLight
@@ -113,12 +113,12 @@ export default function PoolFinder() {
           {currency1 ? (
             <Row>
               <CurrencyLogo currency={currency1} />
-              <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
+              <Text fontWeight={500} fontSize={20} marginLeft={'12px'} style={{ color: '#fff' }}>
                 {currency1.symbol}
               </Text>
             </Row>
           ) : (
-            <Text fontWeight={500} fontSize={20} marginLeft={'12px'}>
+            <Text fontWeight={500} fontSize={20} marginLeft={'12px'} style={{ color: '#fff' }}>
               Select a Token
             </Text>
           )}

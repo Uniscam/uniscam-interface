@@ -53,7 +53,7 @@ export const ButtonPrimary = styled(Base)`
     background-color: ${({ theme }) => darken(0.1, theme.primary1)};
   }
   &:disabled {
-    background-color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? theme.primary1 : theme.bg3)};
+    background-color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? theme.primary1 : theme.bg7)};
     color: ${({ theme, altDisabledStyle }) => (altDisabledStyle ? 'white' : theme.text3)};
     cursor: auto;
     box-shadow: none;
@@ -293,7 +293,7 @@ export function ButtonDropdownLight({ disabled = false, children, ...rest }: { d
     <ButtonOutlined {...rest} disabled={disabled}>
       <RowBetween>
         <div style={{ display: 'flex', alignItems: 'center' }}>{children}</div>
-        <ChevronDown size={24} />
+        <ChevronDown size={24} style={{ color: '#fff' }} />
       </RowBetween>
     </ButtonOutlined>
   )
