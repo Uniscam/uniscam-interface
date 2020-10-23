@@ -169,6 +169,9 @@ export default function AddLiquidity({
       value = null
     }
 
+    // @XXX: fxxk unused var
+    console.log(estimate)
+
     setAttemptingTxn(true)
     // await estimate(...args, value ? { value } : {})
     // .then(estimatedGasLimit =>
