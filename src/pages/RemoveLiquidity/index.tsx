@@ -29,7 +29,11 @@ import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import { StyledInternalLink, TYPE } from '../../theme'
-import { calculateGasMargin, calculateSlippageAmount, getRouterContract } from '../../utils'
+import {
+  // @XXX: fxxk linter check
+  // calculateGasMargin,
+  calculateSlippageAmount, getRouterContract
+} from '../../utils'
 import { currencyId } from '../../utils/currencyId'
 import useDebouncedChangeHandler from '../../utils/useDebouncedChangeHandler'
 import { wrappedCurrency } from '../../utils/wrappedCurrency'
@@ -282,31 +286,37 @@ export default function RemoveLiquidity({
       throw new Error('Attempting to confirm without approval or a signature. Please contact support.')
     }
 
-    const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
-      methodNames.map(methodName =>
-        router.estimateGas[methodName](...args)
-          .then(calculateGasMargin)
-          .catch(error => {
-            console.error(`estimateGas failed`, methodName, args, error)
-            return undefined
-          })
-      )
-    )
+    // const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
+    //   methodNames.map(methodName =>
+    //     router.estimateGas[methodName](...args)
+    //       .then(calculateGasMargin)
+    //       .catch(error => {
+    //         console.error(`estimateGas failed`, methodName, args, error)
+    //         return undefined
+    //       })
+    //   )
+    // )
 
-    const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-      BigNumber.isBigNumber(safeGasEstimate)
-    )
+    // const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
+    //   BigNumber.isBigNumber(safeGasEstimate)
+    // )
+
+    // @XXX: Just by pass it 默认不选 SupportingFeeOnTransferTokens - Frank
+    // Bypass ts check
+    const [indexOfSuccessfulEstimation] = [0]
 
     // all estimations failed...
+    // @XXX: Just by pass it - Frank
     if (indexOfSuccessfulEstimation === -1) {
       console.error('This transaction would fail. Please contact support.')
     } else {
       const methodName = methodNames[indexOfSuccessfulEstimation]
-      const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
+      // const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
 
       setAttemptingTxn(true)
       await router[methodName](...args, {
-        gasLimit: safeGasEstimate
+        // @XXX: 写死 五百万 gas limit
+        gasLimit: BigNumber.from('5000000')
       })
         .then((response: TransactionResponse) => {
           setAttemptingTxn(false)

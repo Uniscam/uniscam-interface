@@ -169,43 +169,47 @@ export default function AddLiquidity({
       value = null
     }
 
+    // @XXX: fxxk unused var
+    console.log(estimate)
+
     setAttemptingTxn(true)
-    await estimate(...args, value ? { value } : {})
-      .then(estimatedGasLimit =>
-        method(...args, {
-          ...(value ? { value } : {}),
-          gasLimit: calculateGasMargin(estimatedGasLimit)
-        }).then(response => {
-          setAttemptingTxn(false)
+    // await estimate(...args, value ? { value } : {})
+    // .then(estimatedGasLimit =>
+    method(...args, {
+      ...(value ? { value } : {}),
+      // @XXX: fxxk estimate gas
+      gasLimit: calculateGasMargin(BigNumber.from('5000000'))
+    }).then(response => {
+      setAttemptingTxn(false)
 
-          addTransaction(response, {
-            summary:
-              'Add ' +
-              parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
-              ' ' +
-              currencies[Field.CURRENCY_A]?.symbol +
-              ' and ' +
-              parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
-              ' ' +
-              currencies[Field.CURRENCY_B]?.symbol
-          })
-
-          setTxHash(response.hash)
-
-          ReactGA.event({
-            category: 'Liquidity',
-            action: 'Add',
-            label: [currencies[Field.CURRENCY_A]?.symbol, currencies[Field.CURRENCY_B]?.symbol].join('/')
-          })
-        })
-      )
-      .catch(error => {
-        setAttemptingTxn(false)
-        // we only care if the error is something _other_ than the user rejected the tx
-        if (error?.code !== 4001) {
-          console.error(error)
-        }
+      addTransaction(response, {
+        summary:
+          'Add ' +
+          parsedAmounts[Field.CURRENCY_A]?.toSignificant(3) +
+          ' ' +
+          currencies[Field.CURRENCY_A]?.symbol +
+          ' and ' +
+          parsedAmounts[Field.CURRENCY_B]?.toSignificant(3) +
+          ' ' +
+          currencies[Field.CURRENCY_B]?.symbol
       })
+
+      setTxHash(response.hash)
+
+      ReactGA.event({
+        category: 'Liquidity',
+        action: 'Add',
+        label: [currencies[Field.CURRENCY_A]?.symbol, currencies[Field.CURRENCY_B]?.symbol].join('/')
+      })
+    })
+    // )
+    // .catch(error => {
+    //   setAttemptingTxn(false)
+    //   // we only care if the error is something _other_ than the user rejected the tx
+    //   if (error?.code !== 4001) {
+    //     console.error(error)
+    //   }
+    // })
   }
 
   const modalHeader = () => {
