@@ -136,7 +136,8 @@ const UNIAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% -2%,rgb(27 60 175) 0%,rgb(27 60 175) 255%) 80%, rgb(27 60 175) 100%;
+  background: radial-gradient(174.47% 188.91% at 1.84% -2%, rgb(27 60 175) 0%, rgb(27 60 175) 255%) 80%,
+    rgb(27 60 175) 100%;
 `
 
 const UNIWrapper = styled.span`
