@@ -92,8 +92,8 @@ const StyledTokenName = styled.span<{ active?: boolean }>`
 
 const StyledBalanceMax = styled.button`
   height: 28px;
-  background-color: rgba(21,61,111,.44);
-  border: 1px solid rgba(21,61,111,.44);
+  background-color: rgba(21, 61, 111, 0.44);
+  border: 1px solid rgba(21, 61, 111, 0.44);
   border-radius: 0.5rem;
   font-size: 0.875rem;
 

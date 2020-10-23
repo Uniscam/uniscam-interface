@@ -399,7 +399,9 @@ export default function Swap() {
               </ButtonPrimary>
             ) : noRoute && userHasSpecifiedInputOutput ? (
               <GreyCard style={{ textAlign: 'center', backgroundColor: '#40444f', color: '#888D9B' }}>
-                <TYPE.main style={{ color: '#888D9B' }} mb="4px">Insufficient liquidity for this trade.</TYPE.main>
+                <TYPE.main style={{ color: '#888D9B' }} mb="4px">
+                  Insufficient liquidity for this trade.
+                </TYPE.main>
               </GreyCard>
             ) : showApproveFlow ? (
               <RowBetween>
