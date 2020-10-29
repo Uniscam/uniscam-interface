@@ -146,11 +146,6 @@ export function useSwapCallback(
               contract
             } = call
             const options = !value || isZero(value) ? {} : { value }
-            // by pass gas estimate
-            return {
-              call,
-              gasEstimate: BigNumber.from('5000000')
-            }
             return contract.estimateGas[methodName](...args, options)
               .then(gasEstimate => {
                 return {
