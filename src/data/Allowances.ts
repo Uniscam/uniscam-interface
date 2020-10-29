@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@nekomeowww/uniscam-sdk'
+import { Token, TokenAmount } from '@haneko/uniscam-sdk'
 import { useMemo } from 'react'
 
 import { useTokenContract } from '../hooks/useContract'

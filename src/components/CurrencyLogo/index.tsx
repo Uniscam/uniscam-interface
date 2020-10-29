@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@nekomeowww/uniscam-sdk'
+import { Currency, ETHER, Token } from '@haneko/uniscam-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 

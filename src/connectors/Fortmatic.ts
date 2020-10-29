@@ -1,4 +1,4 @@
-import { ChainId } from '@nekomeowww/uniscam-sdk'
+import { ChainId } from '@haneko/uniscam-sdk'
 import { FortmaticConnector as FortmaticConnectorCore } from '@web3-react/fortmatic-connector'
 
 export const OVERLAY_READY = 'OVERLAY_READY'
