@@ -1,4 +1,4 @@
-import { Currency } from '@nekomeowww/uniscam-sdk'
+import { Currency } from '@haneko/uniscam-sdk'
 import React from 'react'
 import styled from 'styled-components'
 import CurrencyLogo from '../CurrencyLogo'

@@ -1,4 +1,4 @@
-import { ChainId } from '@nekomeowww/uniscam-sdk'
+import { ChainId } from '@haneko/uniscam-sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import Modal from '../Modal'

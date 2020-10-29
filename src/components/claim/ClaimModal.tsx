@@ -1,4 +1,4 @@
-import { JSBI, TokenAmount } from '@nekomeowww/uniscam-sdk'
+import { JSBI, TokenAmount } from '@haneko/uniscam-sdk'
 import { isAddress } from 'ethers/lib/utils'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'rebass'
