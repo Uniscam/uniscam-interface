@@ -1,7 +1,7 @@
 ## Development
 
 ### Demo
-[BSC Testnet](https://bestswap-neko-bsc-testnet-01.netlify.app/)
+[BSC/Testnet + Mainnet](https://swap.y3d.finance/#/swap)
 
 ### Install Dependencies
 
