@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@haneko/uniscam-sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@nekomeowww/uniscam-sdk'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

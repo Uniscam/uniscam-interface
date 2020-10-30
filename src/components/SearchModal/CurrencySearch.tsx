@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@haneko/uniscam-sdk'
+import { Currency, ETHER, Token } from '@nekomeowww/uniscam-sdk'
 import React, {
   KeyboardEvent,
   RefObject,

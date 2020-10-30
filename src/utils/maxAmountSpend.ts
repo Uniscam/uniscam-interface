@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from '@haneko/uniscam-sdk'
+import { CurrencyAmount, ETHER, JSBI } from '@nekomeowww/uniscam-sdk'
 import { MIN_ETH } from '../constants'
 
 /**

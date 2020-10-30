@@ -7,7 +7,7 @@ import {
   Trade,
   TradeOptionsDeadline,
   TradeType
-} from '@haneko/uniscam-sdk'
+} from '@nekomeowww/uniscam-sdk'
 import { getTradeVersion } from '../data/V1'
 import { Version } from '../hooks/useToggledVersion'
 

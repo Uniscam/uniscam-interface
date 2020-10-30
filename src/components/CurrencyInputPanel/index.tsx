@@ -1,4 +1,4 @@
-import { Currency, Pair } from '@haneko/uniscam-sdk'
+import { Currency, Pair } from '@nekomeowww/uniscam-sdk'
 import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { darken } from 'polished'

@@ -1,4 +1,4 @@
-import { ChainId, Currency, currencyEquals, JSBI, Price, WETH } from '@haneko/uniscam-sdk'
+import { ChainId, Currency, currencyEquals, JSBI, Price, WETH } from '@nekomeowww/uniscam-sdk'
 import { useMemo } from 'react'
 import { USDC } from '../constants'
 import { PairState, usePairs } from '../data/Reserves'

@@ -1,4 +1,4 @@
-import { Currency, Percent, Price } from '@haneko/uniscam-sdk'
+import { Currency, Percent, Price } from '@nekomeowww/uniscam-sdk'
 import React, { useContext } from 'react'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
