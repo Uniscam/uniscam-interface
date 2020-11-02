@@ -7,7 +7,27 @@ import { useActiveWeb3React } from '../hooks'
 import { useMultipleContractSingleData } from '../state/multicall/hooks'
 import { wrappedCurrency } from '../utils/wrappedCurrency'
 
-const PAIR_INTERFACE = new Interface(IUniswapV2PairABI)
+const newABI = [
+  {
+    "inputs": [],
+    "name": "getDummy",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "_dummy0",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_dummy1",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  }
+]
+const PAIR_INTERFACE = new Interface([...IUniswapV2PairABI, ...newABI])
 
 export enum PairState {
   LOADING,
@@ -37,24 +57,31 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
   )
 
   const results = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getReserves')
+  const dummyResults = useMultipleContractSingleData(pairAddresses, PAIR_INTERFACE, 'getDummy')
 
   return useMemo(() => {
     return results.map((result, i) => {
       const { result: reserves, loading } = result
       const tokenA = tokens[i][0]
       const tokenB = tokens[i][1]
+      const { result: dummies, loading: dummyLoading } = dummyResults[i]
 
-      if (loading) return [PairState.LOADING, null]
+      if (loading || dummyLoading) return [PairState.LOADING, null]
       if (!tokenA || !tokenB || tokenA.equals(tokenB)) return [PairState.INVALID, null]
-      if (!reserves) return [PairState.NOT_EXISTS, null]
-      const { reserve0, reserve1 } = reserves
+      if (!reserves || !dummies) return [PairState.NOT_EXISTS, null]
+      let { reserve0, reserve1 } = reserves
+      const [dummy0, dummy1] = dummies
       const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]
+
+      reserve0 = reserve0.sub(dummy0)
+      reserve1 = reserve1.sub(dummy1)
+
       return [
         PairState.EXISTS,
         new Pair(new TokenAmount(token0, reserve0.toString()), new TokenAmount(token1, reserve1.toString()))
       ]
     })
-  }, [results, tokens])
+  }, [results, dummyResults, tokens])
 }
 
 export function usePair(tokenA?: Currency, tokenB?: Currency): [PairState, Pair | null] {

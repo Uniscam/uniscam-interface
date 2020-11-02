@@ -1681,10 +1681,10 @@
     "@ethersproject/properties" "^5.0.3"
     "@ethersproject/strings" "^5.0.4"
 
-"@haneko/uniscam-sdk@3.0.21-test":
-  version "3.0.21-test"
-  resolved "https://registry.yarnpkg.com/@haneko/uniscam-sdk/-/uniscam-sdk-3.0.21-test.tgz#4a604b0ccefc155541b8f91e359636c99f02349b"
-  integrity sha512-2o5btlCrLVZjEhu+zBa0Y4TjFvmfQEKH5NoYNV7FBz7lgS4W9QCL96S+NeO4UXdLpN2tlFlt7jqrTGRLs7FSDg==
+"@haneko/uniscam-sdk@3.0.21-test2":
+  version "3.0.21-test2"
+  resolved "https://registry.yarnpkg.com/@haneko/uniscam-sdk/-/uniscam-sdk-3.0.21-test2.tgz#e6296ce6da0605a0641b5772cb613daa367fa733"
+  integrity sha512-Uivb2E0uUOqEtQ2FXa8eb2yQWon7Js1opXmFp7P2l91o+0Nwkv/WiMGSYWpUTevPx9tGerfjdDDsLzn5LD+ypw==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
