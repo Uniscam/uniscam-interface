@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from 'rebass'
-import { ChainId, Currency, currencyEquals, ETHER, Token } from '@haneko/uniscam-sdk'
+import { ChainId, Currency, currencyEquals, ETHER, Token } from '@lychees/uniscam-sdk'
 import styled from 'styled-components'
 
 import { SUGGESTED_BASES } from '../../constants'

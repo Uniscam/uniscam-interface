@@ -1,4 +1,4 @@
-import { Currency } from '@haneko/uniscam-sdk'
+import { Currency } from '@lychees/uniscam-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import ReactGA from 'react-ga'
 import useLast from '../../hooks/useLast'

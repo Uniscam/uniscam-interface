@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@haneko/uniscam-sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from '@lychees/uniscam-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'

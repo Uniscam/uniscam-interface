@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, ETHER, WETH } from '@haneko/uniscam-sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '@lychees/uniscam-sdk'
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'

@@ -12,7 +12,7 @@ import Circle from '../../assets/images/blue-loader.svg'
 import { useVoteCallback, useUserVotes } from '../../state/governance/hooks'
 import { getBscScanLink } from '../../utils'
 import { ExternalLink } from '../../theme/components'
-import { TokenAmount } from '@haneko/uniscam-sdk'
+import { TokenAmount } from '@lychees/uniscam-sdk'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;

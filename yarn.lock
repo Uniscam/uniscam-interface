@@ -1681,19 +1681,6 @@
     "@ethersproject/properties" "^5.0.3"
     "@ethersproject/strings" "^5.0.4"
 
-"@haneko/uniscam-sdk@3.0.21-test3":
-  version "3.0.21-test3"
-  resolved "https://registry.yarnpkg.com/@haneko/uniscam-sdk/-/uniscam-sdk-3.0.21-test3.tgz#7fcc02d41111b6f466b2765379f22d536e4d8654"
-  integrity sha512-KBcwLYqPyNGEm1py9pULk7MTJBPGZvlS9k09cRiBsgTG3rW0FigLw5wl586w2r33DffSPmrLr4Gg4nZKzXJWTA==
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -2030,6 +2017,19 @@
   dependencies:
     "@babel/runtime" "^7.7.2"
     core-js "^3.4.1"
+
+"@lychees/uniscam-sdk@3.0.21":
+  version "3.0.21"
+  resolved "https://registry.yarnpkg.com/@lychees/uniscam-sdk/-/uniscam-sdk-3.0.21.tgz#de82ce25f06d2339da4b0f194e1254ad4acc2c71"
+  integrity sha512-FXI+fDaLmrNSLcQYY6SUoXO4OImCvKsukw9SS5ZBu8K2q3Ox90R7LJ62wpvvMcdc1qM8OV3K1OXRAy6p0q1sDg==
+  dependencies:
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

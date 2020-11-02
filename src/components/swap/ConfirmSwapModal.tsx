@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from '@haneko/uniscam-sdk'
+import { currencyEquals, Trade } from '@lychees/uniscam-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

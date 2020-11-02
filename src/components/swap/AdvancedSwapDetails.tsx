@@ -1,4 +1,4 @@
-import { Trade, TradeType } from '@haneko/uniscam-sdk'
+import { Trade, TradeType } from '@lychees/uniscam-sdk'
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
