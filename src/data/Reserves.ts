@@ -36,7 +36,7 @@ export enum PairState {
   INVALID
 }
 
-export function usePairs(currencies: [Currency | undefined, Currency | undefined][]): [PairState, Pair | null][] {
+export function usePairs(currencies: [Currency | undefined, Currency | undefined][], removeDummy = true): [PairState, Pair | null][] {
   const { chainId } = useActiveWeb3React()
 
   const tokens = useMemo(
@@ -73,8 +73,10 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
       const [dummy0, dummy1] = dummies
       const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]
 
-      reserve0 = reserve0.sub(dummy0)
-      reserve1 = reserve1.sub(dummy1)
+      if (removeDummy) {
+        reserve0 = reserve0.sub(dummy0)
+        reserve1 = reserve1.sub(dummy1)
+      }
 
       return [
         PairState.EXISTS,
@@ -84,6 +86,6 @@ export function usePairs(currencies: [Currency | undefined, Currency | undefined
   }, [results, dummyResults, tokens])
 }
 
-export function usePair(tokenA?: Currency, tokenB?: Currency): [PairState, Pair | null] {
-  return usePairs([[tokenA, tokenB]])[0]
+export function usePair(tokenA?: Currency, tokenB?: Currency, removeDummy = true): [PairState, Pair | null] {
+  return usePairs([[tokenA, tokenB]], removeDummy)[0]
 }
