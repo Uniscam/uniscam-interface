@@ -9,22 +9,22 @@ import { wrappedCurrency } from '../utils/wrappedCurrency'
 
 const newABI = [
   {
-    "inputs": [],
-    "name": "getDummy",
-    "outputs": [
+    inputs: [],
+    name: 'getDummy',
+    outputs: [
       {
-        "internalType": "uint256",
-        "name": "_dummy0",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: '_dummy0',
+        type: 'uint256'
       },
       {
-        "internalType": "uint256",
-        "name": "_dummy1",
-        "type": "uint256"
+        internalType: 'uint256',
+        name: '_dummy1',
+        type: 'uint256'
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    stateMutability: 'view',
+    type: 'function'
   }
 ]
 const PAIR_INTERFACE = new Interface([...IUniswapV2PairABI, ...newABI])
