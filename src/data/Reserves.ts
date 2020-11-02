@@ -38,7 +38,7 @@ export enum PairState {
 
 export function usePairs(
   currencies: [Currency | undefined, Currency | undefined][],
-  removeDummy = true
+  removeDummy = false
 ): [PairState, Pair | null][] {
   const { chainId } = useActiveWeb3React()
 
@@ -86,9 +86,9 @@ export function usePairs(
         new Pair(new TokenAmount(token0, reserve0.toString()), new TokenAmount(token1, reserve1.toString()))
       ]
     })
-  }, [results, dummyResults, tokens])
+  }, [results, dummyResults, tokens, removeDummy])
 }
 
-export function usePair(tokenA?: Currency, tokenB?: Currency, removeDummy = true): [PairState, Pair | null] {
+export function usePair(tokenA?: Currency, tokenB?: Currency, removeDummy = false): [PairState, Pair | null] {
   return usePairs([[tokenA, tokenB]], removeDummy)[0]
 }
