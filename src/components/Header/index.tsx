@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@nekomeowww/uniscam-sdk'
+import { ChainId, TokenAmount } from '@haneko/uniscam-sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'

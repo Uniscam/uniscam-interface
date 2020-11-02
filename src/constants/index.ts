@@ -1,9 +1,9 @@
-import { ChainId, JSBI, Percent, Token, WETH } from '@nekomeowww/uniscam-sdk'
+import { ChainId, JSBI, Percent, Token, WETH } from '@haneko/uniscam-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x22Ac04F6609912aab2F73302a71207AAdD676B8c'
+export const ROUTER_ADDRESS = '0x37836FBD421747473faF56864bd6F13e58289264'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
