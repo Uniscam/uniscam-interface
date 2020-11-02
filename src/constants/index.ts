@@ -3,7 +3,7 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { fortmatic, injected, portis, walletconnect, walletlink } from '../connectors'
 
-export const ROUTER_ADDRESS = '0x37836FBD421747473faF56864bd6F13e58289264'
+export const ROUTER_ADDRESS = '0x308696676417De3a0F4213ED2B8f541EA88AF9EF'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
@@ -37,14 +37,14 @@ export const UNI: { [chainId in ChainId]: Token } = {
     '0x10747e2045a0ef884a0586AC81558F43285ea3c7',
     18,
     'BEST',
-    'Bestswap'
+    'Unisave'
   ),
   [ChainId.BSC_TESTNET]: new Token(
     ChainId.BSC_TESTNET,
     '0x36eb1b02cB7Be3ffA1eE7Bd2A3c7D036002730F7',
     18,
     'BEST',
-    'Bestswap'
+    'Unisave'
   )
 }
 

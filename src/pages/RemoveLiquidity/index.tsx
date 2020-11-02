@@ -124,7 +124,7 @@ export default function RemoveLiquidity({
     ]
     // @XXX: change according to the name of LP Token please
     const domain = {
-      name: 'Bestswap LP Token',
+      name: 'Unisave LP Token',
       version: '1',
       chainId: chainId,
       verifyingContract: pair.liquidityToken.address

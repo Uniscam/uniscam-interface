@@ -144,7 +144,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       { name: 'verifyingContract', type: 'address' }
     ]
     const domain = {
-      name: 'Bestswap LP Token',
+      name: 'Unisave LP Token',
       version: '1',
       chainId: chainId,
       verifyingContract: pairContract.address
