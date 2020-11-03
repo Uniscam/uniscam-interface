@@ -116,7 +116,7 @@ export default function Menu() {
           <MenuItem id="link" href="https://twitter.com/Y3dScam">
             <Twitter size={14} />
             Twitter
-          </MenuItem>          
+          </MenuItem>
           <MenuItem id="link" href="https://t.me/y3dScam">
             <Navigation size={14} />
             Telegram
