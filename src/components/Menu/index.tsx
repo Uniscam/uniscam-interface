@@ -1,15 +1,13 @@
 import React, { useRef } from 'react'
-import { BookOpen, Code, Info, MessageCircle, PieChart } from 'react-feather'
+import { BookOpen, GitHub, Navigation, Info, Twitter, PieChart } from 'react-feather'
 import styled from 'styled-components'
 import { lighten } from 'polished'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
-import { useActiveWeb3React } from '../../hooks'
 import { useOnClickOutside } from '../../hooks/useOnClickOutside'
 import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 
 import { ExternalLink } from '../../theme'
-import { ButtonPrimary } from '../Button'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
@@ -89,13 +87,10 @@ const MenuItem = styled(ExternalLink)`
 // const CODE_LINK = 'https://github.com/KodamaSakuno/uniswap-interface'
 
 export default function Menu() {
-  const { account } = useActiveWeb3React()
-
   const node = useRef<HTMLDivElement>()
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
-  const openClaimModal = useToggleModal(ApplicationModal.ADDRESS_CLAIM)
 
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
@@ -114,23 +109,22 @@ export default function Menu() {
             <BookOpen size={14} />
             Docs
           </MenuItem>
-          <MenuItem id="link">
-            <Code size={14} />
-            Code
+          <MenuItem id="link" href="https://github.com/Uniscam">
+            <GitHub size={14} />
+            Github
           </MenuItem>
-          <MenuItem id="link">
-            <MessageCircle size={14} />
-            Discord
+          <MenuItem id="link" href="https://twitter.com/Y3dScam">
+            <Twitter size={14} />
+            Twitter
+          </MenuItem>          
+          <MenuItem id="link" href="https://t.me/y3dScam">
+            <Navigation size={14} />
+            Telegram
           </MenuItem>
-          <MenuItem id="link">
+          <MenuItem id="link" href="https://info.y3d.finance/">
             <PieChart size={14} />
-            Analytics
+            Info
           </MenuItem>
-          {account && (
-            <ButtonPrimary onClick={openClaimModal} padding="8px 16px" width="100%" borderRadius="12px" mt="0.5rem">
-              Claim SCAM
-            </ButtonPrimary>
-          )}
         </MenuFlyout>
       )}
     </StyledMenu>

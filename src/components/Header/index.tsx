@@ -335,6 +335,9 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link`} href={'https://mining.y3d.finance/'}>
             {t('mining')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
+          <StyledExternalLink id={`stake-nav-link`} href={'https://info.y3d.finance/'}>
+            {t('info')} <span style={{ fontSize: '11px' }}>↗</span>
+          </StyledExternalLink>          
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
