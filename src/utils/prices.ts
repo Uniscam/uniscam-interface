@@ -18,7 +18,13 @@ export function computeTradePriceBreakdown(
     ? undefined
     : ONE_HUNDRED_PERCENT.subtract(
         trade.route.pairs.reduce<Fraction>(
-          (currentFee: Fraction): Fraction => currentFee.multiply(INPUT_FRACTION_AFTER_FEE),
+          (currentFee: Fraction): Fraction => {
+            let inputFraction = INPUT_FRACTION_AFTER_FEE
+            if ((trade.route.input.symbol === 'USDT' && trade.route.output.symbol === 'BUSD') || (trade.route.input.symbol === 'BUSD' && trade.route.output.symbol === 'USDT'))
+              inputFraction = ONE_HUNDRED_PERCENT
+
+            return currentFee.multiply(inputFraction)
+          },
           ONE_HUNDRED_PERCENT
         )
       )
