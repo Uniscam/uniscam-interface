@@ -392,7 +392,7 @@ export default function AddLiquidity({
                     <AutoColumn gap="4px">
                       <FixedHeightRow padding="1rem">
                         <Text fontSize={14} fontWeight={500}>
-                        Price Impact:
+                          Price Impact:
                         </Text>
                         <Text fontSize={14} fontWeight={500}>
                           {priceImpact?.toSignificant(3)} %
