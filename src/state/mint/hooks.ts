@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ETHER, JSBI, Pair, Percent, Price, TokenAmount } from '@lychees/uniscam-sdk'
+import { Currency, CurrencyAmount, ETHER, Fraction, JSBI, Pair, Percent, Price, TokenAmount } from '@lychees/uniscam-sdk'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PairState, usePair } from '../../data/Reserves'
@@ -28,6 +28,8 @@ export function useDerivedMintInfo(
   currencyBalances: { [field in Field]?: CurrencyAmount }
   parsedAmounts: { [field in Field]?: CurrencyAmount }
   price?: Price
+  newPrice?: Price
+  priceImpact?: Fraction
   noLiquidity?: boolean
   liquidityMinted?: TokenAmount
   poolTokenPercentage?: Percent
@@ -50,6 +52,7 @@ export function useDerivedMintInfo(
 
   // pair
   const [pairState, pair] = usePair(currencies[Field.CURRENCY_A], currencies[Field.CURRENCY_B], true)
+  const [, pairWithDummy] = usePair(currencies[Field.CURRENCY_A], currencies[Field.CURRENCY_B], false)
   const totalSupply = useTotalSupply(pair?.liquidityToken)
 
   const noLiquidity: boolean =
@@ -104,9 +107,22 @@ export function useDerivedMintInfo(
       return undefined
     } else {
       const wrappedCurrencyA = wrappedCurrency(currencyA, chainId)
-      return pair && wrappedCurrencyA ? pair.priceOf(wrappedCurrencyA) : undefined
+      return pairWithDummy && wrappedCurrencyA ? pairWithDummy.priceOf(wrappedCurrencyA) : undefined
     }
-  }, [chainId, currencyA, noLiquidity, pair, parsedAmounts])
+  }, [chainId, currencyA, noLiquidity, pairWithDummy, parsedAmounts])
+
+  const newPrice = useMemo(() => {
+    const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
+    if (!currencyAAmount || !currencyBAmount || !pairWithDummy) return undefined
+
+    return new Price(currencyAAmount.currency, currencyBAmount.currency, JSBI.add(currencyAAmount.raw, pairWithDummy.reserve0.raw), JSBI.add(currencyBAmount.raw, pairWithDummy.reserve1.raw))
+  }, [pairWithDummy, parsedAmounts, price])
+
+  const priceImpact = useMemo(() => {
+    if (!price || !newPrice) return undefined
+
+    return newPrice.raw.divide(price.raw).subtract('1').multiply('100');
+  },  [price, newPrice])
 
   // liquidity minted
   const liquidityMinted = useMemo(() => {
@@ -161,6 +177,8 @@ export function useDerivedMintInfo(
     currencyBalances,
     parsedAmounts,
     price,
+    newPrice,
+    priceImpact,
     noLiquidity,
     liquidityMinted,
     poolTokenPercentage,
