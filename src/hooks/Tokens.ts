@@ -102,14 +102,12 @@ export function useToken(tokenAddress?: string): Token | undefined | null {
 }
 
 export function useCurrency(currencyId: string | undefined): Currency | null | undefined {
-  const isETH = currencyId?.toUpperCase() === 'ETH'
-  const isBNB = currencyId?.toUpperCase() === 'BNB'
-  const token = useToken((isETH || isBNB) ? undefined : currencyId);
+  const isMainCurrency = currencyId === 'CURRENCY'
+  const { chainId } = useActiveWeb3React();
+  const token = useToken(isMainCurrency ? undefined : currencyId);
 
-  if (isETH)
-    return ETHER
-  else if (isBNB)
-    return BINANCE_COIN
+  if (isMainCurrency)
+    return chainId === 56 || chainId === 97 ? BINANCE_COIN : ETHER
   else
     return token;
 }

@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, Token } from '@lychees/uniscam-sdk'
+import { ChainId, Currency, CurrencyAmount, currencyEquals, Token } from '@lychees/uniscam-sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
@@ -161,7 +161,8 @@ export default function CurrencyList({
   onCurrencySelect,
   otherCurrency,
   fixedListRef,
-  showETH
+  showETH,
+  chainId,
 }: {
   height: number
   currencies: Currency[]
@@ -170,8 +171,9 @@ export default function CurrencyList({
   otherCurrency?: Currency | null
   fixedListRef?: MutableRefObject<FixedSizeList | undefined>
   showETH: boolean
+  chainId: ChainId | undefined
 }) {
-  const itemData = useMemo(() => (showETH ? [Currency.ETHER, ...currencies] : currencies), [currencies, showETH])
+  const itemData = useMemo(() => (showETH ? [chainId === 56 || chainId === 97 ? Currency.BINANCE_COIN : Currency.ETHER, ...currencies] : currencies), [currencies, showETH])
 
   const Row = useCallback(
     ({ data, index, style }) => {

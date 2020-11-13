@@ -35,7 +35,7 @@ export function useSwapActionHandlers(): {
       dispatch(
         selectCurrency({
           field,
-          currencyId: currency instanceof Token ? currency.address : currency?.isMainCurrency() ? 'BNB' : ''
+          currencyId: currency instanceof Token ? currency.address : currency.isMainCurrency() ? currency.symbol ?? '' : ''
         })
       )
     },
@@ -221,10 +221,11 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
   if (typeof urlParam === 'string') {
     const valid = isAddress(urlParam)
     if (valid) return valid
-    if (urlParam.toUpperCase() === 'BNB') return 'BNB'
-    if (valid === false) return 'BNB'
+    if (urlParam.toUpperCase() === 'BNB') return 'CURRENCY'
+    if (urlParam.toUpperCase() === 'ETH') return 'CURRENCY'
+    if (valid === false) return 'CURRENCY'
   }
-  return 'BNB' ?? ''
+  return 'CURRENCY' ?? ''
 }
 
 function parseTokenAmountURLParameter(urlParam: any): string {

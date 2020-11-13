@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@lychees/uniscam-sdk'
+import { BINANCE_COIN, ChainId, ETHER, TokenAmount } from '@lychees/uniscam-sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
@@ -279,6 +279,7 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
 export default function Header() {
   const { account, chainId } = useActiveWeb3React()
   const { t } = useTranslation()
+  const mainCurrency = chainId === 56 || chainId === 97 ? BINANCE_COIN : ETHER
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
   const [isDark] = useDarkModeManager()
@@ -386,7 +387,7 @@ export default function Header() {
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                {userEthBalance?.toSignificant(4)} BNB
+                {userEthBalance?.toSignificant(4)} {mainCurrency.symbol}
               </BalanceText>
             ) : null}
             <Web3Status />
