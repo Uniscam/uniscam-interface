@@ -162,7 +162,7 @@ export default function CurrencyList({
   otherCurrency,
   fixedListRef,
   showETH,
-  chainId,
+  chainId
 }: {
   height: number
   currencies: Currency[]
@@ -173,7 +173,11 @@ export default function CurrencyList({
   showETH: boolean
   chainId: ChainId | undefined
 }) {
-  const itemData = useMemo(() => (showETH ? [chainId === 56 || chainId === 97 ? Currency.BINANCE_COIN : Currency.ETHER, ...currencies] : currencies), [currencies, showETH, chainId])
+  const itemData = useMemo(
+    () =>
+      showETH ? [chainId === 56 || chainId === 97 ? Currency.BINANCE_COIN : Currency.ETHER, ...currencies] : currencies,
+    [currencies, showETH, chainId]
+  )
 
   const Row = useCallback(
     ({ data, index, style }) => {

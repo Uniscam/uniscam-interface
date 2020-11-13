@@ -1,12 +1,5 @@
 import { MaxUint256 } from '@ethersproject/constants'
-import {
-  CurrencyAmount,
-  SwapParameters,
-  Token,
-  Trade,
-  TradeOptionsDeadline,
-  TradeType
-} from '@lychees/uniscam-sdk'
+import { CurrencyAmount, SwapParameters, Token, Trade, TradeOptionsDeadline, TradeType } from '@lychees/uniscam-sdk'
 import { getTradeVersion } from '../data/V1'
 import { Version } from '../hooks/useToggledVersion'
 
