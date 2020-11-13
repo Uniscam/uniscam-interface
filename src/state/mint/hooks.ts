@@ -1,7 +1,6 @@
 import {
   Currency,
   CurrencyAmount,
-  ETHER,
   Fraction,
   JSBI,
   Pair,
@@ -96,7 +95,7 @@ export function useDerivedMintInfo(
           dependentField === Field.CURRENCY_B
             ? pair.priceOf(tokenA).quote(wrappedIndependentAmount)
             : pair.priceOf(tokenB).quote(wrappedIndependentAmount)
-        return dependentCurrency === ETHER ? CurrencyAmount.ether(dependentTokenAmount.raw) : dependentTokenAmount
+        return dependentCurrency?.isMainCurrency() ? CurrencyAmount.ether(dependentTokenAmount.raw) : dependentTokenAmount
       }
       return undefined
     } else {
@@ -131,7 +130,7 @@ export function useDerivedMintInfo(
       JSBI.add(currencyAAmount.raw, pairWithDummy.reserve0.raw),
       JSBI.add(currencyBAmount.raw, pairWithDummy.reserve1.raw)
     )
-  }, [pairWithDummy, parsedAmounts, price])
+  }, [pairWithDummy, parsedAmounts])
 
   const priceImpact = useMemo(() => {
     if (!price || !newPrice) return undefined

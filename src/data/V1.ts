@@ -4,7 +4,6 @@ import {
   Currency,
   CurrencyAmount,
   currencyEquals,
-  ETHER,
   JSBI,
   Pair,
   Percent,
@@ -108,8 +107,8 @@ export function useV1Trade(
   const inputPair = useMockV1Pair(inputCurrency)
   const outputPair = useMockV1Pair(outputCurrency)
 
-  const inputIsETH = inputCurrency === ETHER
-  const outputIsETH = outputCurrency === ETHER
+  const inputIsETH = inputCurrency?.isMainCurrency()
+  const outputIsETH = outputCurrency?.isMainCurrency()
 
   // construct a direct or through BNB v1 route
   let pairs: Pair[] = []

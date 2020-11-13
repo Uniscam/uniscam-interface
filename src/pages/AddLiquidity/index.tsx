@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from '@lychees/uniscam-sdk'
+import { Currency, currencyEquals, TokenAmount, WETH } from '@lychees/uniscam-sdk'
 import React, { useCallback, useContext, useState } from 'react'
 import { Plus } from 'react-feather'
 import ReactGA from 'react-ga'
@@ -142,8 +142,8 @@ export default function AddLiquidity({
       method: (...args: any) => Promise<TransactionResponse>,
       args: Array<string | string[] | number>,
       value: BigNumber | null
-    if (currencyA === ETHER || currencyB === ETHER) {
-      const tokenBIsETH = currencyB === ETHER
+    if (currencyA?.isMainCurrency() || currencyB?.isMainCurrency()) {
+      const tokenBIsETH = currencyB?.isMainCurrency()
       estimate = router.estimateGas.addLiquidityETH
       method = router.addLiquidityETH
       args = [
