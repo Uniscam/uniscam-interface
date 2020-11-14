@@ -1,4 +1,4 @@
-import { BINANCE_COIN, CurrencyAmount, ETHER, JSBI } from '@lychees/uniscam-sdk'
+import { CurrencyAmount, JSBI } from '@lychees/uniscam-sdk'
 import { MIN_ETH } from '../constants'
 
 /**
@@ -7,18 +7,11 @@ import { MIN_ETH } from '../constants'
  */
 export function maxAmountSpend(currencyAmount?: CurrencyAmount): CurrencyAmount | undefined {
   if (!currencyAmount) return undefined
-  if (currencyAmount.currency === ETHER) {
+  if (currencyAmount.currency.isMainCurrency()) {
     if (JSBI.greaterThan(currencyAmount.raw, MIN_ETH)) {
       return CurrencyAmount.ether(JSBI.subtract(currencyAmount.raw, MIN_ETH))
     } else {
       return CurrencyAmount.ether(JSBI.BigInt(0))
-    }
-  }
-  if (currencyAmount.currency === BINANCE_COIN) {
-    if (JSBI.greaterThan(currencyAmount.raw, MIN_ETH)) {
-      return CurrencyAmount.binanceCoin(JSBI.subtract(currencyAmount.raw, MIN_ETH))
-    } else {
-      return CurrencyAmount.binanceCoin(JSBI.BigInt(0))
     }
   }
   return currencyAmount
