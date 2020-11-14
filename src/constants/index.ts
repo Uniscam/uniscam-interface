@@ -25,7 +25,7 @@ export const PROPOSAL_LENGTH_IN_DAYS = 7
 
 export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
 
-const UNI_ADDRESS = '0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984'
+const UNI_ADDRESS = '0xc7fD9aE2cf8542D71186877e21107E1F3A0b55ef'
 export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.MAINNET]: new Token(ChainId.MAINNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
   [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
@@ -34,14 +34,14 @@ export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.KOVAN]: new Token(ChainId.KOVAN, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
   [ChainId.BSC_MAINNET]: new Token(
     ChainId.BSC_MAINNET,
-    '0x10747e2045a0ef884a0586AC81558F43285ea3c7',
+    '0x12e2fcfA079Fc23aE82Ab82707b402410321103f',
     18,
     'BEST',
     'Unisave'
   ),
   [ChainId.BSC_TESTNET]: new Token(
     ChainId.BSC_TESTNET,
-    '0x36eb1b02cB7Be3ffA1eE7Bd2A3c7D036002730F7',
+    '0x12e2fcfA079Fc23aE82Ab82707b402410321103f',
     18,
     'BEST',
     'Unisave'
