@@ -80,21 +80,21 @@ export function useDerivedMintInfo(
       // we wrap the currencies just to get the price in terms of the other token
       const wrappedIndependentAmount = wrappedCurrencyAmount(independentAmount, chainId)
       const [tokenA, tokenB] = [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)]
-      if (tokenA && tokenB && wrappedIndependentAmount && pair) {
+      if (tokenA && tokenB && wrappedIndependentAmount && pairWithDummy) {
         const dependentCurrency = dependentField === Field.CURRENCY_B ? currencyB : currencyA
         const dependentTokenAmount =
           dependentField === Field.CURRENCY_B
-            ? pair.priceOf(tokenA).quote(wrappedIndependentAmount)
-            : pair.priceOf(tokenB).quote(wrappedIndependentAmount)
+            ? pairWithDummy.priceOf(tokenA).quote(wrappedIndependentAmount)
+            : pairWithDummy.priceOf(tokenB).quote(wrappedIndependentAmount)
         return dependentCurrency?.isMainCurrency()
-          ? CurrencyAmount.ether(dependentTokenAmount.raw)
+          ? CurrencyAmount.main(pairWithDummy.chainId, dependentTokenAmount.raw)
           : dependentTokenAmount
       }
       return undefined
     } else {
       return undefined
     }
-  }, [noLiquidity, otherTypedValue, currencies, dependentField, independentAmount, currencyA, chainId, currencyB, pair])
+  }, [noLiquidity, otherTypedValue, currencies, dependentField, independentAmount, currencyA, chainId, currencyB, pairWithDummy])
   const parsedAmounts: { [field in Field]: CurrencyAmount | undefined } = {
     [Field.CURRENCY_A]: independentField === Field.CURRENCY_A ? independentAmount : dependentAmount,
     [Field.CURRENCY_B]: independentField === Field.CURRENCY_A ? dependentAmount : independentAmount
