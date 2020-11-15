@@ -10,8 +10,7 @@ import Logo from '../Logo'
 import { useActiveWeb3React } from '../../hooks'
 
 const getTokenLogoURL = (chainId: number | undefined, address: string) => {
-  if (chainId === 56 || chainId === 97)
-    return `https://tokens.bscswap.com/images/${address}.png`
+  if (chainId === 56 || chainId === 97) return `https://tokens.bscswap.com/images/${address}.png`
 
   return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
 }
