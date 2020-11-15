@@ -164,7 +164,7 @@ export default function Pool() {
                   id="join-pool-button"
                   as={Link}
                   padding="6px 8px"
-                  to="/add/ETH"
+                  to="/add/CURRENCY"
                   style={{ backgroundColor: 'rgb(33, 114, 229)' }}
                 >
                   <Text fontWeight={500} fontSize={16}>
