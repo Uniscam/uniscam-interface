@@ -173,11 +173,7 @@ export default function CurrencyList({
   showETH: boolean
   chainId: ChainId | undefined
 }) {
-  const itemData = useMemo(
-    () =>
-      showETH ? [chainId === 56 || chainId === 97 ? Currency.BINANCE_COIN : Currency.ETHER, ...currencies] : currencies,
-    [currencies, showETH, chainId]
-  )
+  const itemData = useMemo(() => (showETH ? [chainId === 56 || chainId === 97 ? Currency.BINANCE_COIN : Currency.ETHER, ...currencies] : currencies), [currencies, showETH])
 
   const Row = useCallback(
     ({ data, index, style }) => {
