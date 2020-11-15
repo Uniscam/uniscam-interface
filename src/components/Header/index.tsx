@@ -1,4 +1,4 @@
-import { ChainId, TokenAmount } from '@lychees/uniscam-sdk'
+import { ChainId, TokenAmount, ETHER } from '@lychees/uniscam-sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
@@ -389,7 +389,7 @@ export default function Header() {
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                {userEthBalance?.toSignificant(4)} BNB
+                {userEthBalance?.toSignificant(4)} {ETHER.toDisplayableSymbol(chainId!)}
               </BalanceText>
             ) : null}
             <Web3Status />
