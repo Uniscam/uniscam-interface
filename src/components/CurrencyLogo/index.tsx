@@ -52,7 +52,7 @@ export default function CurrencyLogo({
       return [getTokenLogoURL(chainId, currency.address)]
     }
     return []
-  }, [currency, uriLocations])
+  }, [currency, uriLocations, chainId])
   if (currency === ETHER) {
     return (
       <StyledEthereumLogo
