@@ -125,13 +125,10 @@ export function useDerivedMintInfo(
     const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
     if (!currencyAAmount || !currencyBAmount || !pairWithDummy) return undefined
 
-    return new Price(
-      currencyAAmount.currency,
-      currencyBAmount.currency,
-      JSBI.add(currencyAAmount.raw, pairWithDummy.reserve0.raw),
-      JSBI.add(currencyBAmount.raw, pairWithDummy.reserve1.raw)
-    )
-  }, [pairWithDummy, parsedAmounts])
+    const newPair = new Pair(new TokenAmount(pairWithDummy.reserve0.token, JSBI.add(pairWithDummy.reserve0.raw, currencyAAmount.raw)), new TokenAmount(pairWithDummy.reserve1.token, JSBI.add(pairWithDummy.reserve1.raw, currencyBAmount.raw)))
+    const wrappedCurrencyA = wrappedCurrency(currencyA, chainId)
+    return wrappedCurrencyA ? newPair.priceOf(wrappedCurrencyA) : undefined
+  }, [chainId, currencyA, pairWithDummy, parsedAmounts])
 
   const priceImpact = useMemo(() => {
     if (!price || !newPrice) return undefined
