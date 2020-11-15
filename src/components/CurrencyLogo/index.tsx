@@ -9,10 +9,12 @@ import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
 import { useActiveWeb3React } from '../../hooks'
 
-const getTokenLogoURL = (address: string) =>
-  `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
-const getTokenLogoURL2 = (address: string) =>
-  `https://tokens.bscswap.com/images/${address}.png`
+const getTokenLogoURL = (chainId: number | undefined, address: string) => {
+  if (chainId === 56 || chainId === 97)
+    return `https://tokens.bscswap.com/images/${address}.png`
+
+  return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
+}
 
 const StyledEthereumLogo = styled.img<{ size: string }>`
   width: ${({ size }) => size};
@@ -37,6 +39,7 @@ export default function CurrencyLogo({
   size?: string
   style?: React.CSSProperties
 }) {
+  const { chainId } = useActiveWeb3React()
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
 
   const srcs: string[] = useMemo(() => {
@@ -44,15 +47,13 @@ export default function CurrencyLogo({
 
     if (currency instanceof Token) {
       if (currency instanceof WrappedTokenInfo) {
-        return [...uriLocations, getTokenLogoURL(currency.address), getTokenLogoURL2(currency.address)]
+        return [...uriLocations, getTokenLogoURL(chainId, currency.address)]
       }
 
-      return [getTokenLogoURL(currency.address), getTokenLogoURL2(currency.address)]
+      return [getTokenLogoURL(chainId, currency.address)]
     }
     return []
   }, [currency, uriLocations])
-
-  const { chainId } = useActiveWeb3React()
   if (currency === ETHER) {
     return (
       <StyledEthereumLogo
