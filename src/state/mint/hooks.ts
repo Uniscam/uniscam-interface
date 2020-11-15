@@ -102,17 +102,7 @@ export function useDerivedMintInfo(
     } else {
       return undefined
     }
-  }, [
-    noLiquidity,
-    otherTypedValue,
-    currencies,
-    dependentField,
-    independentAmount,
-    currencyA,
-    chainId,
-    currencyB,
-    pair
-  ])
+  }, [noLiquidity, otherTypedValue, currencies, dependentField, independentAmount, currencyA, chainId, currencyB, pair])
   const parsedAmounts: { [field in Field]: CurrencyAmount | undefined } = {
     [Field.CURRENCY_A]: independentField === Field.CURRENCY_A ? independentAmount : dependentAmount,
     [Field.CURRENCY_B]: independentField === Field.CURRENCY_A ? dependentAmount : independentAmount
