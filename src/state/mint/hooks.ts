@@ -90,12 +90,12 @@ export function useDerivedMintInfo(
       // we wrap the currencies just to get the price in terms of the other token
       const wrappedIndependentAmount = wrappedCurrencyAmount(independentAmount, chainId)
       const [tokenA, tokenB] = [wrappedCurrency(currencyA, chainId), wrappedCurrency(currencyB, chainId)]
-      if (tokenA && tokenB && wrappedIndependentAmount && pairWithDummy) {
+      if (tokenA && tokenB && wrappedIndependentAmount && pair) {
         const dependentCurrency = dependentField === Field.CURRENCY_B ? currencyB : currencyA
         const dependentTokenAmount =
           dependentField === Field.CURRENCY_B
-            ? pairWithDummy.priceOf(tokenA).quote(wrappedIndependentAmount)
-            : pairWithDummy.priceOf(tokenB).quote(wrappedIndependentAmount)
+            ? pair.priceOf(tokenA).quote(wrappedIndependentAmount)
+            : pair.priceOf(tokenB).quote(wrappedIndependentAmount)
         return dependentCurrency === ETHER ? CurrencyAmount.ether(dependentTokenAmount.raw) : dependentTokenAmount
       }
       return undefined
@@ -111,7 +111,7 @@ export function useDerivedMintInfo(
     currencyA,
     chainId,
     currencyB,
-    pairWithDummy
+    pair
   ])
   const parsedAmounts: { [field in Field]: CurrencyAmount | undefined } = {
     [Field.CURRENCY_A]: independentField === Field.CURRENCY_A ? independentAmount : dependentAmount,
@@ -141,7 +141,7 @@ export function useDerivedMintInfo(
       JSBI.add(currencyAAmount.raw, pairWithDummy.reserve0.raw),
       JSBI.add(currencyBAmount.raw, pairWithDummy.reserve1.raw)
     )
-  }, [pairWithDummy, parsedAmounts, price])
+  }, [pairWithDummy, parsedAmounts])
 
   const priceImpact = useMemo(() => {
     if (!price || !newPrice) return undefined
