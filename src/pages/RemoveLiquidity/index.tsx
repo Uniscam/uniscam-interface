@@ -423,9 +423,9 @@ export default function RemoveLiquidity({
     )
   }
 
-  const pendingText = `Removing ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${
-    format(currencyA)
-  } and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${format(currencyB)}`
+  const pendingText = `Removing ${parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)} ${format(
+    currencyA
+  )} and ${parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)} ${format(currencyB)}`
 
   const liquidityPercentChangeCallback = useCallback(
     (value: number) => {
@@ -579,8 +579,14 @@ export default function RemoveLiquidity({
                         ) : oneCurrencyIsWETH ? (
                           <StyledInternalLink
                             to={`/remove/${
-                              currencyA && currencyEquals(currencyA, WETH[chainId]) ? ETHER.toDisplayableSymbol(chainId!) : currencyIdA
-                            }/${currencyB && currencyEquals(currencyB, WETH[chainId]) ? ETHER.toDisplayableSymbol(chainId!) : currencyIdB}`}
+                              currencyA && currencyEquals(currencyA, WETH[chainId])
+                                ? ETHER.toDisplayableSymbol(chainId!)
+                                : currencyIdA
+                            }/${
+                              currencyB && currencyEquals(currencyB, WETH[chainId])
+                                ? ETHER.toDisplayableSymbol(chainId!)
+                                : currencyIdB
+                            }`}
                           >
                             Receive {ETHER.toDisplayableSymbol(chainId!)}
                           </StyledInternalLink>

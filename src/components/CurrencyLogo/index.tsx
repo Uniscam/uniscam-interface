@@ -50,9 +50,15 @@ export default function CurrencyLogo({
     return []
   }, [currency, uriLocations])
 
-  const { chainId } = useActiveWeb3React();
+  const { chainId } = useActiveWeb3React()
   if (currency === ETHER) {
-    return <StyledEthereumLogo src={chainId === 56 || chainId === 97 ? BinanceLogo : EthereumLogo} size={size} style={style} />
+    return (
+      <StyledEthereumLogo
+        src={chainId === 56 || chainId === 97 ? BinanceLogo : EthereumLogo}
+        size={size}
+        style={style}
+      />
+    )
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
