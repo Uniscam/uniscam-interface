@@ -188,7 +188,6 @@ CurrencySearchProps) {
               otherCurrency={otherSelectedCurrency}
               selectedCurrency={selectedCurrency}
               fixedListRef={fixedList}
-              chainId={chainId}
             />
           )}
         </AutoSizer>

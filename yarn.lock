@@ -2018,10 +2018,10 @@
     "@babel/runtime" "^7.7.2"
     core-js "^3.4.1"
 
-"@lychees/uniscam-sdk@3.0.27":
-  version "3.0.27"
-  resolved "https://registry.yarnpkg.com/@lychees/uniscam-sdk/-/uniscam-sdk-3.0.27.tgz#3c6d97a761cd9d29422f417b0c93c8f128cccd51"
-  integrity sha512-H/CswJ8xv2ViCm9HIrMUqV7iTkpxSsRzN+wKH7ES3ra8xuzM4hXKKCwEXUB3KtVxvKjD12iKgmqp0gObr4E50w==
+"@lychees/uniscam-sdk@3.0.25":
+  version "3.0.25"
+  resolved "https://registry.yarnpkg.com/@lychees/uniscam-sdk/-/uniscam-sdk-3.0.25.tgz#275bbd0c6d9b1229da73135c00eab2cfcbdf7410"
+  integrity sha512-43MKtoEDE0LpYCXcVk/ImCIKSApKjfoFGRBWMXAi/hrgUC3SHI8lJW7lM1ZU6Nkn0u9IE+tXpOoJ2bzGLaaU/Q==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"

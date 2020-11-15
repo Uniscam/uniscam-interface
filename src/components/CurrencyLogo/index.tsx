@@ -1,9 +1,8 @@
-import { BINANCE_COIN, Currency, ETHER, Token } from '@lychees/uniscam-sdk'
+import { Currency, Token } from '@lychees/uniscam-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
-import EthereumLogo from '../../assets/images/ethereum-logo.png'
-import BinanceLogo from '../../assets/images/bnb.svg'
+import EthereumLogo from '../../assets/images/bnb.svg'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
@@ -49,11 +48,8 @@ export default function CurrencyLogo({
     return []
   }, [currency, uriLocations])
 
-  if (currency === ETHER) {
+  if (currency?.isMainCurrency()) {
     return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
-  }
-  if (currency === BINANCE_COIN) {
-    return <StyledEthereumLogo src={BinanceLogo} size={size} style={style} />
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
