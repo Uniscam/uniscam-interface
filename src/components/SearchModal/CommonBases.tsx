@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from 'rebass'
-import { BINANCE_COIN, ChainId, Currency, currencyEquals, ETHER, Token } from '@lychees/uniscam-sdk'
+import { ChainId, Currency, currencyEquals, ETHER, Token } from '@lychees/uniscam-sdk'
 import styled from 'styled-components'
 
 import { SUGGESTED_BASES } from '../../constants'
@@ -34,8 +34,6 @@ export default function CommonBases({
   selectedCurrency?: Currency | null
   onSelect: (currency: Currency) => void
 }) {
-  const mainCurrency = chainId === 56 || chainId === 97 ? BINANCE_COIN : ETHER
-
   return (
     <AutoColumn gap="md">
       <AutoRow>
@@ -47,15 +45,15 @@ export default function CommonBases({
       <AutoRow gap="4px">
         <BaseWrapper
           onClick={() => {
-            if (!selectedCurrency || !currencyEquals(selectedCurrency, mainCurrency)) {
-              onSelect(mainCurrency)
+            if (!selectedCurrency || !currencyEquals(selectedCurrency, ETHER)) {
+              onSelect(ETHER)
             }
           }}
-          disable={selectedCurrency?.isMainCurrency()}
+          disable={selectedCurrency === ETHER}
         >
-          <CurrencyLogo currency={mainCurrency} style={{ marginRight: 8 }} />
+          <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
           <Text fontWeight={500} fontSize={16}>
-            {mainCurrency.symbol}
+            BNB
           </Text>
         </BaseWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {

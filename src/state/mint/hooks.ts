@@ -1,4 +1,14 @@
-import { Currency, CurrencyAmount, Fraction, JSBI, Pair, Percent, Price, TokenAmount } from '@lychees/uniscam-sdk'
+import {
+  Currency,
+  CurrencyAmount,
+  ETHER,
+  Fraction,
+  JSBI,
+  Pair,
+  Percent,
+  Price,
+  TokenAmount
+} from '@lychees/uniscam-sdk'
 import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { PairState, usePair } from '../../data/Reserves'
@@ -84,11 +94,9 @@ export function useDerivedMintInfo(
         const dependentCurrency = dependentField === Field.CURRENCY_B ? currencyB : currencyA
         const dependentTokenAmount =
           dependentField === Field.CURRENCY_B
-            ? pairWithDummy.priceOf(tokenA).quote(wrappedIndependentAmount)
-            : pairWithDummy.priceOf(tokenB).quote(wrappedIndependentAmount)
-        return dependentCurrency?.isMainCurrency()
-          ? CurrencyAmount.main(pairWithDummy.chainId, dependentTokenAmount.raw)
-          : dependentTokenAmount
+            ? pair.priceOf(tokenA).quote(wrappedIndependentAmount)
+            : pair.priceOf(tokenB).quote(wrappedIndependentAmount)
+        return dependentCurrency === ETHER ? CurrencyAmount.ether(dependentTokenAmount.raw) : dependentTokenAmount
       }
       return undefined
     } else {
@@ -133,7 +141,7 @@ export function useDerivedMintInfo(
       JSBI.add(currencyAAmount.raw, pairWithDummy.reserve0.raw),
       JSBI.add(currencyBAmount.raw, pairWithDummy.reserve1.raw)
     )
-  }, [pairWithDummy, parsedAmounts])
+  }, [pairWithDummy, parsedAmounts, price])
 
   const priceImpact = useMemo(() => {
     if (!price || !newPrice) return undefined

@@ -1,4 +1,4 @@
-import { Currency, currencyEquals, WETH } from '@lychees/uniscam-sdk'
+import { Currency, currencyEquals, ETHER, WETH } from '@lychees/uniscam-sdk'
 import { useMemo } from 'react'
 import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
@@ -36,7 +36,7 @@ export default function useWrapCallback(
 
     const sufficientBalance = inputAmount && balance && !balance.lessThan(inputAmount)
 
-    if (inputCurrency?.isMainCurrency() && currencyEquals(WETH[chainId], outputCurrency)) {
+    if (inputCurrency === ETHER && currencyEquals(WETH[chainId], outputCurrency)) {
       return {
         wrapType: WrapType.WRAP,
         execute:
@@ -52,7 +52,7 @@ export default function useWrapCallback(
             : undefined,
         inputError: sufficientBalance ? undefined : 'Insufficient BNB balance'
       }
-    } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency?.isMainCurrency()) {
+    } else if (currencyEquals(WETH[chainId], inputCurrency) && outputCurrency === ETHER) {
       return {
         wrapType: WrapType.UNWRAP,
         execute:

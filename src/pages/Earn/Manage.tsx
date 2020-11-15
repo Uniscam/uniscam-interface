@@ -3,7 +3,7 @@ import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { JSBI, TokenAmount } from '@lychees/uniscam-sdk'
+import { JSBI, TokenAmount, ETHER } from '@lychees/uniscam-sdk'
 import { RouteComponentProps } from 'react-router-dom'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { useCurrency } from '../../hooks/Tokens'
@@ -114,8 +114,8 @@ export default function Manage({
   // fade cards if nothing staked or nothing earned yet
   const disableTop = !stakingInfo?.stakedAmount || stakingInfo.stakedAmount.equalTo(JSBI.BigInt(0))
 
-  const token = currencyA?.isMainCurrency() ? tokenB : tokenA
-  const WETH = currencyA?.isMainCurrency() ? tokenA : tokenB
+  const token = currencyA === ETHER ? tokenB : tokenA
+  const WETH = currencyA === ETHER ? tokenA : tokenB
   const backgroundColor = useColor(token)
 
   // get WETH value of staked LP tokens
