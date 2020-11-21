@@ -56,6 +56,8 @@ export interface Grids {
 
 declare module 'styled-components' {
   export interface DefaultTheme extends Colors {
+    isDarkMode: boolean
+
     grids: Grids
 
     // shadows
