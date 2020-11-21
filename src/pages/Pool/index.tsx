@@ -60,13 +60,6 @@ const ResponsiveButtonSecondary = styled(ButtonSecondary)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 48%;
   `};
-  border: 1px solid rgba(55, 107, 173, 0.44);
-  color: rgb(33, 114, 229);
-  background-color: transparent;
-  &:focus {
-    box-shadow: rgba(55, 107, 173, 0.44) 0px 0px 0px 1pt;
-    border: 1px solid rgb(77, 143, 234);
-  }
 `
 
 const EmptyProposals = styled.div`
@@ -165,7 +158,6 @@ export default function Pool() {
                   as={Link}
                   padding="6px 8px"
                   to="/add/CURRENCY"
-                  style={{ backgroundColor: 'rgb(33, 114, 229)' }}
                 >
                   <Text fontWeight={500} fontSize={16}>
                     Add Liquidity

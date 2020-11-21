@@ -36,7 +36,7 @@ export const HoverCard = styled(Card)`
 `
 const StyledPositionCard = styled(LightCard)<{ bgColor: any }>`
   border: none;
-  background-color: #212429;
+  background: ${({ theme }) => theme.bg3};
   position: relative;
   overflow: hidden;
 `
