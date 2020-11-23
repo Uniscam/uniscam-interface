@@ -136,7 +136,10 @@ const UNIAmount = styled(AccountElement)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: ${({ theme }) => `radial-gradient(174.47% 188.91% at 1.84% -2%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 0%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 255%) 80%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 100%` };
+  background: ${({ theme }) =>
+    `radial-gradient(174.47% 188.91% at 1.84% -2%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 0%, ${
+      theme.isDarkMode ? theme.primary1 : theme.bg3
+    } 255%) 80%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 100%`};
 `
 
 const UNIWrapper = styled.span`
