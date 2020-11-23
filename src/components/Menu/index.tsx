@@ -11,8 +11,7 @@ import { ExternalLink } from '../../theme'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
-    /* stroke: ${({ theme }) => theme.text1}; */
-    stroke: #fff;
+    stroke: ${({ theme }) => theme.text1};
   }
 `
 
@@ -23,7 +22,7 @@ const StyledMenuButton = styled.button`
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: #1a3cb0;
+  background-color: ${({ theme }) => (theme.isDarkMode ? theme.primary1 : theme.bg3)};
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;

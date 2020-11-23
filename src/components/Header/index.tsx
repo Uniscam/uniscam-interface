@@ -30,6 +30,7 @@ import { Dots } from '../swap/styleds'
 import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
+import { darken } from 'polished'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -115,8 +116,7 @@ const AccountElement = styled.div<{ active: boolean }>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #1a3cb0;
-  color: #fff;
+  background-color: ${({ theme }) => (theme.isDarkMode ? theme.primary1 : theme.bg3)};
   border-radius: 12px;
   white-space: nowrap;
   width: 100%;
@@ -131,13 +131,12 @@ const AccountElement = styled.div<{ active: boolean }>`
 `
 
 const UNIAmount = styled(AccountElement)`
-  color: #fff;
+  color: ${({ theme }) => theme.text2};
   padding: 4px 8px;
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% -2%, rgb(27 60 175) 0%, rgb(27 60 175) 255%) 80%,
-    rgb(27 60 175) 100%;
+  background: ${({ theme }) => `radial-gradient(174.47% 188.91% at 1.84% -2%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 0%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 255%) 80%, ${theme.isDarkMode ? theme.primary1 : theme.bg3} 100%` };
 `
 
 const UNIWrapper = styled.span`
@@ -214,7 +213,7 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: #b2b2b2;
+  color: ${({ theme }) => theme.text2};
   font-size: 1rem;
   width: fit-content;
   margin: 0 12px;
@@ -223,12 +222,12 @@ const StyledNavLink = styled(NavLink).attrs({
   &.${activeClassName} {
     border-radius: 12px;
     font-weight: bold;
-    color: #fff;
+    color: ${({ theme }) => theme.text1};
   }
 
   :hover,
   :focus {
-    color: #fff;
+    color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -245,7 +244,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: #b2b2b2;
+  color: ${({ theme }) => theme.text2};
   font-size: 1rem;
   width: fit-content;
   margin: 0 12px;
@@ -254,12 +253,12 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   &.${activeClassName} {
     border-radius: 12px;
     font-weight: bold;
-    color: #fff;
+    color: ${({ theme }) => theme.text1};
   }
 
   :hover,
   :focus {
-    color: #fff;
+    color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
@@ -365,7 +364,7 @@ export default function Header() {
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 {account && (
                   <HideSmall>
-                    <TYPE.white
+                    <TYPE.main
                       style={{
                         paddingRight: '.4rem'
                       }}
@@ -378,7 +377,7 @@ export default function Header() {
                         thousandsSeparator={','}
                         duration={1}
                       />
-                    </TYPE.white>
+                    </TYPE.main>
                   </HideSmall>
                 )}
                 SCAM

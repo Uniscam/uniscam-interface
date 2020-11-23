@@ -59,43 +59,43 @@ const Web3StatusError = styled(Web3StatusGeneric)`
 `
 
 const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
-  background-color: #1a3cb0;
+  background-color: ${({ theme }) => theme.primary4};
   border: none;
-  color: #fff;
+  color: ${({ theme }) => theme.primaryText1};
   font-weight: 500;
 
   :hover,
   :focus {
     border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
-    color: #fff;
+    color: ${({ theme }) => theme.primaryText1};
   }
 
   ${({ faded }) =>
     faded &&
     css`
-      background-color: #1a3cb0;
-      border: 1px solid #1a3cb0;
-      color: #fff;
+    background-color: ${({ theme }) => theme.primary5};
+    border: 1px solid ${({ theme }) => theme.primary5};
+      color: ${({ theme }) => theme.primaryText1};
 
       :hover,
       :focus {
-        border: 1px solid ${darken(0.05, '#1a3cb0')};
-        color: ${darken(0.05, '#fff')};
+        border: 1px solid ${({ theme }) => darken(0.05, theme.primary4)};
+        color: ${({ theme }) => darken(0.05, theme.primaryText1)};
       }
     `}
 `
 
 const Web3StatusConnected = styled(Web3StatusGeneric)<{ pending?: boolean }>`
-  background-color: #1a3cb0;
-  border: 1px solid #587dfd;
-  color: #fff;
+  background-color: ${({ pending, theme }) => (pending ? theme.primary1 : theme.primary6)};
+  border: 1px solid ${({ pending, theme }) => (pending ? theme.primary1 : theme.primary3)};
+  color: ${({ theme }) => theme.text2};
   font-weight: 500;
   :hover,
   :focus {
-    background-color: ${({ pending }) => (pending ? darken(0.05, '#1a3cb0') : lighten(0.05, '#1a3cb0'))};
+    background-color: ${({ pending, theme }) => (pending ? darken(0.05, theme.primary1) : lighten(0.05, theme.primary6))};
 
     :focus {
-      border: 1px solid ${({ pending }) => (pending ? darken(0.1, '#1a3cb0') : darken(0.1, '#1a3cb0'))};
+      border: 1px solid ${({ pending, theme }) => (pending ? darken(0.1, theme.primary1) : darken(0.1, theme.bg3))};
     }
   }
 `
