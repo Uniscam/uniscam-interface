@@ -14,7 +14,8 @@ import TransactionConfirmationModal, { ConfirmationModalContent } from '../../co
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { AddRemoveTabs } from '../../components/NavigationTabs'
-import { FixedHeightRow, MinimalPositionCard } from '../../components/PositionCard'
+// import { FixedHeightRow, MinimalPositionCard } from '../../components/PositionCard'
+import { MinimalPositionCard } from '../../components/PositionCard'
 import Row, { RowBetween, RowFlat } from '../../components/Row'
 
 import { ROUTER_ADDRESS } from '../../constants'
@@ -71,8 +72,8 @@ export default function AddLiquidity({
     currencyBalances,
     parsedAmounts,
     price,
-    newPrice,
-    priceImpact,
+    // newPrice,
+    // priceImpact,
     noLiquidity,
     liquidityMinted,
     poolTokenPercentage,
