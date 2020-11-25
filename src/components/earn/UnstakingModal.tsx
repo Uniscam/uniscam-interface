@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from '../Modal'
 import { AutoColumn } from '../Column'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { RowBetween } from '../Row'
 import { TYPE, CloseIcon } from '../../theme'
 import { ButtonError } from '../Button'
@@ -26,6 +27,7 @@ interface StakingModalProps {
 
 export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: StakingModalProps) {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   // monitor call to help UI loading state
   const addTransaction = useTransactionAdder()
@@ -60,10 +62,10 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
 
   let error: string | undefined
   if (!account) {
-    error = 'Connect Wallet'
+    error = t('connectWallet')
   }
   if (!stakingInfo?.stakedAmount) {
-    error = error ?? 'Enter an amount'
+    error = error ?? t('enterAnAmount')
   }
 
   return (
@@ -71,7 +73,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
       {!attempting && !hash && (
         <ContentWrapper gap="lg">
           <RowBetween>
-            <TYPE.mediumHeader>Withdraw</TYPE.mediumHeader>
+            <TYPE.mediumHeader>{t('withdraw')}</TYPE.mediumHeader>
             <CloseIcon onClick={wrappedOndismiss} />
           </RowBetween>
           {stakingInfo?.stakedAmount && (
@@ -79,7 +81,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo.stakedAmount} />}
               </TYPE.body>
-              <TYPE.body>Deposited liquidity:</TYPE.body>
+              <TYPE.body>{t('depositedLiquidity')}:</TYPE.body>
             </AutoColumn>
           )}
           {stakingInfo?.earnedAmount && (
@@ -87,11 +89,11 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
               </TYPE.body>
-              <TYPE.body>Unclaimed SCAM</TYPE.body>
+              <TYPE.body>{t('unclaimed')} SCAM</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
-            When you withdraw, your SCAM is claimed and your liquidity is removed from the mining pool.
+            {t('when-you-withdraw-your-scam-is-claimed-and-your-liquidity-is-removed-from-the-mining-pool')}
           </TYPE.subHeader>
           <ButtonError disabled={!!error} error={!!error && !!stakingInfo?.stakedAmount} onClick={onWithdraw}>
             {error ?? 'Withdraw & Claim'}
@@ -101,17 +103,21 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.body fontSize={20}>Withdrawing {stakingInfo?.stakedAmount?.toSignificant(4)} SCAM-V2</TYPE.body>
-            <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} SCAM</TYPE.body>
+            <TYPE.body fontSize={20}>
+              {t('withdrawing')} {stakingInfo?.stakedAmount?.toSignificant(4)} SCAM-V2
+            </TYPE.body>
+            <TYPE.body fontSize={20}>
+              {t('claiming')} {stakingInfo?.earnedAmount?.toSignificant(4)} SCAM
+            </TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
       {hash && (
         <SubmittedView onDismiss={wrappedOndismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Withdrew SCAM-V2!</TYPE.body>
-            <TYPE.body fontSize={20}>Claimed SCAM!</TYPE.body>
+            <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
+            <TYPE.body fontSize={20}>{t('withdrew')} SCAM-V2!</TYPE.body>
+            <TYPE.body fontSize={20}>{t('claimed')} SCAM!</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

@@ -1,6 +1,7 @@
 import { Currency, CurrencyAmount, Fraction, Percent } from '@lychees/uniscam-sdk'
 import React from 'react'
 import { Text } from 'rebass'
+import { useTranslation } from 'react-i18next'
 import { ButtonPrimary } from '../../components/Button'
 import { RowBetween, RowFixed } from '../../components/Row'
 import CurrencyLogo from '../../components/CurrencyLogo'
@@ -22,24 +23,30 @@ export function ConfirmAddModalBottom({
   poolTokenPercentage?: Percent
   onAdd: () => void
 }) {
+  const { t } = useTranslation()
+
   return (
     <>
       <RowBetween>
-        <TYPE.body style={{ color: '#fff' }}>{currencies[Field.CURRENCY_A]?.symbol} Deposited</TYPE.body>
+        <TYPE.body style={{ color: '#fff' }}>
+          {currencies[Field.CURRENCY_A]?.symbol} {t('deposited')}
+        </TYPE.body>
         <RowFixed>
           <CurrencyLogo currency={currencies[Field.CURRENCY_A]} style={{ marginRight: '8px' }} />
           <TYPE.body style={{ color: '#fff' }}>{parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)}</TYPE.body>
         </RowFixed>
       </RowBetween>
       <RowBetween>
-        <TYPE.body style={{ color: '#fff' }}>{currencies[Field.CURRENCY_B]?.symbol} Deposited</TYPE.body>
+        <TYPE.body style={{ color: '#fff' }}>
+          {currencies[Field.CURRENCY_B]?.symbol} {t('deposited')}
+        </TYPE.body>
         <RowFixed>
           <CurrencyLogo currency={currencies[Field.CURRENCY_B]} style={{ marginRight: '8px' }} />
           <TYPE.body style={{ color: '#fff' }}>{parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)}</TYPE.body>
         </RowFixed>
       </RowBetween>
       <RowBetween>
-        <TYPE.body style={{ color: '#fff' }}>Rates</TYPE.body>
+        <TYPE.body style={{ color: '#fff' }}>{t('rates')}</TYPE.body>
         <TYPE.body style={{ color: '#fff' }}>
           {`1 ${currencies[Field.CURRENCY_A]?.symbol} = ${price?.toSignificant(4)} ${
             currencies[Field.CURRENCY_B]?.symbol
@@ -54,12 +61,12 @@ export function ConfirmAddModalBottom({
         </TYPE.body>
       </RowBetween>
       <RowBetween>
-        <TYPE.body style={{ color: '#fff' }}>Share of Pool:</TYPE.body>
+        <TYPE.body style={{ color: '#fff' }}>{t('shareOfPool')}:</TYPE.body>
         <TYPE.body style={{ color: '#fff' }}>{noLiquidity ? '100' : poolTokenPercentage?.toSignificant(4)}%</TYPE.body>
       </RowBetween>
       <ButtonPrimary style={{ margin: '20px 0 0 0' }} onClick={onAdd}>
         <Text fontWeight={500} fontSize={20}>
-          {noLiquidity ? 'Create Pool & Supply' : 'Confirm Supply'}
+          {noLiquidity ? t('createPoolAndSupply') : t('confirmSupply')}
         </Text>
       </ButtonPrimary>
     </>

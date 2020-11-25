@@ -5,6 +5,7 @@ import { ChevronDown, ChevronUp } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { Text } from 'rebass'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { useTotalSupply } from '../../data/TotalSupply'
 
 import { useActiveWeb3React } from '../../hooks'
@@ -49,6 +50,7 @@ interface PositionCardProps {
 
 export function MinimalPositionCard({ pair, showUnwrapped = false, border }: PositionCardProps) {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   const currency0 = showUnwrapped ? pair.token0 : unwrappedToken(pair.token0)
   const currency1 = showUnwrapped ? pair.token1 : unwrappedToken(pair.token1)
@@ -83,7 +85,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
             <FixedHeightRow>
               <RowFixed>
                 <Text fontWeight={500} fontSize={16}>
-                  Your position
+                  {t('yourPosition')}
                 </Text>
               </RowFixed>
             </FixedHeightRow>
@@ -103,7 +105,7 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
             <AutoColumn gap="4px">
               <FixedHeightRow>
                 <Text fontSize={16} fontWeight={500}>
-                  Your pool share:
+                  {t('yourPoolShare')}:
                 </Text>
                 <Text fontSize={16} fontWeight={500}>
                   {poolTokenPercentage ? poolTokenPercentage.toFixed(6) + '%' : '-'}
@@ -146,8 +148,9 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
             <span role="img" aria-label="wizard-icon">
               ⭐️
             </span>{' '}
-            By adding liquidity you&apos;ll earn 0.3% of all trades on this pair proportional to your share of the pool.
-            Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.
+            {t(
+              'by-adding-liquidity-youll-earn-0-3-of-all-trades-on-this-pair-proportional-to-your-share-of-the-pool-fees-are-added-to-the-pool-accrue-in-real-time-and-can-be-claimed-by-withdrawing-your-liquidity'
+            )}
           </TYPE.subHeader>
         </LightCard>
       )}
@@ -157,6 +160,8 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
 
 export default function FullPositionCard({ pair, border }: PositionCardProps) {
   const { account } = useActiveWeb3React()
+
+  const { t } = useTranslation()
 
   const currency0 = unwrappedToken(pair.token0)
   const currency1 = unwrappedToken(pair.token1)
@@ -193,7 +198,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
           <RowFixed>
             <DoubleCurrencyLogo currency0={currency0} currency1={currency1} margin={true} size={20} />
             <Text fontWeight={500} fontSize={20}>
-              {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
+              {!currency0 || !currency1 ? <Dots>{t('loading')}</Dots> : `${currency0.symbol}/${currency1.symbol}`}
             </Text>
           </RowFixed>
 
@@ -207,12 +212,12 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
               {showMore ? (
                 <>
                   {' '}
-                  Manage
+                  {t('manage')}
                   <ChevronUp size="20" style={{ marginLeft: '10px' }} />
                 </>
               ) : (
                 <>
-                  Manage
+                  {t('manage')}
                   <ChevronDown size="20" style={{ marginLeft: '10px' }} />
                 </>
               )}
@@ -224,7 +229,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
           <AutoColumn gap="8px">
             <FixedHeightRow>
               <Text fontSize={16} fontWeight={500}>
-                Your pool tokens:
+                {t('yourPoolTokens')}:
               </Text>
               <Text fontSize={16} fontWeight={500}>
                 {userPoolBalance ? userPoolBalance.toSignificant(4) : '-'}
@@ -233,7 +238,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
             <FixedHeightRow>
               <RowFixed>
                 <Text fontSize={16} fontWeight={500}>
-                  Pooled {currency0.symbol}:
+                  {t('pooled')} {currency0.symbol}:
                 </Text>
               </RowFixed>
               {token0Deposited ? (
@@ -251,7 +256,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
             <FixedHeightRow>
               <RowFixed>
                 <Text fontSize={16} fontWeight={500}>
-                  Pooled {currency1.symbol}:
+                  {t('pooled')} {currency1.symbol}:
                 </Text>
               </RowFixed>
               {token1Deposited ? (
@@ -268,7 +273,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
 
             <FixedHeightRow>
               <Text fontSize={16} fontWeight={500}>
-                Your pool share:
+                {t('yourPoolShare')}:
               </Text>
               <Text fontSize={16} fontWeight={500}>
                 {poolTokenPercentage ? poolTokenPercentage.toFixed(2) + '%' : '-'}
@@ -280,7 +285,8 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
                 style={{ width: '100%', textAlign: 'center' }}
                 href={`https://info.y3d.finance/account/${account}`}
               >
-                View accrued fees and analytics<span style={{ fontSize: '11px' }}>↗</span>
+                {t('viewAccruedFeesAndAnalytics')}
+                <span style={{ fontSize: '11px' }}>↗</span>
               </ExternalLink>
             </ButtonSecondary>
             <RowBetween marginTop="10px">
@@ -291,7 +297,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
                 to={`/add/${currencyId(currency0)}/${currencyId(currency1)}`}
                 width="48%"
               >
-                Add
+                {t('add')}
               </ButtonPrimary>
               <ButtonPrimary
                 padding="8px"
@@ -300,7 +306,7 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
                 width="48%"
                 to={`/remove/${currencyId(currency0)}/${currencyId(currency1)}`}
               >
-                Remove
+                {t('remove')}
               </ButtonPrimary>
             </RowBetween>
           </AutoColumn>

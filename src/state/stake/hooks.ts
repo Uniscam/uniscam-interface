@@ -1,5 +1,6 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, WETH, Pair } from '@lychees/uniscam-sdk'
 import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { DAI, UNI, USDC, USDT, WBTC } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -215,6 +216,7 @@ export function useDerivedStakeInfo(
   error?: string
 } {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingToken)
 
@@ -225,10 +227,10 @@ export function useDerivedStakeInfo(
 
   let error: string | undefined
   if (!account) {
-    error = 'Connect Wallet'
+    error = t('connectWallet')
   }
   if (!parsedAmount) {
-    error = error ?? 'Enter an amount'
+    error = error ?? t('enterAnAmount')
   }
 
   return {
@@ -246,6 +248,7 @@ export function useDerivedUnstakeInfo(
   error?: string
 } {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingAmount.token)
 
@@ -253,10 +256,10 @@ export function useDerivedUnstakeInfo(
 
   let error: string | undefined
   if (!account) {
-    error = 'Connect Wallet'
+    error = t('connectWallet')
   }
   if (!parsedAmount) {
-    error = error ?? 'Enter an amount'
+    error = error ?? t('enterAnAmount')
   }
 
   return {

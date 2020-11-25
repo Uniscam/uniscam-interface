@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { useActiveWeb3React } from '../../hooks'
+import { useTranslation } from 'react-i18next'
 
 import { AutoColumn, ColumnCenter } from '../Column'
 import styled, { ThemeContext } from 'styled-components'
@@ -21,6 +22,8 @@ const ConfirmedIcon = styled(ColumnCenter)`
 `
 
 export function LoadingView({ children, onDismiss }: { children: any; onDismiss: () => void }) {
+  const { t } = useTranslation()
+
   return (
     <ConfirmOrLoadingWrapper>
       <RowBetween>
@@ -32,7 +35,7 @@ export function LoadingView({ children, onDismiss }: { children: any; onDismiss:
       </ConfirmedIcon>
       <AutoColumn gap="100px" justify={'center'}>
         {children}
-        <TYPE.subHeader>Confirm this transaction in your wallet</TYPE.subHeader>
+        <TYPE.subHeader>{t('confirm-this-transaction-in-your-wallet')}</TYPE.subHeader>
       </AutoColumn>
     </ConfirmOrLoadingWrapper>
   )
@@ -49,6 +52,7 @@ export function SubmittedView({
 }) {
   const theme = useContext(ThemeContext)
   const { chainId } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   return (
     <ConfirmOrLoadingWrapper>
@@ -63,7 +67,7 @@ export function SubmittedView({
         {children}
         {chainId && hash && (
           <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')} style={{ marginLeft: '4px' }}>
-            <TYPE.subHeader>View transaction on Etherscan</TYPE.subHeader>
+            <TYPE.subHeader>{t('viewTransactionOnEtherscan')}</TYPE.subHeader>
           </ExternalLink>
         )}
       </AutoColumn>

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import ReactGA from 'react-ga'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import MetamaskIcon from '../../assets/images/metamask.png'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
 import { fortmatic, injected, portis } from '../../connectors'
@@ -127,6 +128,7 @@ export default function WalletModal({
 }) {
   // important that these are destructed from the account-specific web3-react context
   const { active, account, connector, activate, error } = useWeb3React()
+  const { t } = useTranslation()
 
   const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT)
 
@@ -295,12 +297,12 @@ export default function WalletModal({
           <CloseIcon onClick={toggleWalletModal}>
             <CloseColor />
           </CloseIcon>
-          <HeaderRow>{error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error connecting'}</HeaderRow>
+          <HeaderRow>{error instanceof UnsupportedChainIdError ? t('wrongNetwork') : t('errorConnecting')}</HeaderRow>
           <ContentWrapper>
             {error instanceof UnsupportedChainIdError ? (
-              <h5>Please connect to the appropriate Ethereum network.</h5>
+              <h5>{t('please-connect-to-the-appropriate-ethereum-network')}</h5>
             ) : (
-              'Error connecting. Try refreshing the page.'
+              t('error-connecting-try-refreshing-the-page')
             )}
           </ContentWrapper>
         </UpperSection>
@@ -330,12 +332,12 @@ export default function WalletModal({
                 setWalletView(WALLET_VIEWS.ACCOUNT)
               }}
             >
-              Back
+              {t('back')}
             </HoverText>
           </HeaderRow>
         ) : (
           <HeaderRow>
-            <HoverText>Connect to a wallet</HoverText>
+            <HoverText>{t('connectToAWallet')}</HoverText>
           </HeaderRow>
         )}
         <ContentWrapper>
@@ -351,9 +353,9 @@ export default function WalletModal({
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
-              <span>New to Binance Smart Chain? &nbsp;</span>{' '}
+              <span>{t('new-to-binance-smart-chain')} &nbsp;</span>{' '}
               <ExternalLink href="https://docs.binance.org/smart-chain/wallet/metamask.html">
-                Learn more about wallets
+                {t('learnMoreAboutWallets')}
               </ExternalLink>
             </Blurb>
           )}

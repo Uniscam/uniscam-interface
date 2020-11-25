@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Modal from '../Modal'
 import { AutoColumn } from '../Column'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { RowBetween } from '../Row'
 import { TYPE, CloseIcon } from '../../theme'
 import { ButtonError } from '../Button'
@@ -25,6 +26,7 @@ interface StakingModalProps {
 
 export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: StakingModalProps) {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   // monitor call to help UI loading state
   const addTransaction = useTransactionAdder()
@@ -59,10 +61,10 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
 
   let error: string | undefined
   if (!account) {
-    error = 'Connect Wallet'
+    error = t('connectWallet')
   }
   if (!stakingInfo?.stakedAmount) {
-    error = error ?? 'Enter an amount'
+    error = error ?? t('enterAnAmount')
   }
 
   return (
@@ -78,11 +80,11 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
               <TYPE.body fontWeight={600} fontSize={36}>
                 {stakingInfo?.earnedAmount?.toSignificant(6)}
               </TYPE.body>
-              <TYPE.body>Unclaimed SCAM</TYPE.body>
+              <TYPE.body>{t('unclaimed')} SCAM</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
-            When you claim without withdrawing your liquidity remains in the mining pool.
+            {t('when-you-claim-without-withdrawing-your-liquidity-remains-in-the-mining-pool')}
           </TYPE.subHeader>
           <ButtonError disabled={!!error} error={!!error && !!stakingInfo?.stakedAmount} onClick={onClaimReward}>
             {error ?? 'Claim'}
@@ -92,15 +94,17 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(6)} SCAM</TYPE.body>
+            <TYPE.body fontSize={20}>
+              {t('claiming')} {stakingInfo?.earnedAmount?.toSignificant(6)} SCAM
+            </TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
       {hash && (
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Claimed SCAM!</TYPE.body>
+            <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
+            <TYPE.body fontSize={20}>{t('claimed')} SCAM!</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

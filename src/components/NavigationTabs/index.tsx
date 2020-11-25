@@ -67,32 +67,40 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
 }
 
 export function FindPoolTabs() {
+  const { t } = useTranslation()
+
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>
-        <ActiveText>Import Pool</ActiveText>
-        <QuestionHelper text={"Use this tool to find pairs that don't automatically appear in the interface."} />
+        <ActiveText>{t('importPool')}</ActiveText>
+        <QuestionHelper text={t('use-this-tool-to-find-pairs-that-dont-automatically-appear-in-the-interface')} />
       </RowBetween>
     </Tabs>
   )
 }
 
 export function AddRemoveTabs({ adding, creating }: { adding: boolean; creating: boolean }) {
+  const { t } = useTranslation()
+
   return (
     <Tabs>
       <RowBetween style={{ padding: '1rem' }}>
         <HistoryLink to="/pool">
           <StyledArrowLeft />
         </HistoryLink>
-        <ActiveText>{creating ? 'Create a pair' : adding ? 'Add Liquidity' : 'Remove Liquidity'}</ActiveText>
+        <ActiveText>{creating ? t('createAPair') : adding ? t('addLiquidity') : t('removeLiquidity')}</ActiveText>
         <QuestionHelper
           text={
             adding
-              ? 'When you add liquidity, you are given pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.'
-              : 'Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive.'
+              ? t(
+                  'when-you-add-liquidity-you-are-given-pool-tokens-representing-your-position-these-tokens-automatically-earn-fees-proportional-to-your-share-of-the-pool-and-can-be-redeemed-at-any-time'
+                )
+              : t(
+                  'removing-pool-tokens-converts-your-position-back-into-underlying-tokens-at-the-current-rate-proportional-to-your-share-of-the-pool-accrued-fees-are-included-in-the-amounts-you-receive'
+                )
           }
         />
       </RowBetween>
