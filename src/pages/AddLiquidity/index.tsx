@@ -388,18 +388,6 @@ export default function AddLiquidity({
                       price={price}
                     />
                   </LightCard>
-                  {price && newPrice && (
-                    <AutoColumn gap="4px">
-                      <FixedHeightRow padding="1rem">
-                        <Text fontSize={14} fontWeight={500}>
-                          Price Impact:
-                        </Text>
-                        <Text fontSize={14} fontWeight={500}>
-                          {priceImpact?.toSignificant(3)} %
-                        </Text>
-                      </FixedHeightRow>
-                    </AutoColumn>
-                  )}
                 </LightCard>
               </>
             )}
