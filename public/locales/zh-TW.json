@@ -74,5 +74,22 @@
   "tokenAddress": "代幣地址",
   "label": "代幣符號",
   "decimals": "小數位數",
-  "enterTokenCont": "輸入代幣地址"
+  "enterTokenCont": "輸入代幣地址",
+  "invertedRate": "匯率倒掛",
+  "brokenToken": "所選令牌與Uniswap V1不兼容。\n增加流動性將導致資金鎖定。",
+  "forAtLeast": "至少",
+  "forAtMost": "最多",
+  "highSlippageWarning": "高滑警告",
+  "insufficientLiquidity": "流動資金不足。",
+  "name": "名稱",
+  "noToken": "找不到令牌",
+  "priceChange": "預期價格滑落",
+  "searchOrPasteMobile": "名稱，符號或地址",
+  "sendAnyway": "仍然發送",
+  "slippageWarning": "滑移警告",
+  "swapAnyway": "仍要交換",
+  "symbol": "符號",
+  "tokenSearchPlaceholder": "搜索名稱或粘貼地址",
+  "toleranceExplanation": "降低此限制會降低您搶先的風險。\n但是，這更有可能使您的交易由於正常的價格波動而失敗。",
+  "unknownError": "糟糕！\n出現未知錯誤。\n請刷新頁面，或從其他瀏覽器或設備訪問。"
 }
