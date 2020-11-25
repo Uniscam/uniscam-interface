@@ -23,7 +23,9 @@ const StyledMenuButton = styled.button`
   margin: 0;
   padding: 0;
   height: 35px;
-  background-color: #edeef2;
+  color: ${({ theme }) => (theme.isDarkMode ? theme.text1 : theme.text1)};
+  fill: ${({ theme }) => (theme.isDarkMode ? theme.text1 : theme.text1)};
+  background-color: ${({ theme }) => (theme.isDarkMode ? theme.primary1 : theme.bg3)};
 
   padding: 0.15rem 0.5rem;
   border-radius: 0.5rem;
@@ -32,11 +34,12 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: ${lighten(0.05, '#edeef2')};
+    background-color: ${({ theme }) => (theme.isDarkMode ? lighten(0.05, theme.primary1) : lighten(0.05, theme.bg3))};
   }
 
   svg {
     margin-top: 2px;
+    color: ${({ theme }) => (theme.isDarkMode ? theme.text1 : theme.text1)};
   }
 `
 
