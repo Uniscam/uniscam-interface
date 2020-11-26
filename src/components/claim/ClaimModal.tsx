@@ -3,6 +3,7 @@ import { isAddress } from 'ethers/lib/utils'
 import React, { useEffect, useState } from 'react'
 import { Text } from 'rebass'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import Circle from '../../assets/images/blue-loader.svg'
 import tokenLogo from '../../assets/images/token-logo.png'
 import { useActiveWeb3React } from '../../hooks'
@@ -48,6 +49,7 @@ const USER_AMOUNT = 400
 export default function ClaimModal() {
   const isOpen = useModalOpen(ApplicationModal.SELF_CLAIM)
   const toggleClaimModal = useToggleSelfClaimModal()
+  const { t } = useTranslation()
 
   const { account, chainId } = useActiveWeb3React()
 
@@ -98,7 +100,7 @@ export default function ClaimModal() {
             <CardNoise />
             <CardSection gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={500}>Claim SCAM</TYPE.white>
+                <TYPE.white fontWeight={500}>{t('claim')} SCAM</TYPE.white>
                 <CloseIcon onClick={toggleClaimModal} style={{ zIndex: 99 }} color="white" />
               </RowBetween>
               <TYPE.white fontWeight={700} fontSize={36}>
@@ -109,7 +111,7 @@ export default function ClaimModal() {
             <CardSection gap="sm">
               {userClaimData?.flags?.isSOCKS && (
                 <RowBetween>
-                  <TYPE.subHeader color="white">SOCKS</TYPE.subHeader>
+                  <TYPE.subHeader color="white">{t('socks')}</TYPE.subHeader>
                   <TYPE.subHeader color="white">{SOCKS_AMOUNT} SCAM</TYPE.subHeader>
                 </RowBetween>
               )}
@@ -117,7 +119,7 @@ export default function ClaimModal() {
                 unclaimedAmount &&
                 JSBI.greaterThanOrEqual(unclaimedAmount.raw, nonLPAmount) && (
                   <RowBetween>
-                    <TYPE.subHeader color="white">Liquidity</TYPE.subHeader>
+                    <TYPE.subHeader color="white">{t('liquidity')}</TYPE.subHeader>
                     <TYPE.subHeader color="white">
                       {unclaimedAmount
                         .subtract(new TokenAmount(unclaimedAmount.token, nonLPAmount))
@@ -128,7 +130,7 @@ export default function ClaimModal() {
                 )}
               {userClaimData?.flags?.isUser && (
                 <RowBetween>
-                  <TYPE.subHeader color="white">User</TYPE.subHeader>
+                  <TYPE.subHeader color="white">{t('user')}</TYPE.subHeader>
                   <TYPE.subHeader color="white">{USER_AMOUNT} SCAM</TYPE.subHeader>
                 </RowBetween>
               )}
@@ -136,9 +138,9 @@ export default function ClaimModal() {
           </ModalUpper>
           <AutoColumn gap="md" style={{ padding: '1rem', paddingTop: '0' }} justify="center">
             <TYPE.subHeader fontWeight={500}>
-              As a member of the Uniswap community you may claim SCAM to be used for voting and governance. <br />{' '}
-              <br />
-              <ExternalLink href="https://uniswap.org/blog/uni">Read more about SCAM</ExternalLink>
+              {t('as-a-member-of-the-uniswap-community-you-may-claim-scam-to-be-used-for-voting-and-governance')}
+              <br /> <br />
+              <ExternalLink href="https://uniswap.org/blog/uni">{t('read-more-about-scam')}</ExternalLink>
             </TYPE.subHeader>
             <ButtonPrimary
               disabled={!isAddress(account ?? '')}
@@ -148,7 +150,7 @@ export default function ClaimModal() {
               mt="1rem"
               onClick={onClaim}
             >
-              Claim SCAM
+              {t('claim')} SCAM
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>
@@ -185,7 +187,7 @@ export default function ClaimModal() {
                   <span role="img" aria-label="party-hat">
                     🎉{' '}
                   </span>
-                  Welcome to team Unicorn :){' '}
+                  {t('welcomeToTeamUnicorn')} :){' '}
                   <span role="img" aria-label="party-hat">
                     🎉
                   </span>
@@ -193,11 +195,11 @@ export default function ClaimModal() {
               </>
             )}
             {attempting && !claimSubmitted && (
-              <TYPE.subHeader color="black">Confirm this transaction in your wallet</TYPE.subHeader>
+              <TYPE.subHeader color="black">{t('confirm-this-transaction-in-your-wallet')}</TYPE.subHeader>
             )}
             {attempting && claimSubmitted && !claimConfirmed && chainId && claimTxn?.hash && (
               <ExternalLink href={getBscScanLink(chainId, claimTxn?.hash, 'transaction')} style={{ zIndex: 99 }}>
-                View transaction on Etherscan
+                {t('viewTransactionOnEtherscan')}
               </ExternalLink>
             )}
           </AutoColumn>

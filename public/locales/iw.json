@@ -71,5 +71,17 @@
   "tokenAddress": "כתובת הטוקן",
   "label": "שם",
   "decimals": "ספרות עשרויות",
-  "enterTokenCont": "הכניסו כתובת טוקן כדי להמשיך"
+  "enterTokenCont": "הכניסו כתובת טוקן כדי להמשיך",
+  "invertedRate": "שער חליפין הפוך",
+  "viewOnBscscan": "צפה ב- BscScan",
+  "back": "חזור",
+  "new-to-binance-smart-chain": "חדש בשרשרת החכמה של Binance?",
+  "yourScamBreakdown": "התמוטטות ההונאה שלך",
+  "scamInCirculation": "הונאה במחזור",
+  "viewScamAnalytics": "צפה ב- SCAM Analytics",
+  "scamPrice": "מחיר SCAM",
+  "remove": "לְהַסִיר",
+  "claimScamToken": "טען אסימון הונאה",
+  "read-more-about-scam": "קרא עוד על SCAM",
+  "liquidityProviderFee": "עמלת ספק נזילות"
 }

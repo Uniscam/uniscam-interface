@@ -83,5 +83,17 @@
   "decimals": "Số thập phân",
   "enterTokenCont": "Nhập địa chỉ đồng tiền ảo để tiếp tục",
   "priceChange": "Trượt giá dự kiến",
-  "forAtLeast": "cho ít nhất "
+  "forAtLeast": "cho ít nhất ",
+  "invertedRate": "Tỷ giá hối đoái ngược",
+  "viewOnBscscan": "Xem trên BscScan",
+  "back": "Trở lại",
+  "new-to-binance-smart-chain": "Bạn mới sử dụng Chuỗi thông minh Binance?",
+  "yourScamBreakdown": "Sự cố SCAM của bạn",
+  "scamInCirculation": "SCAM đang lưu hành",
+  "viewScamAnalytics": "Xem phân tích SCAM",
+  "scamPrice": "Giá SCAM",
+  "remove": "Tẩy",
+  "claimScamToken": "Yêu cầu mã thông báo SCAM",
+  "read-more-about-scam": "Đọc thêm về SCAM",
+  "liquidityProviderFee": "Phí nhà cung cấp thanh khoản"
 }

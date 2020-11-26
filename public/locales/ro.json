@@ -71,5 +71,17 @@
   "tokenAddress": "Adresă Token",
   "label": "Denumire",
   "decimals": "Zecimale",
-  "enterTokenCont": "Setează o adresă de token pentru a continua"
+  "enterTokenCont": "Setează o adresă de token pentru a continua",
+  "invertedRate": "Cursul de schimb inversat",
+  "viewOnBscscan": "Vizualizare pe BscScan",
+  "back": "Înapoi",
+  "new-to-binance-smart-chain": "Sunteți nou în lanțul inteligent Binance?",
+  "yourScamBreakdown": "Defalcarea dvs. înșelătorie",
+  "scamInCirculation": "SCAM în circulație",
+  "viewScamAnalytics": "Vizualizați SCAM Analytics",
+  "scamPrice": "Preț SCAM",
+  "remove": "Elimina",
+  "claimScamToken": "Revendicați jetonul înșelătorie",
+  "read-more-about-scam": "Citiți mai multe despre înșelătorie",
+  "liquidityProviderFee": "Taxa furnizorului de lichiditate"
 }

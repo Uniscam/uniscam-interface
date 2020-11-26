@@ -85,5 +85,16 @@
   "enterTokenCont": "Tokenadresse eingeben um fortzufahren",
   "priceChange": "Geschätzter Wechselkursrutsch",
   "forAtLeast": "für mindestens ",
-  "brokenToken": "Der ausgewählte Token ist nicht kompatibel mit Uniswap V1. Liquidität hinzufügen wird zu nicht mehr zugänglichen Token führen!"
+  "brokenToken": "Der ausgewählte Token ist nicht kompatibel mit Uniswap V1. Liquidität hinzufügen wird zu nicht mehr zugänglichen Token führen!",
+  "viewOnBscscan": "Ansicht auf BscScan",
+  "back": "Zurück",
+  "new-to-binance-smart-chain": "Neu bei Binance Smart Chain?",
+  "yourScamBreakdown": "Ihre SCAM-Aufschlüsselung",
+  "scamInCirculation": "Betrug im Umlauf",
+  "viewScamAnalytics": "Anzeigen von SCAM Analytics",
+  "scamPrice": "SCAM Preis",
+  "remove": "Entfernen",
+  "claimScamToken": "SCAM-Token beanspruchen",
+  "read-more-about-scam": "Lesen Sie mehr über Betrug",
+  "liquidityProviderFee": "Liquiditätsanbietergebühr"
 }

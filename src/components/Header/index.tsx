@@ -31,6 +31,7 @@ import Modal from '../Modal'
 import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
 import { darken } from 'polished'
+import I18nSwitch from '../I18nSwitch'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -400,6 +401,7 @@ export default function Header() {
         <HeaderElementWrap>
           <Settings />
           <Menu />
+          <I18nSwitch></I18nSwitch>
         </HeaderElementWrap>
       </HeaderControls>
     </HeaderFrame>

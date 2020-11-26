@@ -1,6 +1,7 @@
 import { Currency, CurrencyAmount, JSBI, Pair, Percent, TokenAmount } from '@lychees/uniscam-sdk'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { usePair } from '../../data/Reserves'
 import { useTotalSupply } from '../../data/TotalSupply'
 
@@ -29,6 +30,7 @@ export function useDerivedBurnInfo(
   error?: string
 } {
   const { account, chainId } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   const { independentField, typedValue } = useBurnState()
 
@@ -119,11 +121,11 @@ export function useDerivedBurnInfo(
 
   let error: string | undefined
   if (!account) {
-    error = 'Connect Wallet'
+    error = t('connectWallet')
   }
 
   if (!parsedAmounts[Field.LIQUIDITY] || !parsedAmounts[Field.CURRENCY_A] || !parsedAmounts[Field.CURRENCY_B]) {
-    error = error ?? 'Enter an amount'
+    error = error ?? t('enterAnAmount')
   }
 
   return { pair, parsedAmounts, error }

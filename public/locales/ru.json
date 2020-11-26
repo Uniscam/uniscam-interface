@@ -71,5 +71,17 @@
   "tokenAddress": "Адрес токена",
   "label": "Название",
   "decimals": "Десятичное значение",
-  "enterTokenCont": "Чтобы продолжить, введите адрес токена"
+  "enterTokenCont": "Чтобы продолжить, введите адрес токена",
+  "invertedRate": "Обратный обменный курс",
+  "viewOnBscscan": "Посмотреть на BscScan",
+  "back": "Назад",
+  "new-to-binance-smart-chain": "Впервые в Binance Smart Chain?",
+  "yourScamBreakdown": "Ваш SCAM Breakdown",
+  "scamInCirculation": "Жульничество в обращении",
+  "viewScamAnalytics": "Просмотр SCAM Analytics",
+  "scamPrice": "SCAM Цена",
+  "remove": "удалять",
+  "claimScamToken": "Заявить токен SCAM",
+  "read-more-about-scam": "Узнать больше о SCAM",
+  "liquidityProviderFee": "Комиссия поставщика ликвидности"
 }

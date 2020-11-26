@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Modal from '../Modal'
 import { AutoColumn, ColumnCenter } from '../Column'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
+
 import { DataCard, CardSection, Break } from '../earn/styled'
 import { RowBetween } from '../Row'
 import { TYPE, ExternalLink, CloseIcon, CustomLightSpinner, UniTokenAnimated } from '../../theme'
@@ -44,6 +46,8 @@ const ConfirmedIcon = styled(ColumnCenter)`
 
 export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boolean; onDismiss: () => void }) {
   const { chainId } = useActiveWeb3React()
+
+  const { t } = useTranslation()
 
   // state for smart contract input
   const [typed, setTyped] = useState('')
@@ -102,7 +106,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
             <CardNoise />
             <CardSection gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={500}>Claim SCAM Token</TYPE.white>
+                <TYPE.white fontWeight={500}>{t('claimScamToken')}</TYPE.white>
                 <CloseIcon onClick={wrappedOnDismiss} style={{ zIndex: 99 }} stroke="white" />
               </RowBetween>
               <TYPE.white fontWeight={700} fontSize={36}>
@@ -113,12 +117,13 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
           </ModalUpper>
           <AutoColumn gap="md" style={{ padding: '1rem', paddingTop: '0' }} justify="center">
             <TYPE.subHeader fontWeight={500}>
-              Enter an address to trigger a SCAM claim. If the address has any claimable SCAM it will be sent to them on
-              submission.
+              {t(
+                'enter-an-address-to-trigger-a-scam-claim-if-the-address-has-any-claimable-scam-it-will-be-sent-to-them-on-submission'
+              )}
             </TYPE.subHeader>
             <AddressInputPanel value={typed} onChange={handleRecipientType} />
             {parsedAddress && !hasAvailableClaim && (
-              <TYPE.error error={true}>Address has no available claim</TYPE.error>
+              <TYPE.error error={true}>{t('address-has-no-available-claim')}</TYPE.error>
             )}
             <ButtonPrimary
               disabled={!isAddress(parsedAddress ?? '') || !hasAvailableClaim}
@@ -128,7 +133,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               mt="1rem"
               onClick={onClaim}
             >
-              Claim SCAM
+              {t('claim')} SCAM
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>
@@ -170,7 +175,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
                   <span role="img" aria-label="party-hat">
                     🎉{' '}
                   </span>
-                  Welcome to team Unicorn :){' '}
+                  {t('welcomeToTeamUnicorn')} :){' '}
                   <span role="img" aria-label="party-hat">
                     🎉
                   </span>
@@ -178,11 +183,11 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               </>
             )}
             {attempting && !hash && (
-              <TYPE.subHeader color="black">Confirm this transaction in your wallet</TYPE.subHeader>
+              <TYPE.subHeader color="black">{t('confirm-this-transaction-in-your-wallet')}</TYPE.subHeader>
             )}
             {attempting && hash && !claimConfirmed && chainId && hash && (
               <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')} style={{ zIndex: 99 }}>
-                View transaction on Etherscan
+                {t('viewTransactionOnEtherscan')}
               </ExternalLink>
             )}
           </AutoColumn>
