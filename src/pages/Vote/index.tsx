@@ -6,7 +6,7 @@ import { RowBetween, RowFixed } from '../../components/Row'
 import { Link } from 'react-router-dom'
 import { ProposalStatus } from './styled'
 import { ButtonPrimary } from '../../components/Button'
-
+import { useTranslation } from 'react-i18next'
 import { Button } from 'rebass/styled-components'
 import { darken } from 'polished'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
@@ -103,6 +103,7 @@ const EmptyProposals = styled.div`
 export default function Vote() {
   const { account, chainId } = useActiveWeb3React()
   const [showModal, setShowModal] = useState<boolean>(false)
+  const { t } = useTranslation()
 
   // get data to list all proposals
   const allProposals: ProposalData[] = useAllProposalData()
@@ -122,7 +123,7 @@ export default function Vote() {
       <DelegateModal
         isOpen={showModal}
         onDismiss={() => setShowModal(false)}
-        title={showUnlockVoting ? 'Unlock Votes' : 'Update Delegation'}
+        title={showUnlockVoting ? t('unlockVotes') : t('updateDelegation')}
       />
       <TopSection gap="md">
         <VoteCard>
@@ -131,12 +132,13 @@ export default function Vote() {
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Uniswap Governance</TYPE.white>
+                <TYPE.white fontWeight={600}>{t('unisaveGovernance')}</TYPE.white>
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  SCAM tokens represent voting shares in Uniswap governance. You can vote on each proposal yourself or
-                  delegate your votes to a third party.
+                  {t(
+                    'scam-tokens-represent-voting-shares-in-unisave-governance-you-can-vote-on-each-proposal-yourself-or-delegate-your-votes-to-a-third-party'
+                  )}
                 </TYPE.white>
               </RowBetween>
               <ExternalLink
@@ -144,7 +146,7 @@ export default function Vote() {
                 href="https://uniswap.org/blog/uni"
                 target="_blank"
               >
-                <TYPE.white fontSize={14}>Read more about Uniswap governance</TYPE.white>
+                <TYPE.white fontSize={14}>{t('read-more-about-unisave-governance')}</TYPE.white>
               </ExternalLink>
             </AutoColumn>
           </CardSection>
@@ -154,7 +156,7 @@ export default function Vote() {
       </TopSection>
       <TopSection gap="2px">
         <WrapSmall>
-          <TYPE.mediumHeader style={{ margin: '0.5rem 0', color: '#ffffff' }}>Proposals</TYPE.mediumHeader>
+          <TYPE.mediumHeader style={{ margin: '0.5rem 0', color: '#ffffff' }}>{t('proposals')}</TYPE.mediumHeader>
           {(!allProposals || allProposals.length === 0) && !availableVotes && <Loader />}
           {showUnlockVoting ? (
             <ButtonPrimary
@@ -163,18 +165,18 @@ export default function Vote() {
               borderRadius="8px"
               onClick={() => setShowModal(true)}
             >
-              Unlock Voting
+              {t('unlockVoting')}
             </ButtonPrimary>
           ) : availableVotes && JSBI.notEqual(JSBI.BigInt(0), availableVotes?.raw) ? (
             <TYPE.body fontWeight={500} mr="6px">
-              <FormattedCurrencyAmount currencyAmount={availableVotes} /> Votes
+              <FormattedCurrencyAmount currencyAmount={availableVotes} /> {t('votes')}
             </TYPE.body>
           ) : uniBalance &&
             userDelegatee &&
             userDelegatee !== ZERO_ADDRESS &&
             JSBI.notEqual(JSBI.BigInt(0), uniBalance?.raw) ? (
             <TYPE.body fontWeight={500} mr="6px">
-              <FormattedCurrencyAmount currencyAmount={uniBalance} /> Votes
+              <FormattedCurrencyAmount currencyAmount={uniBalance} /> {t('votes')}
             </TYPE.body>
           ) : (
             ''
@@ -186,7 +188,7 @@ export default function Vote() {
             {userDelegatee && userDelegatee !== ZERO_ADDRESS ? (
               <RowFixed>
                 <TYPE.body fontWeight={500} mr="4px">
-                  Delegated to:
+                  {t('delegatedTo')}:
                 </TYPE.body>
                 <AddressButton>
                   <StyledExternalLink
@@ -196,7 +198,7 @@ export default function Vote() {
                     {userDelegatee === account ? 'Self' : shortenAddress(userDelegatee)}
                   </StyledExternalLink>
                   <TextButton onClick={() => setShowModal(true)} style={{ marginLeft: '4px' }}>
-                    (edit)
+                    ({t('edit')})
                   </TextButton>
                 </AddressButton>
               </RowFixed>
@@ -208,10 +210,10 @@ export default function Vote() {
         {allProposals?.length === 0 && (
           <EmptyProposals>
             <TYPE.body color="text3" style={{ marginBottom: '8px' }}>
-              No proposals found.
+              {t('no-proposals-found')}
             </TYPE.body>
             <TYPE.subHeader color="text3">
-              <i>Proposals submitted by community members will appear here.</i>
+              <i>{t('proposals-submitted-by-community-members-will-appear-here')}</i>
             </TYPE.subHeader>
           </EmptyProposals>
         )}
@@ -226,7 +228,7 @@ export default function Vote() {
         })}
       </TopSection>
       <TYPE.subHeader color="text3">
-        A minimum threshhold of 1% of the total SCAM supply is required to submit proposals
+        {t('a-minimum-threshhold-of-1-of-the-total-scam-supply-is-required-to-submit-proposals')}
       </TYPE.subHeader>
     </PageWrapper>
   )

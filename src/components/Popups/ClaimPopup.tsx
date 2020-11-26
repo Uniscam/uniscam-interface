@@ -1,5 +1,6 @@
 import { TokenAmount } from '@lychees/uniscam-sdk'
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { X } from 'react-feather'
 import styled, { keyframes } from 'styled-components'
 import tokenLogo from '../../assets/images/token-logo.png'
@@ -54,6 +55,7 @@ const UniToken = styled.img`
 
 export default function ClaimPopup() {
   const { account } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   // dont store these in persisted state yet
   const showClaimPopup: boolean = useShowClaimPopup()
@@ -92,18 +94,18 @@ export default function ClaimPopup() {
               <span role="img" aria-label="party">
                 🎉
               </span>{' '}
-              SCAM has arrived{' '}
+              SCAM {t('hasArrived')}{' '}
               <span role="img" aria-label="party">
                 🎉
               </span>
             </TYPE.white>
             <TYPE.subHeader style={{ paddingTop: '0.5rem', textAlign: 'center' }} color="white">
-              {`Thanks for being part of the Uniswap community <3`}
+              {t('thanks-for-being-part-of-the-unisave-community-less-than-3')}
             </TYPE.subHeader>
           </AutoColumn>
           <AutoColumn style={{ zIndex: 10 }} justify="center">
             <ButtonPrimary padding="8px" borderRadius="8px" width={'fit-content'} onClick={toggleSelfClaimModal}>
-              Claim your SCAM tokens
+              {t('claimYourScamTokens')}
             </ButtonPrimary>
           </AutoColumn>
         </StyledClaimPopup>

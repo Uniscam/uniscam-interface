@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AlertCircle, CheckCircle } from 'react-feather'
 import styled, { ThemeContext } from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { useActiveWeb3React } from '../../hooks'
 import { TYPE } from '../../theme'
 import { ExternalLink } from '../../theme/components'
@@ -24,6 +25,7 @@ export default function TransactionPopup({
   const { chainId } = useActiveWeb3React()
 
   const theme = useContext(ThemeContext)
+  const { t } = useTranslation()
 
   return (
     <RowNoFlex>
@@ -32,7 +34,9 @@ export default function TransactionPopup({
       </div>
       <AutoColumn gap="8px">
         <TYPE.body fontWeight={500}>{summary ?? 'Hash: ' + hash.slice(0, 8) + '...' + hash.slice(58, 65)}</TYPE.body>
-        {chainId && <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')}>View on BscScan</ExternalLink>}
+        {chainId && (
+          <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')}>{t('viewOnBscscan')}</ExternalLink>
+        )}
       </AutoColumn>
     </RowNoFlex>
   )

@@ -3,6 +3,7 @@ import React, { useCallback, useMemo } from 'react'
 import ReactGA from 'react-ga'
 import { useDispatch } from 'react-redux'
 import { Text } from 'rebass'
+import { useTranslation } from 'react-i18next'
 import { AppDispatch } from '../../state'
 import { useRemovePopup } from '../../state/application/hooks'
 import { acceptListUpdate } from '../../state/lists/actions'
@@ -49,19 +50,21 @@ export default function ListUpdatePopup({
     [tokensChanged]
   )
 
+  const { t } = useTranslation()
+
   return (
     <AutoRow>
       <AutoColumn style={{ flex: '1' }} gap="8px">
         {auto ? (
           <TYPE.body fontWeight={500}>
-            The token list &quot;{oldList.name}&quot; has been updated to{' '}
+            {t('the-token-list')} &quot;{oldList.name}&quot; {t('has-been-updated-to')}{' '}
             <strong>{listVersionLabel(newList.version)}</strong>.
           </TYPE.body>
         ) : (
           <>
             <div>
               <Text>
-                An update is available for the token list &quot;{oldList.name}&quot; (
+                {t('an-update-is-available-for-the-token-list')} &quot;{oldList.name}&quot; (
                 {listVersionLabel(oldList.version)} to {listVersionLabel(newList.version)}).
               </Text>
               <ul>
@@ -73,7 +76,7 @@ export default function ListUpdatePopup({
                         {i === tokensAdded.length - 1 ? null : ', '}
                       </React.Fragment>
                     ))}{' '}
-                    added
+                    {t('added')}
                   </li>
                 ) : null}
                 {tokensRemoved.length > 0 ? (
@@ -84,18 +87,22 @@ export default function ListUpdatePopup({
                         {i === tokensRemoved.length - 1 ? null : ', '}
                       </React.Fragment>
                     ))}{' '}
-                    removed
+                    {t('removed')}
                   </li>
                 ) : null}
-                {numTokensChanged > 0 ? <li>{numTokensChanged} tokens updated</li> : null}
+                {numTokensChanged > 0 ? (
+                  <li>
+                    {numTokensChanged} {t('tokensUpdated')}
+                  </li>
+                ) : null}
               </ul>
             </div>
             <AutoRow>
               <div style={{ flexGrow: 1, marginRight: 12 }}>
-                <ButtonSecondary onClick={handleAcceptUpdate}>Accept update</ButtonSecondary>
+                <ButtonSecondary onClick={handleAcceptUpdate}>{t('acceptUpdate')}</ButtonSecondary>
               </div>
               <div style={{ flexGrow: 1 }}>
-                <ButtonSecondary onClick={removeThisPopup}>Dismiss</ButtonSecondary>
+                <ButtonSecondary onClick={removeThisPopup}>{t('dismiss')}</ButtonSecondary>
               </div>
             </AutoRow>
           </>

@@ -156,7 +156,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
           <AutoColumn gap="100px" justify={'center'}>
             <AutoColumn gap="12px" justify={'center'}>
               <TYPE.largeHeader fontWeight={600} color="black">
-                {claimConfirmed ? 'Claimed' : 'Claiming'}
+                {claimConfirmed ? t('claimed') : t('claiming')}
               </TYPE.largeHeader>
               {!claimConfirmed && (
                 <Text fontSize={36} color={'#fe2500'} fontWeight={800}>
@@ -165,7 +165,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               )}
               {parsedAddress && (
                 <TYPE.largeHeader fontWeight={600} color="black">
-                  for {shortenAddress(parsedAddress)}
+                  {t('for')} {shortenAddress(parsedAddress)}
                 </TYPE.largeHeader>
               )}
             </AutoColumn>

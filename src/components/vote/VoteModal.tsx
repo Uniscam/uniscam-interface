@@ -99,9 +99,9 @@ export default function VoteModal({ isOpen, onDismiss, proposalId, support }: Vo
               {availableVotes?.toSignificant(4)} {t('votes')}
             </TYPE.largeHeader>
             <ButtonPrimary onClick={onVote}>
-              <TYPE.mediumHeader color="white">{`Vote ${
-                support ? 'for ' : 'against'
-              } proposal  ${proposalId}`}</TYPE.mediumHeader>
+              <TYPE.mediumHeader color="white">{`${t('vote')} ${support ? `${t('for')} ` : t('against')} ${t(
+                'proposal'
+              )}  ${proposalId}`}</TYPE.mediumHeader>
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>

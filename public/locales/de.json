@@ -96,5 +96,19 @@
   "remove": "Entfernen",
   "claimScamToken": "SCAM-Token beanspruchen",
   "read-more-about-scam": "Lesen Sie mehr über Betrug",
-  "liquidityProviderFee": "Liquiditätsanbietergebühr"
+  "liquidityProviderFee": "Liquiditätsanbietergebühr",
+  "balanceTitle": "Balance",
+  "claimScam": "Anspruch SCAM",
+  "claimYourScamTokens": "Fordern Sie Ihre SCAM-Token an",
+  "the-token-list-name-has-been-updated-to": "Die Token-Liste \"{{name}}\" wurde auf aktualisiert",
+  "switchToUnisave": "Wechseln Sie zu Unisave",
+  "earned-scam-tokens-represent-voting-shares-in-uniswap-governance": "Verdiente SCAM-Token repräsentieren stimmberechtigte Anteile an der Uniswap-Governance.",
+  "initializing": "Initialisierung ...",
+  "please-type-the-word-confirm-to-enable-expert-mode": "Bitte geben Sie das Wort \"Bestätigen\" ein, um den Expertenmodus zu aktivieren.",
+  "fromEstimated": "Von (geschätzt)",
+  "from": "Von",
+  "toEstimated": "Zu (geschätzt)",
+  "deposit-scam-v2-lp-tokens": "Hinterlegen Sie SCAM-V2 LP-Token",
+  "step-1-get-scam-v2-liquidity-tokens": "Schritt 1. Holen Sie sich SCAM-V2 Liquidity Token",
+  "yourUnclaimedScam": "Dein nicht beanspruchter SCAM"
 }

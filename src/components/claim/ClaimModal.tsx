@@ -173,7 +173,7 @@ export default function ClaimModal() {
           <AutoColumn gap="100px" justify={'center'}>
             <AutoColumn gap="12px" justify={'center'}>
               <TYPE.largeHeader fontWeight={600} color="black">
-                {claimConfirmed ? 'Claimed!' : 'Claiming'}
+                {claimConfirmed ? t('claimed') : t('claiming')}
               </TYPE.largeHeader>
               {!claimConfirmed && (
                 <Text fontSize={36} color={'#fe2500'} fontWeight={800}>

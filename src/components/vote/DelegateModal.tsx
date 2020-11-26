@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Modal from '../Modal'
 import { AutoColumn } from '../Column'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { RowBetween } from '../Row'
 import { TYPE } from '../../theme'
 import { X } from 'react-feather'
@@ -41,6 +42,8 @@ interface VoteModalProps {
 
 export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalProps) {
   const { account, chainId } = useActiveWeb3React()
+
+  const { t } = useTranslation()
 
   // state for delegate input
   const [usingDelegate, setUsingDelegate] = useState(false)
@@ -96,17 +99,19 @@ export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalPro
               <TYPE.mediumHeader fontWeight={500}>{title}</TYPE.mediumHeader>
               <StyledClosed stroke="black" onClick={wrappedOndismiss} />
             </RowBetween>
-            <TYPE.body>Earned SCAM tokens represent voting shares in Uniswap governance.</TYPE.body>
+            <TYPE.body>{t('earned-scam-tokens-represent-voting-shares-in-uniswap-governance')}</TYPE.body>
             <TYPE.body>
-              You can either vote on each proposal yourself or delegate your votes to a third party.
+              {t('you-can-either-vote-on-each-proposal-yourself-or-delegate-your-votes-to-a-third-party')}
             </TYPE.body>
             {usingDelegate && <AddressInputPanel value={typed} onChange={handleRecipientType} />}
             <ButtonPrimary disabled={!isAddress(parsedAddress ?? '')} onClick={onDelegate}>
-              <TYPE.mediumHeader color="white">{usingDelegate ? 'Delegate Votes' : 'Self Delegate'}</TYPE.mediumHeader>
+              <TYPE.mediumHeader color="white">
+                {usingDelegate ? t('delegateVotes') : t('selfDelegate')}
+              </TYPE.mediumHeader>
             </ButtonPrimary>
             <TextButton onClick={() => setUsingDelegate(!usingDelegate)}>
               <TYPE.blue>
-                {usingDelegate ? 'Remove' : 'Add'} Delegate {!usingDelegate && '+'}
+                {usingDelegate ? t('remove') : t('add')} {t('delegate')} {!usingDelegate && '+'}
               </TYPE.blue>
             </TextButton>
           </AutoColumn>
@@ -115,7 +120,7 @@ export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalPro
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>{usingDelegate ? 'Delegating votes' : 'Unlocking Votes'}</TYPE.largeHeader>
+            <TYPE.largeHeader>{usingDelegate ? t('delegatingVotes') : t('unlockingVotes')}</TYPE.largeHeader>
             <TYPE.main fontSize={36}>{uniBalance?.toSignificant(4)}</TYPE.main>
           </AutoColumn>
         </LoadingView>
@@ -123,7 +128,7 @@ export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalPro
       {hash && (
         <SubmittedView onDismiss={wrappedOndismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
+            <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
             <TYPE.main fontSize={36}>{uniBalance?.toSignificant(4)}</TYPE.main>
           </AutoColumn>
         </SubmittedView>

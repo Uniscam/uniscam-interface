@@ -4,6 +4,7 @@ import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import Modal from '../Modal'
 import { AutoColumn } from '../Column'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { RowBetween } from '../Row'
 import { TYPE, CloseIcon } from '../../theme'
 import { ButtonConfirmed, ButtonError } from '../Button'
@@ -44,6 +45,7 @@ interface StakingModalProps {
 
 export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiquidityUnstaked }: StakingModalProps) {
   const { account, chainId, library } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   // track and parse user input
   const [typedValue, setTypedValue] = useState('')
@@ -107,7 +109,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
           })
       } else {
         setAttempting(false)
-        throw new Error('Attempting to stake without approval or a signature. Please contact support.')
+        throw new Error(t('attempting-to-stake-without-approval-or-a-signature-please-contact-support'))
       }
     }
   }
@@ -126,9 +128,9 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
   }, [maxAmountInput, onUserInput])
 
   async function onAttemptToApprove() {
-    if (!pairContract || !library || !deadline) throw new Error('missing dependencies')
+    if (!pairContract || !library || !deadline) throw new Error(t('missingDependencies'))
     const liquidityAmount = parsedAmount
-    if (!liquidityAmount) throw new Error('missing liquidity amount')
+    if (!liquidityAmount) throw new Error(t('missingLiquidityAmount'))
 
     if (isArgentWallet) {
       return approveCallback()
@@ -197,7 +199,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       {!attempting && !hash && (
         <ContentWrapper gap="lg">
           <RowBetween>
-            <TYPE.mediumHeader>Deposit</TYPE.mediumHeader>
+            <TYPE.mediumHeader>{t('deposit')}</TYPE.mediumHeader>
             <CloseIcon onClick={wrappedOnDismiss} />
           </RowBetween>
           <CurrencyInputPanel
@@ -209,13 +211,13 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
             pair={dummyPair}
             label={''}
             disableCurrencySelect={true}
-            customBalanceText={'Available to deposit: '}
+            customBalanceText={`${t('availableToDeposit')}: `}
             id="stake-liquidity-token"
           />
 
           <HypotheticalRewardRate dim={!hypotheticalRewardRate.greaterThan('0')}>
             <div>
-              <TYPE.black fontWeight={600}>Weekly Rewards</TYPE.black>
+              <TYPE.black fontWeight={600}>{t('weeklyRewards')}</TYPE.black>
             </div>
 
             <TYPE.black>
@@ -231,14 +233,14 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
               confirmed={approval === ApprovalState.APPROVED || signatureData !== null}
               disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
             >
-              Approve
+              {t('approve')}
             </ButtonConfirmed>
             <ButtonError
               disabled={!!error || (signatureData === null && approval !== ApprovalState.APPROVED)}
               error={!!error && !!parsedAmount}
               onClick={onStake}
             >
-              {error ?? 'Deposit'}
+              {error ?? t('deposit')}
             </ButtonError>
           </RowBetween>
           <ProgressCircles steps={[approval === ApprovalState.APPROVED || signatureData !== null]} disabled={true} />
@@ -247,7 +249,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>Depositing Liquidity</TYPE.largeHeader>
+            <TYPE.largeHeader>{t('depositingLiquidity')}</TYPE.largeHeader>
             <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} SCAM-V2</TYPE.body>
           </AutoColumn>
         </LoadingView>
@@ -255,8 +257,10 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
       {attempting && hash && (
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Deposited {parsedAmount?.toSignificant(4)} SCAM-V2</TYPE.body>
+            <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
+            <TYPE.body fontSize={20}>
+              {t('deposited')} {parsedAmount?.toSignificant(4)} SCAM-V2
+            </TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}
