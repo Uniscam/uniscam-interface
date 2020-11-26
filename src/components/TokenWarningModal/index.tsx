@@ -2,6 +2,7 @@ import { Token } from '@lychees/uniscam-sdk'
 import { transparentize } from 'polished'
 import React, { useCallback, useMemo, useState } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens } from '../../hooks/Tokens'
 import { ExternalLink, TYPE } from '../../theme'
@@ -39,6 +40,7 @@ interface TokenWarningCardProps {
 
 function TokenWarningCard({ token }: TokenWarningCardProps) {
   const { chainId } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   const tokenSymbol = token?.symbol?.toLowerCase() ?? ''
   const tokenName = token?.name?.toLowerCase() ?? ''
@@ -74,7 +76,9 @@ function TokenWarningCard({ token }: TokenWarningCardProps) {
           </TYPE.main>
           {chainId && (
             <ExternalLink style={{ fontWeight: 400 }} href={getBscScanLink(chainId, token.address, 'token')}>
-              <TYPE.blue title={token.address}>{shortenAddress(token.address)} (View on BscScan)</TYPE.blue>
+              <TYPE.blue title={token.address}>
+                {shortenAddress(token.address)} ({t('viewOnBscscan')})
+              </TYPE.blue>
             </ExternalLink>
           )}
         </AutoColumn>
@@ -96,24 +100,31 @@ export default function TokenWarningModal({
   const toggleUnderstand = useCallback(() => setUnderstandChecked(uc => !uc), [])
 
   const handleDismiss = useCallback(() => null, [])
+
+  const { t } = useTranslation()
+
   return (
     <Modal isOpen={isOpen} onDismiss={handleDismiss} maxHeight={90}>
       <WarningContainer className="token-warning-container">
         <AutoColumn gap="lg">
           <AutoRow gap="6px">
             <StyledWarningIcon />
-            <TYPE.main color={'red2'}>Token imported</TYPE.main>
+            <TYPE.main color={'red2'}>{t('tokenImported')}</TYPE.main>
           </AutoRow>
           <TYPE.body color={'red2'}>
-            Anyone can create an ERC20 token on Ethereum with <em>any</em> name, including creating fake versions of
-            existing tokens and tokens that claim to represent projects that do not have a token.
+            {t('anyone-can-create-an-erc20-token-on-ethereum-with')} <em>{t('any')}</em> {t('name')},{' '}
+            {t(
+              'including-creating-fake-versions-of-existing-tokens-and-tokens-that-claim-to-represent-projects-that-do-not-have-a-token'
+            )}
+            .
           </TYPE.body>
           <TYPE.body color={'red2'}>
-            This interface can load arbitrary tokens by token addresses. Please take extra caution and do your research
-            when interacting with arbitrary ERC20 tokens.
+            {t(
+              'this-interface-can-load-arbitrary-tokens-by-token-addresses-please-take-extra-caution-and-do-your-research-when-interacting-with-arbitrary-erc20-tokens'
+            )}
           </TYPE.body>
           <TYPE.body color={'red2'}>
-            If you purchase an arbitrary token, <strong>you may be unable to sell it back.</strong>
+            {t('if-you-purchase-an-arbitrary-token')}, <strong>{t('you-may-be-unable-to-sell-it-back')}.</strong>
           </TYPE.body>
           {tokens.map(token => {
             return <TokenWarningCard key={token.address} token={token} />
@@ -127,7 +138,7 @@ export default function TokenWarningModal({
                   checked={understandChecked}
                   onChange={toggleUnderstand}
                 />{' '}
-                I understand
+                {t('iUnderstand')}
               </label>
             </div>
             <ButtonError
@@ -143,7 +154,7 @@ export default function TokenWarningModal({
                 onConfirm()
               }}
             >
-              <TYPE.body color="white">Continue</TYPE.body>
+              <TYPE.body color="white">{t('continue')}</TYPE.body>
             </ButtonError>
           </RowBetween>
         </AutoColumn>

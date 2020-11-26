@@ -1,6 +1,7 @@
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 import Option from './Option'
 import { SUPPORTED_WALLETS } from '../../constants'
 import { injected } from '../../connectors'
@@ -75,6 +76,7 @@ export default function PendingView({
   tryActivation: (connector: AbstractConnector) => void
 }) {
   const isMetamask = window?.ethereum?.isMetaMask
+  const { t } = useTranslation()
 
   return (
     <PendingSection>
@@ -82,20 +84,20 @@ export default function PendingView({
         <LoadingWrapper>
           {error ? (
             <ErrorGroup>
-              <div>Error connecting.</div>
+              <div>{t('errorConnecting')}</div>
               <ErrorButton
                 onClick={() => {
                   setPendingError(false)
                   connector && tryActivation(connector)
                 }}
               >
-                Try Again
+                {t('tryAgain')}
               </ErrorButton>
             </ErrorGroup>
           ) : (
             <>
               <StyledLoader />
-              Initializing...
+              {t('initializing')}
             </>
           )}
         </LoadingWrapper>

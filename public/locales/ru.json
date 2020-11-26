@@ -83,5 +83,12 @@
   "remove": "удалять",
   "claimScamToken": "Заявить токен SCAM",
   "read-more-about-scam": "Узнать больше о SCAM",
-  "liquidityProviderFee": "Комиссия поставщика ликвидности"
+  "liquidityProviderFee": "Комиссия поставщика ликвидности",
+  "balanceTitle": "Остаток средств",
+  "claimScam": "Претензия SCAM",
+  "claimYourScamTokens": "Получите свои жетоны SCAM",
+  "the-token-list-name-has-been-updated-to": "Список токенов \"{{name}}\" обновлен до",
+  "switchToUnisave": "Перейти на Unisave",
+  "earned-scam-tokens-represent-voting-shares-in-uniswap-governance": "Заработанные токены SCAM представляют собой голосующие акции в управлении Uniswap.",
+  "initializing": "Инициализация ..."
 }

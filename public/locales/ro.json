@@ -83,5 +83,12 @@
   "remove": "Elimina",
   "claimScamToken": "Revendicați jetonul înșelătorie",
   "read-more-about-scam": "Citiți mai multe despre înșelătorie",
-  "liquidityProviderFee": "Taxa furnizorului de lichiditate"
+  "liquidityProviderFee": "Taxa furnizorului de lichiditate",
+  "balanceTitle": "Echilibru",
+  "claimScam": "Revendicați SCAM",
+  "claimYourScamTokens": "Revendicați jetoanele dvs. SCAM",
+  "the-token-list-name-has-been-updated-to": "Lista de simboluri \"{{name}}\" a fost actualizată la",
+  "switchToUnisave": "Treceți la Unisave",
+  "earned-scam-tokens-represent-voting-shares-in-uniswap-governance": "Jetoanele SCAM câștigate reprezintă acțiuni de vot în guvernanța Uniswap.",
+  "initializing": "Se inițializează ..."
 }

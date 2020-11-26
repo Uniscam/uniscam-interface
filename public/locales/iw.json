@@ -83,5 +83,12 @@
   "remove": "לְהַסִיר",
   "claimScamToken": "טען אסימון הונאה",
   "read-more-about-scam": "קרא עוד על SCAM",
-  "liquidityProviderFee": "עמלת ספק נזילות"
+  "liquidityProviderFee": "עמלת ספק נזילות",
+  "balanceTitle": "איזון",
+  "claimScam": "תבע SCAM",
+  "claimYourScamTokens": "תבע את אסימוני ה- SCAM שלך",
+  "the-token-list-name-has-been-updated-to": "רשימת האסימונים \"{{name}}\" עודכנה ל-",
+  "switchToUnisave": "עבור אל Unisave",
+  "earned-scam-tokens-represent-voting-shares-in-uniswap-governance": "אסימוני SCAM שנצברו מייצגים מניות הצבעה בממשל Uniswap.",
+  "initializing": "מאתחל ..."
 }

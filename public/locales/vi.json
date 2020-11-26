@@ -95,5 +95,12 @@
   "remove": "Tẩy",
   "claimScamToken": "Yêu cầu mã thông báo SCAM",
   "read-more-about-scam": "Đọc thêm về SCAM",
-  "liquidityProviderFee": "Phí nhà cung cấp thanh khoản"
+  "liquidityProviderFee": "Phí nhà cung cấp thanh khoản",
+  "balanceTitle": "Thăng bằng",
+  "claimScam": "Yêu cầu SCAM",
+  "claimYourScamTokens": "Yêu cầu mã thông báo SCAM của bạn",
+  "the-token-list-name-has-been-updated-to": "Danh sách mã thông báo \"{{name}}\" đã được cập nhật thành",
+  "switchToUnisave": "Chuyển sang Unisave",
+  "earned-scam-tokens-represent-voting-shares-in-uniswap-governance": "Mã thông báo SCAM kiếm được đại diện cho cổ phần có quyền biểu quyết trong quản trị Uniswap.",
+  "initializing": "Đang khởi tạo ..."
 }

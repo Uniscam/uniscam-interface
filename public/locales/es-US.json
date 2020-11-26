@@ -84,5 +84,12 @@
   "remove": "Eliminar",
   "claimScamToken": "Reclamar token de SCAM",
   "read-more-about-scam": "Leer más sobre SCAM",
-  "liquidityProviderFee": "Tarifa de proveedor de liquidez"
+  "liquidityProviderFee": "Tarifa de proveedor de liquidez",
+  "balanceTitle": "Equilibrar",
+  "claimScam": "Reclamar SCAM",
+  "claimYourScamTokens": "Reclama tus tokens SCAM",
+  "the-token-list-name-has-been-updated-to": "La lista de tokens \"{{name}}\" se ha actualizado a",
+  "switchToUnisave": "Cambiar a Unisave",
+  "earned-scam-tokens-represent-voting-shares-in-uniswap-governance": "Los tokens SCAM ganados representan acciones con derecho a voto en la gobernanza de Uniswap.",
+  "initializing": "Inicializando ..."
 }
