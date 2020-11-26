@@ -247,8 +247,9 @@ export default function AddLiquidity({
           </Text>
         </Row>
         <TYPE.italic fontSize={12} textAlign="left" padding={'8px 0 0 0 '}>
-          {`Output is estimated. If the price changes by more than ${allowedSlippage /
-            100}% your transaction will revert.`}
+          {`${t('output-is-estimated-if-the-price-changes-by-more-than')} ${allowedSlippage / 100}% ${t(
+            'your-transaction-will-revert'
+          )}`}
         </TYPE.italic>
       </AutoColumn>
     )
@@ -380,7 +381,7 @@ export default function AddLiquidity({
                 <LightCard padding="0px" borderRadius={'20px'}>
                   <RowBetween padding="1rem">
                     <TYPE.subHeader fontWeight={500} fontSize={14}>
-                      {noLiquidity ? 'Initial prices' : 'Prices'} {t('andPoolShare')}
+                      {noLiquidity ? t('initialPrices') : t('prices')} {t('andPoolShare')}
                     </TYPE.subHeader>
                   </RowBetween>{' '}
                   <LightCard padding="1rem" borderRadius={'20px'}>
@@ -416,7 +417,7 @@ export default function AddLiquidity({
                               {t('approving')} {currencies[Field.CURRENCY_A]?.symbol}
                             </Dots>
                           ) : (
-                            'Approve ' + currencies[Field.CURRENCY_A]?.symbol
+                            `${t('approve')} ` + currencies[Field.CURRENCY_A]?.symbol
                           )}
                         </ButtonPrimary>
                       )}

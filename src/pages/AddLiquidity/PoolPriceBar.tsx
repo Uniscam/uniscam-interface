@@ -8,6 +8,7 @@ import { ONE_BIPS } from '../../constants'
 import { useActiveWeb3React } from '../../hooks'
 import { Field } from '../../state/mint/actions'
 import { TYPE } from '../../theme'
+import { useTranslation } from 'react-i18next'
 
 export function PoolPriceBar({
   currencies,
@@ -21,6 +22,7 @@ export function PoolPriceBar({
   price?: Price
 }) {
   const theme = useContext(ThemeContext)
+  const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
   const format = (currency?: Currency) => {
     if (!currency) return ''
@@ -32,13 +34,13 @@ export function PoolPriceBar({
         <AutoColumn justify="center">
           <TYPE.black style={{ color: '#fff' }}>{price?.toSignificant(6) ?? '-'}</TYPE.black>
           <Text fontWeight={500} fontSize={14} color={theme.text4} pt={1}>
-            {format(currencies[Field.CURRENCY_B])} per {format(currencies[Field.CURRENCY_A])}
+            {format(currencies[Field.CURRENCY_B])} {t('per')} {format(currencies[Field.CURRENCY_A])}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
           <TYPE.black style={{ color: '#fff' }}>{price?.invert()?.toSignificant(6) ?? '-'}</TYPE.black>
           <Text fontWeight={500} fontSize={14} color={theme.text4} pt={1}>
-            {format(currencies[Field.CURRENCY_A])} per {format(currencies[Field.CURRENCY_B])}
+            {format(currencies[Field.CURRENCY_A])} {t('per')} {format(currencies[Field.CURRENCY_B])}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
@@ -49,7 +51,7 @@ export function PoolPriceBar({
             %
           </TYPE.black>
           <Text fontWeight={500} fontSize={14} color={theme.text4} pt={1}>
-            Share of Pool
+            {t('shareOfPool')}
           </Text>
         </AutoColumn>
       </AutoRow>

@@ -172,7 +172,7 @@ export default function SettingsTab() {
                 error={true}
                 padding={'12px'}
                 onClick={() => {
-                  if (window.prompt(`Please type the word "confirm" to enable expert mode.`) === 'confirm') {
+                  if (window.prompt(t('please-type-the-word-confirm-to-enable-expert-mode')) === 'confirm') {
                     toggleExpertMode()
                     setShowConfirmation(false)
                   }

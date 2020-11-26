@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-
+import { useTranslation } from 'react-i18next'
 import { RouteComponentProps } from 'react-router-dom'
 import { TYPE, StyledInternalLink, ExternalLink } from '../../theme'
 import { RowFixed, RowBetween } from '../../components/Row'
@@ -100,6 +100,7 @@ export default function VotePage({
   }
 }: RouteComponentProps<{ id: string }>) {
   const { account, chainId } = useActiveWeb3React()
+  const { t } = useTranslation()
 
   // get data for this specific proposal
   const proposalData: ProposalData | undefined = useProposalData(id)
@@ -151,7 +152,7 @@ export default function VotePage({
       <ProposalInfo gap="lg" justify="start">
         <RowBetween style={{ width: '100%' }}>
           <ArrowWrapper to="/vote">
-            <ArrowLeft size={20} /> All Proposals
+            <ArrowLeft size={20} /> {t('allProposals')}
           </ArrowWrapper>
           {proposalData && <ProposalStatus status={proposalData?.status ?? ''}>{proposalData?.status}</ProposalStatus>}
         </RowBetween>
@@ -172,7 +173,7 @@ export default function VotePage({
                 borderRadius="8px"
                 onClick={() => setShowModal(true)}
               >
-                Unlock Voting
+                {t('unlockVoting')}
               </ButtonPrimary>
             )}
           </RowBetween>
@@ -191,7 +192,7 @@ export default function VotePage({
                 setShowModal(true)
               }}
             >
-              Vote For
+              {t('voteFor')}
             </ButtonPrimary>
             <ButtonPrimary
               padding="8px"
@@ -201,7 +202,7 @@ export default function VotePage({
                 setShowModal(true)
               }}
             >
-              Vote Against
+              {t('voteAgainst')}
             </ButtonPrimary>
           </RowFixed>
         ) : (
@@ -228,7 +229,7 @@ export default function VotePage({
             <CardSection>
               <AutoColumn gap="md">
                 <WrapSmall>
-                  <TYPE.black fontWeight={600}>Against</TYPE.black>
+                  <TYPE.black fontWeight={600}>{t('against')}</TYPE.black>
                   <TYPE.black fontWeight={600}>
                     {proposalData?.againstCount.toLocaleString(undefined, { maximumFractionDigits: 0 })}
                   </TYPE.black>
@@ -241,7 +242,7 @@ export default function VotePage({
           </StyledDataCard>
         </CardWrapper>
         <AutoColumn gap="md">
-          <TYPE.mediumHeader fontWeight={600}>Details</TYPE.mediumHeader>
+          <TYPE.mediumHeader fontWeight={600}>{t('details')}</TYPE.mediumHeader>
           {proposalData?.details?.map((d, i) => {
             return (
               <DetailText key={i}>
@@ -260,13 +261,13 @@ export default function VotePage({
           })}
         </AutoColumn>
         <AutoColumn gap="md">
-          <TYPE.mediumHeader fontWeight={600}>Overview</TYPE.mediumHeader>
+          <TYPE.mediumHeader fontWeight={600}>{t('overview')}</TYPE.mediumHeader>
           <MarkDownWrapper>
             <ReactMarkdown source={proposalData?.description} />
           </MarkDownWrapper>
         </AutoColumn>
         <AutoColumn gap="md">
-          <TYPE.mediumHeader fontWeight={600}>Proposer</TYPE.mediumHeader>
+          <TYPE.mediumHeader fontWeight={600}>{t('proposer')}</TYPE.mediumHeader>
           <ExternalLink
             href={proposalData?.proposer && chainId ? getBscScanLink(chainId, proposalData?.proposer, 'address') : ''}
           >
