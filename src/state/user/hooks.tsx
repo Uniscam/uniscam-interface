@@ -17,7 +17,8 @@ import {
   updateUserDeadline,
   updateUserExpertMode,
   updateUserSlippageTolerance,
-  toggleURLWarning
+  toggleURLWarning,
+  toggleDirectSwap
 } from './actions'
 
 function serializeToken(token: Token): SerializedToken {
@@ -168,6 +169,21 @@ export function useURLWarningVisible(): boolean {
 export function useURLWarningToggle(): () => void {
   const dispatch = useDispatch()
   return useCallback(() => dispatch(toggleURLWarning()), [dispatch])
+}
+
+export function useIsDirectSwap(): boolean {
+  return useSelector((state: AppState) => state.user.directSwap)
+}
+
+export function useDirectSwapToggle(): [boolean, () => void] {
+  const dispatch = useDispatch<AppDispatch>()
+  const isDirectSwap = useIsDirectSwap()
+
+  const directSwapToggle = useCallback(() => {
+    dispatch(toggleDirectSwap())
+  }, [isDirectSwap, dispatch])
+
+  return [isDirectSwap, directSwapToggle]
 }
 
 /**
