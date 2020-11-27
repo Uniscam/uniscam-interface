@@ -11,6 +11,7 @@ import QuestionHelper from '../QuestionHelper'
 import { RowBetween, RowFixed } from '../Row'
 import FormattedPriceImpact from './FormattedPriceImpact'
 import { SectionBreak } from './styleds'
+import SwapRoute from './SwapRoute'
 
 const InfoLink = styled(ExternalLink)`
   width: 100%;
@@ -108,6 +109,7 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
                   </TYPE.black>
                   <QuestionHelper text={t('routing-through-these-tokens-resulted-in-the-scam-price-for-your-trade')} />
                 </RowFixed>
+                <SwapRoute trade={trade} />
               </AutoColumn>
             </>
           )}
