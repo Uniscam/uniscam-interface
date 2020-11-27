@@ -11,7 +11,7 @@ import { useActiveWeb3React } from './index'
 
 function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): Pair[] {
   const { chainId } = useActiveWeb3React()
-  const isDirectSwap = useIsDirectSwap();
+  const isDirectSwap = useIsDirectSwap()
 
   const bases: Token[] = chainId ? BASES_TO_CHECK_TRADES_AGAINST[chainId] : []
 
@@ -30,34 +30,35 @@ function useAllCommonPairs(currencyA?: Currency, currencyB?: Currency): Pair[] {
   const allPairCombinations: [Token, Token][] = useMemo(
     () =>
       tokenA && tokenB
-        ? isDirectSwap ? [[tokenA, tokenB]] :
-          [
-            // the direct pair
-            [tokenA, tokenB],
-            // token A against all bases
-            ...bases.map((base): [Token, Token] => [tokenA, base]),
-            // token B against all bases
-            ...bases.map((base): [Token, Token] => [tokenB, base]),
-            // each base against all bases
-            ...basePairs
-          ]
-            .filter((tokens): tokens is [Token, Token] => Boolean(tokens[0] && tokens[1]))
-            .filter(([t0, t1]) => t0.address !== t1.address)
-            .filter(([tokenA, tokenB]) => {
-              if (!chainId) return true
-              const customBases = CUSTOM_BASES[chainId]
-              if (!customBases) return true
+        ? isDirectSwap
+          ? [[tokenA, tokenB]]
+          : [
+              // the direct pair
+              [tokenA, tokenB],
+              // token A against all bases
+              ...bases.map((base): [Token, Token] => [tokenA, base]),
+              // token B against all bases
+              ...bases.map((base): [Token, Token] => [tokenB, base]),
+              // each base against all bases
+              ...basePairs
+            ]
+              .filter((tokens): tokens is [Token, Token] => Boolean(tokens[0] && tokens[1]))
+              .filter(([t0, t1]) => t0.address !== t1.address)
+              .filter(([tokenA, tokenB]) => {
+                if (!chainId) return true
+                const customBases = CUSTOM_BASES[chainId]
+                if (!customBases) return true
 
-              const customBasesA: Token[] | undefined = customBases[tokenA.address]
-              const customBasesB: Token[] | undefined = customBases[tokenB.address]
+                const customBasesA: Token[] | undefined = customBases[tokenA.address]
+                const customBasesB: Token[] | undefined = customBases[tokenB.address]
 
-              if (!customBasesA && !customBasesB) return true
+                if (!customBasesA && !customBasesB) return true
 
-              if (customBasesA && !customBasesA.find(base => tokenB.equals(base))) return false
-              if (customBasesB && !customBasesB.find(base => tokenA.equals(base))) return false
+                if (customBasesA && !customBasesA.find(base => tokenB.equals(base))) return false
+                if (customBasesB && !customBasesB.find(base => tokenA.equals(base))) return false
 
-              return true
-            })
+                return true
+              })
         : [],
     [isDirectSwap, tokenA, tokenB, bases, basePairs, chainId]
   )
