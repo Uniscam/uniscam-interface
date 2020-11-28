@@ -98,10 +98,12 @@ const Grid = styled.div`
   }
 `
 
-export default () => (
-  <BackgroundContainer>
-    <GridWrapper>
-      <Grid />
-    </GridWrapper>
-  </BackgroundContainer>
-)
+export default function Background() {
+  return (
+    <BackgroundContainer>
+      <GridWrapper>
+        <Grid />
+      </GridWrapper>
+    </BackgroundContainer>
+  )
+}
