@@ -181,7 +181,7 @@ export function useDirectSwapToggle(): [boolean, () => void] {
 
   const directSwapToggle = useCallback(() => {
     dispatch(toggleDirectSwap())
-  }, [isDirectSwap, dispatch])
+  }, [dispatch])
 
   return [isDirectSwap, directSwapToggle]
 }
