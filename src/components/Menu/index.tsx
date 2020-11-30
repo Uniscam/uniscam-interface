@@ -8,6 +8,8 @@ import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 
 import { ExternalLink } from '../../theme'
+import { useActiveWeb3React } from '../../hooks'
+import useInfoLink from '../../hooks/useInfoLink'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
@@ -90,6 +92,8 @@ export default function Menu() {
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
+  const { chainId } = useActiveWeb3React()
+  const infoLink = useInfoLink(chainId)
 
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
@@ -120,7 +124,7 @@ export default function Menu() {
             <Navigation size={14} />
             Telegram
           </MenuItem>
-          <MenuItem id="link" href="https://info.y3d.finance/">
+          <MenuItem id="link" href={infoLink}>
             <PieChart size={14} />
             Info
           </MenuItem>

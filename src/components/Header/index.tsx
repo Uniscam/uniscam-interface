@@ -32,6 +32,7 @@ import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
 import { darken } from 'polished'
 import I18nSwitch from '../I18nSwitch'
+import useInfoLink from '../../hooks/useInfoLink'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -299,6 +300,7 @@ export default function Header() {
 
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
+  const infoLink = useInfoLink(chainId)
 
   return (
     <HeaderFrame>
@@ -338,7 +340,7 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link`} href={'https://mining.y3d.finance/'}>
             {t('mining')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://info.y3d.finance/'}>
+          <StyledExternalLink id={`stake-nav-link`} href={infoLink}>
             {t('info')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
           <StyledExternalLink id={`stake-nav-link`} href={'https://www.binance.org/en/bridge'}>
