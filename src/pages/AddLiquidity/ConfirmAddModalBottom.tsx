@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Currency, CurrencyAmount, Fraction, Percent } from '@lychees/uniscam-sdk'
 import React from 'react'
 import { Text } from 'rebass'
@@ -7,6 +8,8 @@ import { RowBetween, RowFixed } from '../../components/Row'
 import CurrencyLogo from '../../components/CurrencyLogo'
 import { Field } from '../../state/mint/actions'
 import { TYPE } from '../../theme'
+import { useActiveWeb3React } from '../../hooks'
+import formatSymbol from '../../utils/formatSymbol'
 
 export function ConfirmAddModalBottom({
   noLiquidity,
@@ -24,40 +27,42 @@ export function ConfirmAddModalBottom({
   onAdd: () => void
 }) {
   const { t } = useTranslation()
+  const { chainId } = useActiveWeb3React()
+  const currencyA = currencies[Field.CURRENCY_A]
+  const currencyB = currencies[Field.CURRENCY_B]
 
   return (
     <>
       <RowBetween>
         <TYPE.body style={{ color: '#fff' }}>
-          {currencies[Field.CURRENCY_A]?.symbol} {t('deposited')}
+          {formatSymbol(currencyA!, chainId)} {t('deposited')}
         </TYPE.body>
         <RowFixed>
-          <CurrencyLogo currency={currencies[Field.CURRENCY_A]} style={{ marginRight: '8px' }} />
+          <CurrencyLogo currency={currencyA} style={{ marginRight: '8px' }} />
           <TYPE.body style={{ color: '#fff' }}>{parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)}</TYPE.body>
         </RowFixed>
       </RowBetween>
       <RowBetween>
         <TYPE.body style={{ color: '#fff' }}>
-          {currencies[Field.CURRENCY_B]?.symbol} {t('deposited')}
+          {formatSymbol(currencyB!, chainId)} {t('deposited')}
         </TYPE.body>
         <RowFixed>
-          <CurrencyLogo currency={currencies[Field.CURRENCY_B]} style={{ marginRight: '8px' }} />
+          <CurrencyLogo currency={currencyB} style={{ marginRight: '8px' }} />
           <TYPE.body style={{ color: '#fff' }}>{parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)}</TYPE.body>
         </RowFixed>
       </RowBetween>
       <RowBetween>
         <TYPE.body style={{ color: '#fff' }}>{t('rates')}</TYPE.body>
         <TYPE.body style={{ color: '#fff' }}>
-          {`1 ${currencies[Field.CURRENCY_A]?.symbol} = ${price?.toSignificant(4)} ${
-            currencies[Field.CURRENCY_B]?.symbol
-          }`}
+          {`1 ${formatSymbol(currencyA!, chainId)} = ${price?.toSignificant(4)} ${formatSymbol(currencyB!, chainId)}`}
         </TYPE.body>
       </RowBetween>
       <RowBetween style={{ justifyContent: 'flex-end' }}>
         <TYPE.body style={{ color: '#fff' }}>
-          {`1 ${currencies[Field.CURRENCY_B]?.symbol} = ${price?.invert().toSignificant(4)} ${
-            currencies[Field.CURRENCY_A]?.symbol
-          }`}
+          {`1 ${formatSymbol(currencyB!, chainId)} = ${price?.invert().toSignificant(4)} ${formatSymbol(
+            currencyA!,
+            chainId
+          )}`}
         </TYPE.body>
       </RowBetween>
       <RowBetween>

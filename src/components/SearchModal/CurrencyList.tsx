@@ -17,6 +17,7 @@ import { MouseoverTooltip } from '../Tooltip'
 import { FadedSpan, MenuItem } from './styleds'
 import Loader from '../Loader'
 import { isTokenOnList } from '../../utils'
+import formatSymbol from '../../utils/formatSymbol'
 
 function currencyKey(currency: Currency): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
@@ -118,7 +119,7 @@ function CurrencyRow({
       <CurrencyLogo currency={currency} size={'24px'} />
       <Column>
         <Text title={currency.name} fontWeight={500}>
-          {currency !== ETHER ? currency.symbol : currency.toDisplayableSymbol(chainId!)}
+          {formatSymbol(currency, chainId)}
         </Text>
         <FadedSpan>
           {!isOnSelectedList && customAdded ? (

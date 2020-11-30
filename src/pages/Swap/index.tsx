@@ -48,6 +48,7 @@ import Loader from '../../components/Loader'
 
 import { filterTokens } from '../../components/SearchModal/filtering'
 import { useAllTokens } from '../../hooks/Tokens'
+import formatSymbol from '../../utils/formatSymbol'
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -67,7 +68,7 @@ export default function Swap() {
     setDismissTokenWarning(true)
   }, [])
 
-  const { account } = useActiveWeb3React()
+  const { account, chainId } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
 
   // toggle wallet when disconnected
@@ -209,8 +210,8 @@ export default function Swap() {
               ? 'Swap w/o Send + recipient'
               : 'Swap w/ Send',
           label: [
-            trade?.inputAmount?.currency?.symbol,
-            trade?.outputAmount?.currency?.symbol,
+            formatSymbol(trade?.inputAmount?.currency, chainId),
+            formatSymbol(trade?.outputAmount?.currency, chainId),
             getTradeVersion(trade)
           ].join('/')
         })
@@ -224,7 +225,17 @@ export default function Swap() {
           txHash: undefined
         })
       })
-  }, [tradeToConfirm, account, priceImpactWithoutFee, recipient, recipientAddress, showConfirm, swapCallback, trade])
+  }, [
+    tradeToConfirm,
+    account,
+    priceImpactWithoutFee,
+    recipient,
+    recipientAddress,
+    showConfirm,
+    swapCallback,
+    trade,
+    chainId
+  ])
 
   // errors
   const [showInverted, setShowInverted] = useState<boolean>(false)
@@ -418,7 +429,7 @@ export default function Swap() {
                   ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
                     t('approved')
                   ) : (
-                    `${t('approve')} ` + currencies[Field.INPUT]?.symbol
+                    `${t('approve')} ` + formatSymbol(currencies[Field.INPUT], chainId)
                   )}
                 </ButtonConfirmed>
                 <ButtonError

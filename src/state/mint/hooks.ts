@@ -21,6 +21,7 @@ import { AppDispatch, AppState } from '../index'
 import { tryParseAmount } from '../swap/hooks'
 import { useCurrencyBalances } from '../wallet/hooks'
 import { Field, typeInput } from './actions'
+import formatSymbol from '../../utils/formatSymbol'
 
 const ZERO = JSBI.BigInt(0)
 
@@ -182,11 +183,13 @@ export function useDerivedMintInfo(
   const { [Field.CURRENCY_A]: currencyAAmount, [Field.CURRENCY_B]: currencyBAmount } = parsedAmounts
 
   if (currencyAAmount && currencyBalances?.[Field.CURRENCY_A]?.lessThan(currencyAAmount)) {
-    error = 'Insufficient ' + currencies[Field.CURRENCY_A]?.symbol + ' balance'
+    const symbol = formatSymbol(currencies[Field.CURRENCY_A], chainId)
+    error = 'Insufficient ' + symbol + ' balance'
   }
 
   if (currencyBAmount && currencyBalances?.[Field.CURRENCY_B]?.lessThan(currencyBAmount)) {
-    error = 'Insufficient ' + currencies[Field.CURRENCY_B]?.symbol + ' balance'
+    const symbol = formatSymbol(currencies[Field.CURRENCY_B], chainId)
+    error = 'Insufficient ' + symbol + ' balance'
   }
 
   return {
