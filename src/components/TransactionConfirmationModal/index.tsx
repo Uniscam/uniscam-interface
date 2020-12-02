@@ -25,7 +25,7 @@ const Section = styled(AutoColumn)`
 
 const BottomSection = styled(Section)`
   background-color: ${({ theme }) => theme.bg6};
-  color: #fff;
+  color: ${({ theme }) => theme.text1};
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `
@@ -120,11 +120,13 @@ export function ConfirmationModalContent({
   topContent: () => React.ReactNode
   bottomContent: () => React.ReactNode
 }) {
+  const theme = useContext(ThemeContext)
+
   return (
     <Wrapper>
       <Section>
         <RowBetween>
-          <Text fontWeight={500} fontSize={20} style={{ color: '#fff' }}>
+          <Text fontWeight={500} fontSize={20} style={{ color: theme.text1 }}>
             {title}
           </Text>
           <CloseIcon onClick={onDismiss} />
