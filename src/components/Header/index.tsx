@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ChainId, TokenAmount, ETHER } from '@lychees/uniscam-sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
@@ -33,6 +34,7 @@ import usePrevious from '../../hooks/usePrevious'
 import { darken } from 'polished'
 import I18nSwitch from '../I18nSwitch'
 import useInfoLink from '../../hooks/useInfoLink'
+import useNetworkType from '../../hooks/useNetworkType'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -301,6 +303,7 @@ export default function Header() {
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
   const infoLink = useInfoLink(chainId)
+  const networkType = useNetworkType(chainId)
 
   return (
     <HeaderFrame>
@@ -343,9 +346,11 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link`} href={infoLink}>
             {t('info')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://www.binance.org/en/bridge'}>
-            {t('bridge')} <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
+          {networkType === 'BSC' && (
+            <StyledExternalLink id={`stake-nav-link`} href={'https://www.binance.org/en/bridge'}>
+              {t('bridge')} <span style={{ fontSize: '11px' }}>↗</span>
+            </StyledExternalLink>
+          )}
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
