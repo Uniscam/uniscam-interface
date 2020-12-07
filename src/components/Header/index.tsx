@@ -34,6 +34,7 @@ import usePrevious from '../../hooks/usePrevious'
 import { darken } from 'polished'
 import I18nSwitch from '../I18nSwitch'
 import useInfoLink from '../../hooks/useInfoLink'
+import useMiningLink from '../../hooks/useMiningLink'
 import useNetworkType from '../../hooks/useNetworkType'
 
 const HeaderFrame = styled.div`
@@ -303,6 +304,7 @@ export default function Header() {
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
   const infoLink = useInfoLink(chainId)
+  const miningLink = useMiningLink(chainId)
   const networkType = useNetworkType(chainId)
 
   return (
@@ -340,7 +342,7 @@ export default function Header() {
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
             Vote
           </StyledNavLink> */}
-          <StyledExternalLink id={`stake-nav-link`} href={'https://mining.y3d.finance/'}>
+          <StyledExternalLink id={`stake-nav-link`} href={miningLink}>
             {t('mining')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
           <StyledExternalLink id={`stake-nav-link`} href={infoLink}>
