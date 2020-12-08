@@ -131,7 +131,7 @@ export default function ClaimModal() {
               {userClaimData?.flags?.isUser && (
                 <RowBetween>
                   <TYPE.subHeader color="white">{t('user')}</TYPE.subHeader>
-                  <TYPE.subHeader color="white">{USER_AMOUNT} SCAM</TYPE.subHeader>
+                  <TYPE.subHeader color="white">{USER_AMOUNT} Save</TYPE.subHeader>
                 </RowBetween>
               )}
             </CardSection>
