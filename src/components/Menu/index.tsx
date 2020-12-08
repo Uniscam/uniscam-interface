@@ -109,7 +109,7 @@ export default function Menu() {
             About
           </MenuItem>
           <MenuItem id="link">
-            <BookOpen size={14} href="https://medium.com/y3dscam/introduction-to-unisave-6ca3a85a0693" />
+            <BookOpen size={14} href="https://unisave.gitbook.io/unisave-doc/" />
             Docs
           </MenuItem>
           <MenuItem id="link" href="https://github.com/Uniscam">
