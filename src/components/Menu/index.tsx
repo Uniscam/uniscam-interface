@@ -104,12 +104,12 @@ export default function Menu() {
 
       {open && (
         <MenuFlyout>
-          <MenuItem id="link">
-            <Info size={14} href="https://medium.com/y3dscam/introduction-to-unisave-6ca3a85a0693" />
+          <MenuItem id="link" href="https://medium.com/y3dscam/introduction-to-unisave-6ca3a85a0693">
+            <Info size={14} />
             About
           </MenuItem>
-          <MenuItem id="link">
-            <BookOpen size={14} href="https://unisave.gitbook.io/unisave-doc/" />
+          <MenuItem id="link" href="https://unisave.gitbook.io/unisave-doc/">
+            <BookOpen size={14} />
             Docs
           </MenuItem>
           <MenuItem id="link" href="https://github.com/Uniscam">
