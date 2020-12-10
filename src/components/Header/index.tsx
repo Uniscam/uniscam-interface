@@ -105,6 +105,9 @@ const HeaderElementWrap = styled.div`
 
 const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, auto);
     width: 100%;
   `};
 `
@@ -113,7 +116,7 @@ const HeaderLinks = styled(Row)`
   justify-content: center;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem 0 1rem 1rem;
-    justify-content: flex-end;
+    grid-row: 1;
 `};
 `
 
@@ -409,8 +412,8 @@ export default function Header() {
         </HeaderElement>
         <HeaderElementWrap>
           <Settings />
+          <I18nSwitch />
           <Menu />
-          <I18nSwitch></I18nSwitch>
         </HeaderElementWrap>
       </HeaderControls>
     </HeaderFrame>
