@@ -45,13 +45,10 @@ const HeaderFrame = styled.div`
   width: 100%;
   top: 0;
   position: relative;
-  padding-left: 110px;
-  padding-right: 110px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding: 18px 80px;
   /* background-color: rgba(8, 8, 8, 0.25); */
   z-index: 2;
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1120px) and (min-width: 961px) {
     padding: 18px 20px;
   }
   ${({ theme }) => theme.mediaWidth.upToMedium`
@@ -116,7 +113,7 @@ const HeaderRow = styled(RowFixed)`
     grid-template-rows: repeat(2, auto);
     width: 100%;
   `};
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1120px) and (min-width: 961px) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -131,7 +128,7 @@ const HeaderLinks = styled(Row)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     grid-row: 1;
   `};
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1120px) and (min-width: 961px) {
     padding-top: 6px;
   }
 `
