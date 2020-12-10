@@ -51,6 +51,9 @@ const HeaderFrame = styled.div`
   padding-bottom: 18px;
   /* background-color: rgba(8, 8, 8, 0.25); */
   z-index: 2;
+  @media only screen and (max-width: 1024px) {
+    padding: 18px 20px;
+  }
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
     padding: 0 1rem;
@@ -113,6 +116,11 @@ const HeaderRow = styled(RowFixed)`
     grid-template-rows: repeat(2, auto);
     width: 100%;
   `};
+  @media only screen and (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 const HeaderLinks = styled(Row)`
@@ -123,6 +131,9 @@ const HeaderLinks = styled(Row)`
   ${({ theme }) => theme.mediaWidth.upToSmall`
     grid-row: 1;
   `};
+  @media only screen and (max-width: 1024px) {
+    padding-top: 6px;
+  }
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
