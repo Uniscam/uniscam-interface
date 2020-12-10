@@ -105,6 +105,9 @@ const HeaderElementWrap = styled.div`
 
 const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
+    width: 100%;
+  `};
+  ${({ theme }) => theme.mediaWidth.upToSmall`
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: repeat(2, auto);
@@ -116,8 +119,10 @@ const HeaderLinks = styled(Row)`
   justify-content: center;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem 0 1rem 1rem;
+  `};
+  ${({ theme }) => theme.mediaWidth.upToSmall`
     grid-row: 1;
-`};
+  `};
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
