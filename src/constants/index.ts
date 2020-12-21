@@ -91,13 +91,7 @@ export const UNI: { [chainId in ChainId]: Token } = {
     'BEST',
     'Unisave'
   ),
-  [ChainId.HECO_MAINNET]: new Token(
-    ChainId.HECO_MAINNET,
-    '0x0000000000000000000000000000000000000000',
-    18,
-    'HT',
-    'Unisave'
-  ) // TODO: Add y3d Token
+  [ChainId.HECO_MAINNET]: null! // TODO: Add y3d Token
 }
 
 // TODO: specify merkle distributor for mainnet
