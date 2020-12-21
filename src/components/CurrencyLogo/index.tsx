@@ -56,30 +56,12 @@ export default function CurrencyLogo({
   }, [currency, uriLocations, chainId])
   if (currency === ETHER) {
     if (chainId === ChainId.BSC_MAINNET || chainId === ChainId.BSC_TESTNET) {
-      return (
-        <StyledEthereumLogo
-          src={BinanceLogo}
-          size={size}
-          style={style}
-        />
-      )
+      return <StyledEthereumLogo src={BinanceLogo} size={size} style={style} />
     }
     if (chainId === ChainId.HECO_MAINNET) {
-      return (
-        <StyledEthereumLogo
-          src={HTLogo}
-          size={size}
-          style={style}
-        />
-      )
+      return <StyledEthereumLogo src={HTLogo} size={size} style={style} />
     }
-    return (
-      <StyledEthereumLogo
-        src={EthereumLogo}
-        size={size}
-        style={style}
-      />
-    )
+    return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
