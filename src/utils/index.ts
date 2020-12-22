@@ -18,14 +18,15 @@ export function isAddress(value: any): string | false {
 }
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
-  1: 'etherscan.io',
-  3: 'ropsten.etherscan.io',
-  4: 'rinkeby.etherscan.io',
-  5: 'goerli.etherscan.io',
-  42: 'kovan.etherscan.io',
-  56: 'bscscan.com',
-  97: 'testnet.bscscan.com',
-  128: 'scan.hecochain.com'
+  [ChainId.MAINNET]: 'etherscan.io',
+  [ChainId.ROPSTEN]: 'ropsten.etherscan.io',
+  [ChainId.RINKEBY]: 'rinkeby.etherscan.io',
+  [ChainId.GÖRLI]: 'goerli.etherscan.io',
+  [ChainId.KOVAN]: 'kovan.etherscan.io',
+  [ChainId.BSC_MAINNET]: 'bscscan.com',
+  [ChainId.BSC_TESTNET]: 'testnet.bscscan.com',
+  [ChainId.HECO_MAINNET]: 'scan.hecochain.com',
+  [ChainId.MATIC_MAINNET]: 'explorer-mainnet.maticvigil.com'
 }
 
 export function getScanLink(
@@ -61,7 +62,8 @@ const SCAN_NAMES: { [chainId in ChainId]: string } = {
   [ChainId.KOVAN]: 'Etherscan',
   [ChainId.BSC_MAINNET]: 'BscScan',
   [ChainId.BSC_TESTNET]: 'BscScan',
-  [ChainId.HECO_MAINNET]: 'HecoScan'
+  [ChainId.HECO_MAINNET]: 'HecoScan',
+  [ChainId.MATIC_MAINNET]: 'Matic Explorer'
 }
 
 export function getScanName(chainId: ChainId): string {

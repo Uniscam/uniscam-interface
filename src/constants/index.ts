@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ChainId, JSBI, Percent, Token, WETH } from '@lychees/uniscam-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
@@ -91,8 +92,8 @@ export const UNI: { [chainId in ChainId]: Token } = {
     'BEST',
     'Unisave'
   ),
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  [ChainId.HECO_MAINNET]: null! // TODO: Add y3d Token
+  [ChainId.HECO_MAINNET]: null!, // TODO: Add Heco mainnet y3d Token
+  [ChainId.MATIC_MAINNET]: null! // TODO: Add Matic mainnet y3d Token
 }
 
 // TODO: specify merkle distributor for mainnet
@@ -108,7 +109,8 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
   [ChainId.BSC_MAINNET]: [WETH[ChainId.BSC_MAINNET]],
   [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]],
-  [ChainId.HECO_MAINNET]: [WETH[ChainId.HECO_MAINNET]]
+  [ChainId.HECO_MAINNET]: [WETH[ChainId.HECO_MAINNET]],
+  [ChainId.MATIC_MAINNET]: [WETH[ChainId.MATIC_MAINNET]]
 }
 
 // used to construct intermediary pairs for trading
@@ -116,7 +118,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR],
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_DAI, BUSD, B_USDT],
-  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]]
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
 /**
@@ -135,7 +138,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_USDT, BUSD, B_DAI],
   [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI],
-  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]]
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -144,7 +148,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_USDT, BUSD, B_DAI],
   [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI],
-  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]]
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
