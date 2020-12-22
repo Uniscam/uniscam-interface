@@ -73,7 +73,7 @@
   "decimals": "Zecimale",
   "enterTokenCont": "Setează o adresă de token pentru a continua",
   "invertedRate": "Cursul de schimb inversat",
-  "viewOnBscscan": "Vizualizare pe BscScan",
+  "viewOnBscscan": "Vizualizare pe {{ name }}",
   "back": "Înapoi",
   "new-to-binance-smart-chain": "Sunteți nou în lanțul inteligent Binance?",
   "yourScamBreakdown": "Defalcarea dvs. înșelătorie",

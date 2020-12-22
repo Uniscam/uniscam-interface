@@ -12,7 +12,7 @@ import { useModalOpen, useToggleSelfClaimModal } from '../../state/application/h
 import { useClaimCallback, useUserClaimData, useUserUnclaimedAmount } from '../../state/claim/hooks'
 import { useUserHasSubmittedClaim } from '../../state/transactions/hooks'
 import { CloseIcon, CustomLightSpinner, ExternalLink, TYPE, UniTokenAnimated } from '../../theme'
-import { getBscScanLink } from '../../utils'
+import { getScanLink, getScanName } from '../../utils'
 import { ButtonPrimary } from '../Button'
 import { AutoColumn, ColumnCenter } from '../Column'
 import Confetti from '../Confetti'
@@ -198,8 +198,8 @@ export default function ClaimModal() {
               <TYPE.subHeader color="black">{t('confirm-this-transaction-in-your-wallet')}</TYPE.subHeader>
             )}
             {attempting && claimSubmitted && !claimConfirmed && chainId && claimTxn?.hash && (
-              <ExternalLink href={getBscScanLink(chainId, claimTxn?.hash, 'transaction')} style={{ zIndex: 99 }}>
-                {t('viewTransactionOnEtherscan')}
+              <ExternalLink href={getScanLink(chainId, claimTxn?.hash, 'transaction')} style={{ zIndex: 99 }}>
+                {t('viewTransactionOnEtherscan', { name: getScanName(chainId) })}
               </ExternalLink>
             )}
           </AutoColumn>

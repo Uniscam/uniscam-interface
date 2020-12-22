@@ -91,6 +91,7 @@ export const UNI: { [chainId in ChainId]: Token } = {
     'BEST',
     'Unisave'
   ),
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   [ChainId.HECO_MAINNET]: null! // TODO: Add y3d Token
 }
 

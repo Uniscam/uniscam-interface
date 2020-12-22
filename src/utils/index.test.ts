@@ -3,7 +3,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { TokenAmount, Token, ChainId, Percent, JSBI } from '@lychees/uniscam-sdk'
 
 import {
-  getBscScanLink,
+  getScanLink,
   calculateSlippageAmount,
   isAddress,
   shortenAddress,
@@ -12,24 +12,24 @@ import {
 } from '.'
 
 describe('utils', () => {
-  describe('#getBscScanLink', () => {
+  describe('#getScanLink', () => {
     it('correct for tx', () => {
-      expect(getBscScanLink(1, 'abc', 'transaction')).toEqual('https://etherscan.io/tx/abc')
+      expect(getScanLink(1, 'abc', 'transaction')).toEqual('https://etherscan.io/tx/abc')
     })
     it('correct for token', () => {
-      expect(getBscScanLink(1, 'abc', 'token')).toEqual('https://etherscan.io/token/abc')
+      expect(getScanLink(1, 'abc', 'token')).toEqual('https://etherscan.io/token/abc')
     })
     it('correct for address', () => {
-      expect(getBscScanLink(1, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
+      expect(getScanLink(1, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
     })
     it('unrecognized chain id defaults to mainnet', () => {
-      expect(getBscScanLink(2, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
+      expect(getScanLink(2, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
     })
     it('ropsten', () => {
-      expect(getBscScanLink(3, 'abc', 'address')).toEqual('https://ropsten.etherscan.io/address/abc')
+      expect(getScanLink(3, 'abc', 'address')).toEqual('https://ropsten.etherscan.io/address/abc')
     })
     it('enum', () => {
-      expect(getBscScanLink(ChainId.RINKEBY, 'abc', 'address')).toEqual('https://rinkeby.etherscan.io/address/abc')
+      expect(getScanLink(ChainId.RINKEBY, 'abc', 'address')).toEqual('https://rinkeby.etherscan.io/address/abc')
     })
   })
 

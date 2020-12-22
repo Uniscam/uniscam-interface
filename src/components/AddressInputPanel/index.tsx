@@ -6,7 +6,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { ExternalLink, TYPE } from '../../theme'
 import { AutoColumn } from '../Column'
 import { RowBetween } from '../Row'
-import { getBscScanLink } from '../../utils'
+import { getScanLink, getScanName } from '../../utils'
 
 const InputPanel = styled.div`
   ${({ theme }) => theme.flexColumnNoWrap}
@@ -104,8 +104,8 @@ export default function AddressInputPanel({
                 {t('recipient')}
               </TYPE.black>
               {address && chainId && (
-                <ExternalLink href={getBscScanLink(chainId, name ?? address, 'address')} style={{ fontSize: '14px' }}>
-                  ({t('viewOnBscscan')})
+                <ExternalLink href={getScanLink(chainId, name ?? address, 'address')} style={{ fontSize: '14px' }}>
+                  ({t('viewOnBscscan', { name: getScanName(chainId) })})
                 </ExternalLink>
               )}
             </RowBetween>

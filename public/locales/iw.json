@@ -73,7 +73,7 @@
   "decimals": "ספרות עשרויות",
   "enterTokenCont": "הכניסו כתובת טוקן כדי להמשיך",
   "invertedRate": "שער חליפין הפוך",
-  "viewOnBscscan": "צפה ב- BscScan",
+  "viewOnBscscan": "צפה ב- {{ name }}",
   "back": "חזור",
   "new-to-binance-smart-chain": "חדש בשרשרת החכמה של Binance?",
   "yourScamBreakdown": "התמוטטות ההונאה שלך",

@@ -28,7 +28,7 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   128: 'scan.hecochain.com'
 }
 
-export function getBscScanLink(
+export function getScanLink(
   chainId: ChainId,
   data: string,
   type: 'transaction' | 'token' | 'block' | 'address'
@@ -50,6 +50,22 @@ export function getBscScanLink(
       return `${prefix}/address/${data}`
     }
   }
+}
+
+const SCAN_NAMES: { [chainId in ChainId]: string } = {
+  [ChainId.MAINNET]: 'Etherscan',
+  [ChainId.MAINNET]: 'Etherscan',
+  [ChainId.ROPSTEN]: 'Etherscan',
+  [ChainId.RINKEBY]: 'Etherscan',
+  [ChainId.GÖRLI]: 'Etherscan',
+  [ChainId.KOVAN]: 'Etherscan',
+  [ChainId.BSC_MAINNET]: 'BscScan',
+  [ChainId.BSC_TESTNET]: 'BscScan',
+  [ChainId.HECO_MAINNET]: 'HecoScan'
+}
+
+export function getScanName(chainId: ChainId): string {
+  return SCAN_NAMES[chainId]
 }
 
 // shorten the checksummed version of the input address to have 0x + 4 characters at start and end

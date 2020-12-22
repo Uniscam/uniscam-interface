@@ -16,7 +16,7 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 import { useActiveWeb3React } from '../../hooks'
 import { UNI, ZERO_ADDRESS } from '../../constants'
 import { JSBI, TokenAmount, ChainId } from '@lychees/uniscam-sdk'
-import { shortenAddress, getBscScanLink } from '../../utils'
+import { shortenAddress, getScanLink } from '../../utils'
 import Loader from '../../components/Loader'
 import FormattedCurrencyAmount from '../../components/FormattedCurrencyAmount'
 
@@ -192,7 +192,7 @@ export default function Vote() {
                 </TYPE.body>
                 <AddressButton>
                   <StyledExternalLink
-                    href={getBscScanLink(ChainId.MAINNET, userDelegatee, 'address')}
+                    href={getScanLink(ChainId.MAINNET, userDelegatee, 'address')}
                     style={{ margin: '0 4px' }}
                   >
                     {userDelegatee === account ? 'Self' : shortenAddress(userDelegatee)}

@@ -9,7 +9,7 @@ import { TYPE, CloseIcon, CustomLightSpinner } from '../../theme'
 import { ArrowUpCircle } from 'react-feather'
 
 import Circle from '../../assets/images/blue-loader.svg'
-import { getBscScanLink } from '../../utils'
+import { getScanLink, getScanName } from '../../utils'
 import { ExternalLink } from '../../theme/components'
 
 const ConfirmOrLoadingWrapper = styled.div`
@@ -66,8 +66,8 @@ export function SubmittedView({
       <AutoColumn gap="100px" justify={'center'}>
         {children}
         {chainId && hash && (
-          <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')} style={{ marginLeft: '4px' }}>
-            <TYPE.subHeader>{t('viewTransactionOnEtherscan')}</TYPE.subHeader>
+          <ExternalLink href={getScanLink(chainId, hash, 'transaction')} style={{ marginLeft: '4px' }}>
+            <TYPE.subHeader>{t('viewTransactionOnEtherscan', { name: getScanName(chainId) })}</TYPE.subHeader>
           </ExternalLink>
         )}
       </AutoColumn>

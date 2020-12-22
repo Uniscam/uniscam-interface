@@ -85,7 +85,7 @@
   "priceChange": "Scostamento del prezzo previsto",
   "forAtLeast": "per almeno ",
   "invertedRate": "Tasso di cambio invertito",
-  "viewOnBscscan": "Visualizza su BscScan",
+  "viewOnBscscan": "Visualizza su {{ name }}",
   "back": "Indietro",
   "new-to-binance-smart-chain": "Nuovo su Binance Smart Chain?",
   "yourScamBreakdown": "La tua analisi delle truffe",

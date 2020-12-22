@@ -13,7 +13,7 @@ import { ButtonPrimary } from '../Button'
 import { AutoColumn, ColumnCenter } from '../Column'
 import Circle from '../../assets/images/blue-loader.svg'
 
-import { getBscScanLink } from '../../utils'
+import { getScanLink, getScanName } from '../../utils'
 import { useActiveWeb3React } from '../../hooks'
 
 const Wrapper = styled.div`
@@ -92,9 +92,9 @@ function TransactionSubmittedContent({
             {t('transactionSubmitted')}
           </Text>
           {chainId && hash && (
-            <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')}>
+            <ExternalLink href={getScanLink(chainId, hash, 'transaction')}>
               <Text fontWeight={500} fontSize={14} color={theme.primary1}>
-                {t('viewOnBscscan')}
+                {t('viewOnBscscan', { name: getScanName(chainId) })}
               </Text>
             </ExternalLink>
           )}

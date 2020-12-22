@@ -85,7 +85,7 @@
   "priceChange": "Trượt giá dự kiến",
   "forAtLeast": "cho ít nhất ",
   "invertedRate": "Tỷ giá hối đoái ngược",
-  "viewOnBscscan": "Xem trên BscScan",
+  "viewOnBscscan": "Xem trên {{ name }}",
   "back": "Trở lại",
   "new-to-binance-smart-chain": "Bạn mới sử dụng Chuỗi thông minh Binance?",
   "yourScamBreakdown": "Sự cố SCAM của bạn",

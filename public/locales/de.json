@@ -86,7 +86,7 @@
   "priceChange": "Geschätzter Wechselkursrutsch",
   "forAtLeast": "für mindestens ",
   "brokenToken": "Der ausgewählte Token ist nicht kompatibel mit Uniswap V1. Liquidität hinzufügen wird zu nicht mehr zugänglichen Token führen!",
-  "viewOnBscscan": "Ansicht auf BscScan",
+  "viewOnBscscan": "Ansicht auf {{ name }}",
   "back": "Zurück",
   "new-to-binance-smart-chain": "Neu bei Binance Smart Chain?",
   "yourScamBreakdown": "Ihre SCAM-Aufschlüsselung",
