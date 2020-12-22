@@ -11,7 +11,8 @@ const V1_FACTORY_ADDRESSES: { [chainId in ChainId]: string } = {
   [ChainId.KOVAN]: '0xD3E51Ef092B2845f10401a0159B2B96e8B6c3D30',
   [ChainId.BSC_MAINNET]: '',
   [ChainId.BSC_TESTNET]: '',
-  [ChainId.HECO_MAINNET]: ''
+  [ChainId.HECO_MAINNET]: '',
+  [ChainId.MATIC_MAINNET]: ''
 }
 
 const V1_FACTORY_INTERFACE = new Interface(V1_FACTORY_ABI)

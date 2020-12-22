@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import BinanceLogo from '../../assets/images/bnb.svg'
 import HTLogo from '../../assets/images/ht.png'
+import MATICLogo from '../../assets/images/matic.png'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
@@ -65,6 +66,9 @@ export default function CurrencyLogo({
     }
     if (chainId === ChainId.HECO_MAINNET) {
       return <StyledEthereumLogo src={HTLogo} size={size} style={style} />
+    }
+    if (chainId === ChainId.MATIC_MAINNET) {
+      return <StyledEthereumLogo src={MATICLogo} size={size} style={style} />
     }
     return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
   }

@@ -12,16 +12,29 @@ type FormaticSupportedChains = Extract<
   | ChainId.BSC_MAINNET
   | ChainId.BSC_TESTNET
   | ChainId.HECO_MAINNET
+  | ChainId.MATIC_MAINNET
 >
 
-const CHAIN_ID_NETWORK_ARGUMENT: { readonly [chainId in FormaticSupportedChains]: string | undefined } = {
+type FormaticCustomNode = {
+  rpcUrl: string
+  chainId: number
+}
+type ChainIdNetworkArgument = {
+  readonly [chainId in FormaticSupportedChains]: FormaticCustomNode | string | undefined
+}
+// Docs: https://docs.fortmatic.com/web3-integration/network-configuration
+const CHAIN_ID_NETWORK_ARGUMENT: ChainIdNetworkArgument = {
   [ChainId.MAINNET]: undefined,
   [ChainId.ROPSTEN]: 'ropsten',
   [ChainId.RINKEBY]: 'rinkeby',
   [ChainId.KOVAN]: 'kovan',
-  [ChainId.BSC_MAINNET]: 'mainnet',
-  [ChainId.BSC_TESTNET]: 'testnet',
-  [ChainId.HECO_MAINNET]: 'hecochain'
+  [ChainId.BSC_MAINNET]: 'mainnet', // Maybe unsupported
+  [ChainId.BSC_TESTNET]: 'testnet', // Maybe unsupported
+  [ChainId.HECO_MAINNET]: 'hecochain', // Maybe unsupported
+  [ChainId.MATIC_MAINNET]: {
+    rpcUrl: 'https://alpha.ethereum.matic.network/',
+    chainId: ChainId.MATIC_MAINNET
+  }
 }
 
 export class FortmaticConnector extends FortmaticConnectorCore {
