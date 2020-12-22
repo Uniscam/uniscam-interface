@@ -97,5 +97,6 @@
   "toEstimated": "ל (משוער)",
   "deposit-scam-v2-lp-tokens": "הפקד את SCAM-V2 LP אסימונים",
   "step-1-get-scam-v2-liquidity-tokens": "שלב 1. השג אסימוני נזילות של SCAM-V2",
-  "yourUnclaimedScam": "ה SCAM שלא נתבע לך"
+  "yourUnclaimedScam": "ה SCAM שלא נתבע לך",
+  "enableAnimation": "Enable animation"
 }

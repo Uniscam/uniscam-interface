@@ -97,5 +97,6 @@
   "toEstimated": "Către (estimat)",
   "deposit-scam-v2-lp-tokens": "Depuneți jetoane SCAM-V2 LP",
   "step-1-get-scam-v2-liquidity-tokens": "Pasul 1. Obțineți jetoane de lichiditate SCAM-V2",
-  "yourUnclaimedScam": "SCAM-ul tău nerevendicat"
+  "yourUnclaimedScam": "SCAM-ul tău nerevendicat",
+  "enableAnimation": "Enable animation"
 }

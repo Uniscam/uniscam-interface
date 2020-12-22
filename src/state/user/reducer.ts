@@ -14,7 +14,8 @@ import {
   updateUserSlippageTolerance,
   updateUserDeadline,
   toggleURLWarning,
-  toggleDirectSwap
+  toggleDirectSwap,
+  toggleEnableAnimation
 } from './actions'
 
 const currentTimestamp = () => new Date().getTime()
@@ -51,6 +52,7 @@ export interface UserState {
   URLWarningVisible: boolean
 
   directSwap: boolean
+  enableAnimation: boolean
 }
 
 function pairKey(token0Address: string, token1Address: string) {
@@ -67,7 +69,8 @@ export const initialState: UserState = {
   pairs: {},
   timestamp: currentTimestamp(),
   URLWarningVisible: true,
-  directSwap: true
+  directSwap: true,
+  enableAnimation: false
 }
 
 export default createReducer(initialState, builder =>
@@ -141,5 +144,8 @@ export default createReducer(initialState, builder =>
     })
     .addCase(toggleDirectSwap, state => {
       state.directSwap = !state.directSwap
+    })
+    .addCase(toggleEnableAnimation, state => {
+      state.enableAnimation = !state.enableAnimation
     })
 )

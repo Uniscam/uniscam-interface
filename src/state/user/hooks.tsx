@@ -18,7 +18,8 @@ import {
   updateUserExpertMode,
   updateUserSlippageTolerance,
   toggleURLWarning,
-  toggleDirectSwap
+  toggleDirectSwap,
+  toggleEnableAnimation
 } from './actions'
 
 function serializeToken(token: Token): SerializedToken {
@@ -184,6 +185,21 @@ export function useDirectSwapToggle(): [boolean, () => void] {
   }, [dispatch])
 
   return [isDirectSwap, directSwapToggle]
+}
+
+export function useEnableAnimation(): boolean {
+  return useSelector((state: AppState) => state.user.enableAnimation)
+}
+
+export function useEnableAnimationToggle(): [boolean, () => void] {
+  const dispatch = useDispatch<AppDispatch>()
+  const enableAnimation = useEnableAnimation()
+
+  const enableAnimationToggle = useCallback(() => {
+    dispatch(toggleEnableAnimation())
+  }, [dispatch])
+
+  return [enableAnimation, enableAnimationToggle]
 }
 
 /**

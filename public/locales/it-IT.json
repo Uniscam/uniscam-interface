@@ -109,5 +109,6 @@
   "toEstimated": "A (stimato)",
   "deposit-scam-v2-lp-tokens": "Deposita gettoni LP SCAM-V2",
   "step-1-get-scam-v2-liquidity-tokens": "Passaggio 1. Ottieni i token di liquidità SCAM-V2",
-  "yourUnclaimedScam": "Il tuo SCAM non rivendicato"
+  "yourUnclaimedScam": "Il tuo SCAM non rivendicato",
+  "enableAnimation": "Enable animation"
 }

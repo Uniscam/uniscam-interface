@@ -360,5 +360,6 @@
   "voteAgainst": "Vote Against",
   "details": "Details",
   "overview": "Overview",
-  "proposer": "Proposer"
+  "proposer": "Proposer",
+  "enableAnimation": "Enable animation"
 }

@@ -275,7 +275,7 @@
   "missingDependencies": "缺少依賴項",
   "missingLiquidityAmount": "流動資金不足",
   "off": "關",
-  "on": "上",
+  "on": "开",
   "only-use-this-mode-if-you-know-what-you-are-doing": "如果您知道自己在做什麼，請僅使用此模式。",
   "or-the-transaction-will-revert": "否則交易將還原。",
   "output-is-estimated-you-will-receive-at-least": "估計輸出。\n您至少會收到",
@@ -360,5 +360,6 @@
   "wallet-address-or-ens-name": "錢包地址或ENS名稱",
   "when-you-withdraw-the-contract-will-automagically-claim-scam-on-your-behalf": "當您退出時，合同將代表您自動索賠SCAM！",
   "your-transaction-will-revert": "您的交易將恢復。",
-  "yourLiquidityDeposits": "您的流動資金存款"
+  "yourLiquidityDeposits": "您的流動資金存款",
+  "enableAnimation": "啟用動畫"
 }

@@ -12,7 +12,8 @@ import {
   useExpertModeManager,
   useUserTransactionTTL,
   useUserSlippageTolerance,
-  useDirectSwapToggle
+  useDirectSwapToggle,
+  useEnableAnimationToggle
 } from '../../state/user/hooks'
 import { TYPE } from '../../theme'
 import { ButtonError } from '../Button'
@@ -106,7 +107,7 @@ const MenuFlyout = styled.span`
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     min-width: 18.125rem;
-    top: -22rem;
+    top: -29rem;
   `};
 `
 
@@ -140,6 +141,7 @@ export default function SettingsTab() {
   const [expertMode, toggleExpertMode] = useExpertModeManager()
 
   const [darkMode, toggleDarkMode] = useDarkModeManager()
+  const [enableAnimation, toggleEnableAnimation] = useEnableAnimationToggle()
 
   const [directSwap, toggleDirectSwap] = useDirectSwapToggle()
 
@@ -246,6 +248,14 @@ export default function SettingsTab() {
                 </TYPE.black>
               </RowFixed>
               <Toggle isActive={darkMode} toggle={toggleDarkMode} />
+            </RowBetween>
+            <RowBetween>
+              <RowFixed>
+                <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
+                  {t('enableAnimation')}
+                </TYPE.black>
+              </RowFixed>
+              <Toggle isActive={enableAnimation} toggle={toggleEnableAnimation} />
             </RowBetween>
             <Text fontWeight={600} fontSize={14}>
               Other Settings

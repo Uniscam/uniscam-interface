@@ -110,5 +110,6 @@
   "toEstimated": "Zu (geschätzt)",
   "deposit-scam-v2-lp-tokens": "Hinterlegen Sie SCAM-V2 LP-Token",
   "step-1-get-scam-v2-liquidity-tokens": "Schritt 1. Holen Sie sich SCAM-V2 Liquidity Token",
-  "yourUnclaimedScam": "Dein nicht beanspruchter SCAM"
+  "yourUnclaimedScam": "Dein nicht beanspruchter SCAM",
+  "enableAnimation": "Animation aktivieren"
 }

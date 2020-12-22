@@ -275,7 +275,7 @@
   "missingDependencies": "缺少依赖项",
   "missingLiquidityAmount": "流动资金不足",
   "off": "关",
-  "on": "上",
+  "on": "开",
   "only-use-this-mode-if-you-know-what-you-are-doing": "如果您知道自己在做什么，请仅使用此模式。",
   "or-the-transaction-will-revert": "否则交易将还原。",
   "output-is-estimated-you-will-receive-at-least": "估计输出。\n您至少会收到",
@@ -360,5 +360,6 @@
   "unlockVoting": "解锁投票",
   "updateDelegation": "更新委托",
   "voteAgainst": "反对",
-  "voteFor": "为...投票"
+  "voteFor": "为...投票",
+  "enableAnimation": "开启动画"
 }
