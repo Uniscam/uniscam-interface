@@ -10,8 +10,13 @@ import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
 import { useActiveWeb3React } from '../../hooks'
 
-const getTokenLogoURL = (chainId: number | undefined, address: string) => {
-  if (chainId === 56 || chainId === 97) return `https://tokens.bscswap.com/images/${address}.png`
+const getTokenLogoURL = (chainId: number | undefined, address: string): string => {
+  if (chainId === ChainId.BSC_MAINNET || chainId === ChainId.BSC_TESTNET) {
+    return `https://tokens.bscswap.com/images/${address}.png`
+  }
+  if (chainId === ChainId.HECO_MAINNET) {
+    return `https://raw.githubusercontent.com/Uniscam/token-icons/master/heco-mainnet/${address.toLowerCase()}.png`
+  }
 
   return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
 }
