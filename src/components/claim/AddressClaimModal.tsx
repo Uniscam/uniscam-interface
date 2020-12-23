@@ -110,7 +110,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
                 <CloseIcon onClick={wrappedOnDismiss} style={{ zIndex: 99 }} stroke="white" />
               </RowBetween>
               <TYPE.white fontWeight={700} fontSize={36}>
-                {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+                {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
               </TYPE.white>
             </CardSection>
             <Break />
@@ -133,7 +133,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               mt="1rem"
               onClick={onClaim}
             >
-              {t('claim')} SCAM
+              {t('claim')} Y3D
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>
@@ -160,7 +160,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               </TYPE.largeHeader>
               {!claimConfirmed && (
                 <Text fontSize={36} color={'#fe2500'} fontWeight={800}>
-                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
                 </Text>
               )}
               {parsedAddress && (

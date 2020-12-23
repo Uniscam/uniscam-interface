@@ -222,7 +222,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
             <TYPE.black>
               {hypotheticalRewardRate.multiply((60 * 60 * 24 * 7).toString()).toSignificant(4, { groupSeparator: ',' })}{' '}
-              SCAM / week
+              Y3D / week
             </TYPE.black>
           </HypotheticalRewardRate>
 
@@ -250,7 +250,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>{t('depositingLiquidity')}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} SCAM-V2</TYPE.body>
+            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} Y3D-V2</TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
@@ -259,7 +259,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
             <TYPE.body fontSize={20}>
-              {t('deposited')} {parsedAmount?.toSignificant(4)} SCAM-V2
+              {t('deposited')} {parsedAmount?.toSignificant(4)} Y3D-V2
             </TYPE.body>
           </AutoColumn>
         </SubmittedView>

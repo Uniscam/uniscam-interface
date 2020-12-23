@@ -48,7 +48,7 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
         .getReward({ gasLimit: 350000 })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Claim accumulated SCAM rewards`
+            summary: `Claim accumulated Y3D rewards`
           })
           setHash(response.hash)
         })
@@ -80,7 +80,7 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
               <TYPE.body fontWeight={600} fontSize={36}>
                 {stakingInfo?.earnedAmount?.toSignificant(6)}
               </TYPE.body>
-              <TYPE.body>{t('unclaimed')} SCAM</TYPE.body>
+              <TYPE.body>{t('unclaimed')} Y3D</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
@@ -95,7 +95,7 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.body fontSize={20}>
-              {t('claiming')} {stakingInfo?.earnedAmount?.toSignificant(6)} SCAM
+              {t('claiming')} {stakingInfo?.earnedAmount?.toSignificant(6)} Y3D
             </TYPE.body>
           </AutoColumn>
         </LoadingView>
@@ -104,7 +104,7 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{t('claimed')} SCAM!</TYPE.body>
+            <TYPE.body fontSize={20}>{t('claimed')} Y3D!</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

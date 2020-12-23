@@ -147,7 +147,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           <TYPE.white> {t('poolRate')} </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.multiply(`${60 * 60 * 24 * 7}`)
-            ?.toFixed(0, { groupSeparator: ',' })} SCAM / week`}</TYPE.white>
+            ?.toFixed(0, { groupSeparator: ',' })} Y3D / week`}</TYPE.white>
         </RowBetween>
       </StatContainer>
 
@@ -165,7 +165,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
               </span>
               {`${stakingInfo.rewardRate
                 ?.multiply(`${60 * 60 * 24 * 7}`)
-                ?.toSignificant(4, { groupSeparator: ',' })} SCAM / week`}
+                ?.toSignificant(4, { groupSeparator: ',' })} Y3D / week`}
             </TYPE.black>
           </BottomSection>
         </>

@@ -384,7 +384,7 @@ export default function Header() {
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? <Dots>{t('claiming')} SCAM</Dots> : t('claimScam')}
+                  {claimTxn && !claimTxn?.receipt ? <Dots>{t('claiming')} Y3D</Dots> : t('claimScam')}
                 </TYPE.white>
               </UNIAmount>
               <CardNoise />
@@ -411,7 +411,7 @@ export default function Header() {
                     </TYPE.main>
                   </HideSmall>
                 )}
-                SCAM
+                Y3D
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>

@@ -183,7 +183,7 @@ export default function Manage({
               {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24 * 7).toString())
                 ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
-              {' SCAM / week'}
+              {' Y3D / week'}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -262,7 +262,7 @@ export default function Manage({
                     {stakingInfo?.stakedAmount?.toSignificant(6) ?? '-'}
                   </TYPE.white>
                   <TYPE.white>
-                    SCAM-V2 {formatSymbol(currencyA!, chainId)}-{formatSymbol(currencyB!, chainId)}
+                    Y3D-V2 {formatSymbol(currencyA!, chainId)}-{formatSymbol(currencyB!, chainId)}
                   </TYPE.white>
                 </RowBetween>
               </AutoColumn>
@@ -306,7 +306,7 @@ export default function Manage({
                   {stakingInfo?.rewardRate
                     ?.multiply((60 * 60 * 24 * 7).toString())
                     ?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}
-                  {' SCAM / week'}
+                  {' Y3D / week'}
                 </TYPE.black>
               </RowBetween>
             </AutoColumn>
@@ -341,7 +341,7 @@ export default function Manage({
         )}
         {!userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
           <TYPE.main>
-            {userLiquidityUnstaked.toSignificant(6)} SCAM-V2 LP {t('tokensAvailable')}
+            {userLiquidityUnstaked.toSignificant(6)} Y3D-V2 LP {t('tokensAvailable')}
           </TYPE.main>
         )}
       </PositionInfo>

@@ -100,11 +100,11 @@ export default function ClaimModal() {
             <CardNoise />
             <CardSection gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={500}>{t('claim')} SCAM</TYPE.white>
+                <TYPE.white fontWeight={500}>{t('claim')} Y3D</TYPE.white>
                 <CloseIcon onClick={toggleClaimModal} style={{ zIndex: 99 }} color="white" />
               </RowBetween>
               <TYPE.white fontWeight={700} fontSize={36}>
-                {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+                {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
               </TYPE.white>
             </CardSection>
             <Break />
@@ -112,7 +112,7 @@ export default function ClaimModal() {
               {userClaimData?.flags?.isSOCKS && (
                 <RowBetween>
                   <TYPE.subHeader color="white">{t('socks')}</TYPE.subHeader>
-                  <TYPE.subHeader color="white">{SOCKS_AMOUNT} SCAM</TYPE.subHeader>
+                  <TYPE.subHeader color="white">{SOCKS_AMOUNT} Y3D</TYPE.subHeader>
                 </RowBetween>
               )}
               {userClaimData?.flags?.isLP &&
@@ -124,7 +124,7 @@ export default function ClaimModal() {
                       {unclaimedAmount
                         .subtract(new TokenAmount(unclaimedAmount.token, nonLPAmount))
                         .toFixed(0, { groupSeparator: ',' })}{' '}
-                      SCAM
+                      Y3D
                     </TYPE.subHeader>
                   </RowBetween>
                 )}
@@ -150,7 +150,7 @@ export default function ClaimModal() {
               mt="1rem"
               onClick={onClaim}
             >
-              {t('claim')} SCAM
+              {t('claim')} Y3D
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>
@@ -177,7 +177,7 @@ export default function ClaimModal() {
               </TYPE.largeHeader>
               {!claimConfirmed && (
                 <Text fontSize={36} color={'#fe2500'} fontWeight={800}>
-                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
                 </Text>
               )}
             </AutoColumn>
