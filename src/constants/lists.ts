@@ -1,4 +1,4 @@
-// the Uniswap Default token list lives here
+// the Unisave Default token list lives here
 export const DEFAULT_TOKEN_LIST_URL =
   'https://unpkg.com/@lychees/default-token-list@1.1.2/build/uniscam-default.tokenlist.json'
 
