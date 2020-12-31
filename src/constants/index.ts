@@ -66,6 +66,15 @@ export const T_USDT = new Token(
   'Tether USD'
 )
 
+// HECO
+export const H_T_DAI = new Token(
+  ChainId.HECO_TESTNET,
+  '0xde76ccae3413c7af312251e99803b1433d3187f4',
+  18,
+  'DAI',
+  'Dai Token'
+)
+
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
 
@@ -93,6 +102,7 @@ export const UNI: { [chainId in ChainId]: Token } = {
     'Unisave'
   ),
   [ChainId.HECO_MAINNET]: null!, // TODO: Add Heco mainnet y3d Token
+  [ChainId.HECO_TESTNET]: null!, // TODO: Add Heco mainnet y3d Token
   [ChainId.MATIC_MAINNET]: null! // TODO: Add Matic mainnet y3d Token
 }
 
@@ -110,6 +120,7 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.BSC_MAINNET]: [WETH[ChainId.BSC_MAINNET]],
   [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]],
   [ChainId.HECO_MAINNET]: [WETH[ChainId.HECO_MAINNET]],
+  [ChainId.HECO_TESTNET]: [WETH[ChainId.HECO_TESTNET]],
   [ChainId.MATIC_MAINNET]: [WETH[ChainId.MATIC_MAINNET]]
 }
 
@@ -139,6 +150,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_USDT, BUSD, B_DAI],
   [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI],
   [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.HECO_TESTNET]: [...WETH_ONLY[ChainId.HECO_MAINNET], H_T_DAI],
   [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
@@ -148,7 +160,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_USDT, BUSD, B_DAI],
   [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI],
-  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET], H_T_DAI],
   [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 

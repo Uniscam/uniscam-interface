@@ -298,6 +298,7 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
   [ChainId.BSC_MAINNET]: 'BSC Mainnet',
   [ChainId.BSC_TESTNET]: 'BSC Testnet',
   [ChainId.HECO_MAINNET]: 'HECO Mainnet',
+  [ChainId.HECO_TESTNET]: 'HECO Testnet',
   [ChainId.MATIC_MAINNET]: 'Matic Mainnet'
 }
 
