@@ -81,8 +81,7 @@ export default function Swap() {
   // get custom setting values for user
   let [allowedSlippage] = useUserSlippageTolerance()
 
-  if (chainId === 128)
-    allowedSlippage = 4000
+  if (chainId === 128) allowedSlippage = 4000
 
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
