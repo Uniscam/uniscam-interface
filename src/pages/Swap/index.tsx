@@ -79,7 +79,10 @@ export default function Swap() {
   const [isExpertMode] = useExpertModeManager()
 
   // get custom setting values for user
-  const [allowedSlippage] = useUserSlippageTolerance()
+  let [allowedSlippage] = useUserSlippageTolerance()
+
+  if (chainId === 128)
+    allowedSlippage = 4000
 
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
