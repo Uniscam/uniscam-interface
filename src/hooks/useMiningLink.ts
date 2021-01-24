@@ -7,6 +7,7 @@ export const useMiningLink = (chainId?: ChainId): string => {
   if (!chainId) return oldLink
   if (type === 'ETH') return 'https://eth-mining.unisave.exchange'
   if (type === 'BSC') return 'https://bsc-mining.unisave.exchange'
+  if (type === 'HECO') return 'https://heco-mining.unisave.exchange'
   return oldLink
 }
 

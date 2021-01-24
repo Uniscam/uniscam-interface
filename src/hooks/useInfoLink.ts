@@ -7,6 +7,7 @@ export const useInfoLink = (chainId?: ChainId): string => {
   if (!chainId) return oldInfoLink
   if (type === 'ETH') return 'https://eth-info.unisave.exchange'
   if (type === 'BSC') return 'https://bsc-info.unisave.exchange'
+  if (type === 'HECO') return 'https://heco-info.unisave.exchange'
   return oldInfoLink
 }
 
