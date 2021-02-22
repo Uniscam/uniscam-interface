@@ -46,8 +46,6 @@ import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
 
-import { filterTokens } from '../../components/SearchModal/filtering'
-import { useAllTokens } from '../../hooks/Tokens'
 import formatSymbol from '../../utils/formatSymbol'
 
 export default function Swap() {
@@ -281,19 +279,6 @@ export default function Swap() {
   const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [
     onCurrencySelection
   ])
-
-  // filter token, search BEST
-  const allTokens = useAllTokens()
-  const filteredTokens: Token[] = useMemo(() => {
-    return filterTokens(Object.values(allTokens), 'Y3D')
-  }, [allTokens])
-
-  // set OUTPUT for BEST Token
-  useEffect(() => {
-    if (filteredTokens.length) {
-      onCurrencySelection(Field.OUTPUT, filteredTokens[0])
-    }
-  }, [onCurrencySelection, filteredTokens])
 
   return (
     <>
