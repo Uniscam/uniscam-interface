@@ -15,6 +15,8 @@ import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
+import { useActiveWeb3React } from '../../hooks'
+import formatSymbol from '../../utils/formatSymbol'
 
 const StatContainer = styled.div`
   display: flex;
@@ -91,6 +93,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
 
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
   const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
+  const { chainId } = useActiveWeb3React()
 
   // let returnOverMonth: Percent = new Percent('0')
   let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
@@ -121,7 +124,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
       <TopSection>
         <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={24} />
         <TYPE.white fontWeight={600} fontSize={24} style={{ marginLeft: '8px' }}>
-          {currency0.symbol}-{currency1.symbol}
+          {formatSymbol(currency0, chainId)}-{formatSymbol(currency1, chainId)}
         </TYPE.white>
 
         <StyledInternalLink to={`/best/${currencyId(currency0)}/${currencyId(currency1)}`} style={{ width: '100%' }}>
@@ -144,7 +147,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           <TYPE.white> {t('poolRate')} </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.multiply(`${60 * 60 * 24 * 7}`)
-            ?.toFixed(0, { groupSeparator: ',' })} SCAM / week`}</TYPE.white>
+            ?.toFixed(0, { groupSeparator: ',' })} Y3D / week`}</TYPE.white>
         </RowBetween>
       </StatContainer>
 
@@ -162,7 +165,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
               </span>
               {`${stakingInfo.rewardRate
                 ?.multiply(`${60 * 60 * 24 * 7}`)
-                ?.toSignificant(4, { groupSeparator: ',' })} SCAM / week`}
+                ?.toSignificant(4, { groupSeparator: ',' })} Y3D / week`}
             </TYPE.black>
           </BottomSection>
         </>

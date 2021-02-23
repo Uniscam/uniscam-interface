@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ChainId, JSBI, Percent, Token, WETH } from '@lychees/uniscam-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
@@ -12,6 +13,7 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
+// Ether Tokens
 export const DAI = new Token(ChainId.MAINNET, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, 'DAI', 'Dai Stablecoin')
 export const USDC = new Token(ChainId.MAINNET, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, 'USDC', 'USD//C')
 export const USDT = new Token(ChainId.MAINNET, '0xdAC17F958D2ee523a2206206994597C13D831ec7', 6, 'USDT', 'Tether USD')
@@ -19,40 +21,7 @@ export const COMP = new Token(ChainId.MAINNET, '0xc00e94Cb662C3520282E6f57172140
 export const MKR = new Token(ChainId.MAINNET, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 18, 'MKR', 'Maker')
 export const AMPL = new Token(ChainId.MAINNET, '0xD46bA6D942050d489DBd938a2C909A5d5039A161', 9, 'AMPL', 'Ampleforth')
 export const WBTC = new Token(ChainId.MAINNET, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 18, 'WBTC', 'Wrapped BTC')
-
-// TODO this is only approximate, it's actually based on blocks
-export const PROPOSAL_LENGTH_IN_DAYS = 7
-
-export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
-
-const UNI_ADDRESS = '0xc7fD9aE2cf8542D71186877e21107E1F3A0b55ef'
-export const UNI: { [chainId in ChainId]: Token } = {
-  [ChainId.MAINNET]: new Token(ChainId.MAINNET, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
-  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
-  [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
-  [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
-  [ChainId.KOVAN]: new Token(ChainId.KOVAN, UNI_ADDRESS, 18, 'UNI', 'Uniswap'),
-  [ChainId.BSC_MAINNET]: new Token(
-    ChainId.BSC_MAINNET,
-    '0x12e2fcfA079Fc23aE82Ab82707b402410321103f',
-    18,
-    'BEST',
-    'Unisave'
-  ),
-  [ChainId.BSC_TESTNET]: new Token(
-    ChainId.BSC_TESTNET,
-    '0x12e2fcfA079Fc23aE82Ab82707b402410321103f',
-    18,
-    'BEST',
-    'Unisave'
-  )
-}
-
-// TODO: specify merkle distributor for mainnet
-export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
-  [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
-}
-
+// BSC Tokens
 export const B_DAI = new Token(
   ChainId.BSC_MAINNET,
   '0x1AF3F329e8BE154074D8769D1FFa4eE058B1DBc3',
@@ -97,6 +66,51 @@ export const T_USDT = new Token(
   'Tether USD'
 )
 
+// HECO
+export const H_T_DAI = new Token(
+  ChainId.HECO_TESTNET,
+  '0xde76ccae3413c7af312251e99803b1433d3187f4',
+  18,
+  'DAI',
+  'Dai Token'
+)
+
+// TODO this is only approximate, it's actually based on blocks
+export const PROPOSAL_LENGTH_IN_DAYS = 7
+
+export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'
+
+const UNI_ADDRESS = '0xc7fD9aE2cf8542D71186877e21107E1F3A0b55ef'
+export const UNI: { [chainId in ChainId]: Token } = {
+  [ChainId.MAINNET]: new Token(ChainId.MAINNET, UNI_ADDRESS, 18, 'UNI', 'Unisave'),
+  [ChainId.RINKEBY]: new Token(ChainId.RINKEBY, UNI_ADDRESS, 18, 'UNI', 'Unisave'),
+  [ChainId.ROPSTEN]: new Token(ChainId.ROPSTEN, UNI_ADDRESS, 18, 'UNI', 'Unisave'),
+  [ChainId.GÖRLI]: new Token(ChainId.GÖRLI, UNI_ADDRESS, 18, 'UNI', 'Unisave'),
+  [ChainId.KOVAN]: new Token(ChainId.KOVAN, UNI_ADDRESS, 18, 'UNI', 'Unisave'),
+  [ChainId.BSC_MAINNET]: new Token(
+    ChainId.BSC_MAINNET,
+    '0x12e2fcfA079Fc23aE82Ab82707b402410321103f',
+    18,
+    'BEST',
+    'Unisave'
+  ),
+  [ChainId.BSC_TESTNET]: new Token(
+    ChainId.BSC_TESTNET,
+    '0x12e2fcfA079Fc23aE82Ab82707b402410321103f',
+    18,
+    'BEST',
+    'Unisave'
+  ),
+  [ChainId.HECO_MAINNET]: null!, // TODO: Add Heco mainnet y3d Token
+  [ChainId.HECO_TESTNET]: null!, // TODO: Add Heco mainnet y3d Token
+  [ChainId.MATIC_MAINNET]: null! // TODO: Add Matic mainnet y3d Token
+}
+
+// TODO: specify merkle distributor for mainnet
+export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
+  [ChainId.MAINNET]: '0x090D4613473dEE047c3f2706764f49E0821D256e'
+}
+
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
   [ChainId.ROPSTEN]: [WETH[ChainId.ROPSTEN]],
@@ -104,14 +118,19 @@ const WETH_ONLY: ChainTokenList = {
   [ChainId.GÖRLI]: [WETH[ChainId.GÖRLI]],
   [ChainId.KOVAN]: [WETH[ChainId.KOVAN]],
   [ChainId.BSC_MAINNET]: [WETH[ChainId.BSC_MAINNET]],
-  [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]]
+  [ChainId.BSC_TESTNET]: [WETH[ChainId.BSC_TESTNET]],
+  [ChainId.HECO_MAINNET]: [WETH[ChainId.HECO_MAINNET]],
+  [ChainId.HECO_TESTNET]: [WETH[ChainId.HECO_TESTNET]],
+  [ChainId.MATIC_MAINNET]: [WETH[ChainId.MATIC_MAINNET]]
 }
 
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT, COMP, MKR],
-  [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_DAI, BUSD, B_USDT]
+  [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_DAI, BUSD, B_USDT],
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
 /**
@@ -129,7 +148,10 @@ export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_USDT, BUSD, B_DAI],
-  [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI]
+  [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI],
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.HECO_TESTNET]: [...WETH_ONLY[ChainId.HECO_TESTNET], H_T_DAI],
+  [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -137,7 +159,9 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
   [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, USDC, USDT],
   [ChainId.BSC_MAINNET]: [...WETH_ONLY[ChainId.BSC_MAINNET], B_USDT, BUSD, B_DAI],
-  [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI]
+  [ChainId.BSC_TESTNET]: [...WETH_ONLY[ChainId.BSC_TESTNET], T_USDT, T_BUSD, T_DAI],
+  [ChainId.HECO_MAINNET]: [...WETH_ONLY[ChainId.HECO_MAINNET]],
+  [ChainId.MATIC_MAINNET]: [...WETH_ONLY[ChainId.MATIC_MAINNET]]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

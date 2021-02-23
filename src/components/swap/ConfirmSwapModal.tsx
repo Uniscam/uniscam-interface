@@ -1,6 +1,9 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { currencyEquals, Trade } from '@lychees/uniscam-sdk'
 import React, { useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useActiveWeb3React } from '../../hooks'
+import formatSymbol from '../../utils/formatSymbol'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,
   TransactionErrorContent
@@ -78,10 +81,12 @@ export default function ConfirmSwapModal({
     ) : null
   }, [allowedSlippage, onConfirm, showAcceptChanges, swapErrorMessage, trade])
 
+  const { chainId } = useActiveWeb3React()
   // text to show while loading
-  const pendingText = `Swapping ${trade?.inputAmount?.toSignificant(6)} ${
-    trade?.inputAmount?.currency?.symbol
-  } for ${trade?.outputAmount?.toSignificant(6)} ${trade?.outputAmount?.currency?.symbol}`
+  const pendingText = `Swapping ${trade?.inputAmount?.toSignificant(6)} ${formatSymbol(
+    trade?.inputAmount?.currency!,
+    chainId
+  )} for ${trade?.outputAmount?.toSignificant(6)} ${formatSymbol(trade?.outputAmount?.currency!, chainId)}`
 
   const confirmationContent = useCallback(
     () =>

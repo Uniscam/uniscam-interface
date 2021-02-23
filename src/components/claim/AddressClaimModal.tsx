@@ -20,7 +20,7 @@ import Confetti from '../Confetti'
 import { CardNoise, CardBGImage, CardBGImageSmaller } from '../earn/styled'
 import { useIsTransactionPending } from '../../state/transactions/hooks'
 import { TokenAmount } from '@lychees/uniscam-sdk'
-import { getBscScanLink, shortenAddress } from '../../utils'
+import { getScanLink, getScanName, shortenAddress } from '../../utils'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
@@ -110,7 +110,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
                 <CloseIcon onClick={wrappedOnDismiss} style={{ zIndex: 99 }} stroke="white" />
               </RowBetween>
               <TYPE.white fontWeight={700} fontSize={36}>
-                {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+                {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
               </TYPE.white>
             </CardSection>
             <Break />
@@ -133,7 +133,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               mt="1rem"
               onClick={onClaim}
             >
-              {t('claim')} SCAM
+              {t('claim')} Y3D
             </ButtonPrimary>
           </AutoColumn>
         </ContentWrapper>
@@ -160,7 +160,7 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               </TYPE.largeHeader>
               {!claimConfirmed && (
                 <Text fontSize={36} color={'#fe2500'} fontWeight={800}>
-                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+                  {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
                 </Text>
               )}
               {parsedAddress && (
@@ -186,8 +186,8 @@ export default function AddressClaimModal({ isOpen, onDismiss }: { isOpen: boole
               <TYPE.subHeader color="black">{t('confirm-this-transaction-in-your-wallet')}</TYPE.subHeader>
             )}
             {attempting && hash && !claimConfirmed && chainId && hash && (
-              <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')} style={{ zIndex: 99 }}>
-                {t('viewTransactionOnEtherscan')}
+              <ExternalLink href={getScanLink(chainId, hash, 'transaction')} style={{ zIndex: 99 }}>
+                {t('viewTransactionOnEtherscan', { name: getScanName(chainId) })}
               </ExternalLink>
             )}
           </AutoColumn>

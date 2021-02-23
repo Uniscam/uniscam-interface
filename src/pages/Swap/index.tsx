@@ -46,8 +46,7 @@ import AppBody from '../AppBody'
 import { ClickableText } from '../Pool/styleds'
 import Loader from '../../components/Loader'
 
-import { filterTokens } from '../../components/SearchModal/filtering'
-import { useAllTokens } from '../../hooks/Tokens'
+import formatSymbol from '../../utils/formatSymbol'
 
 export default function Swap() {
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -67,7 +66,7 @@ export default function Swap() {
     setDismissTokenWarning(true)
   }, [])
 
-  const { account } = useActiveWeb3React()
+  const { account, chainId } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
 
   // toggle wallet when disconnected
@@ -78,7 +77,9 @@ export default function Swap() {
   const [isExpertMode] = useExpertModeManager()
 
   // get custom setting values for user
-  const [allowedSlippage] = useUserSlippageTolerance()
+  let [allowedSlippage] = useUserSlippageTolerance()
+
+  if (chainId === 128) allowedSlippage = 0
 
   // swap state
   const { independentField, typedValue, recipient } = useSwapState()
@@ -209,8 +210,8 @@ export default function Swap() {
               ? 'Swap w/o Send + recipient'
               : 'Swap w/ Send',
           label: [
-            trade?.inputAmount?.currency?.symbol,
-            trade?.outputAmount?.currency?.symbol,
+            formatSymbol(trade?.inputAmount?.currency, chainId),
+            formatSymbol(trade?.outputAmount?.currency, chainId),
             getTradeVersion(trade)
           ].join('/')
         })
@@ -224,7 +225,17 @@ export default function Swap() {
           txHash: undefined
         })
       })
-  }, [tradeToConfirm, account, priceImpactWithoutFee, recipient, recipientAddress, showConfirm, swapCallback, trade])
+  }, [
+    tradeToConfirm,
+    account,
+    priceImpactWithoutFee,
+    recipient,
+    recipientAddress,
+    showConfirm,
+    swapCallback,
+    trade,
+    chainId
+  ])
 
   // errors
   const [showInverted, setShowInverted] = useState<boolean>(false)
@@ -268,19 +279,6 @@ export default function Swap() {
   const handleOutputSelect = useCallback(outputCurrency => onCurrencySelection(Field.OUTPUT, outputCurrency), [
     onCurrencySelection
   ])
-
-  // filter token, search BEST
-  const allTokens = useAllTokens()
-  const filteredTokens: Token[] = useMemo(() => {
-    return filterTokens(Object.values(allTokens), 'SCAM')
-  }, [allTokens])
-
-  // set OUTPUT for BEST Token
-  useEffect(() => {
-    if (filteredTokens.length) {
-      onCurrencySelection(Field.OUTPUT, filteredTokens[0])
-    }
-  }, [onCurrencySelection, filteredTokens])
 
   return (
     <>
@@ -418,7 +416,7 @@ export default function Swap() {
                   ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
                     t('approved')
                   ) : (
-                    `${t('approve')} ` + currencies[Field.INPUT]?.symbol
+                    `${t('approve')} ` + formatSymbol(currencies[Field.INPUT], chainId)
                   )}
                 </ButtonConfirmed>
                 <ButtonError

@@ -11,7 +11,7 @@ import { X, ArrowUpCircle } from 'react-feather'
 import { ButtonPrimary } from '../Button'
 import Circle from '../../assets/images/blue-loader.svg'
 import { useVoteCallback, useUserVotes } from '../../state/governance/hooks'
-import { getBscScanLink } from '../../utils'
+import { getScanLink, getScanName } from '../../utils'
 import { ExternalLink } from '../../theme/components'
 import { TokenAmount } from '@lychees/uniscam-sdk'
 
@@ -137,8 +137,8 @@ export default function VoteModal({ isOpen, onDismiss, proposalId, support }: Vo
               <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
             </AutoColumn>
             {chainId && (
-              <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')} style={{ marginLeft: '4px' }}>
-                <TYPE.subHeader>{t('viewTransactionOnEtherscan')}</TYPE.subHeader>
+              <ExternalLink href={getScanLink(chainId, hash, 'transaction')} style={{ marginLeft: '4px' }}>
+                <TYPE.subHeader>{t('viewTransactionOnEtherscan', { name: getScanName(chainId) })}</TYPE.subHeader>
               </ExternalLink>
             )}
           </AutoColumn>

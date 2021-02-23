@@ -86,8 +86,15 @@ const Grid = styled.div`
   height: 150vh;
   margin-top: -75vh;
   margin-left: -100vw;
-  animation: fly 3s linear;
-  animation-iteration-count: infinite;
+  ${({ theme }) =>
+    theme.enableAnimation &&
+    `
+    animation: fly 3s linear;
+    animation-iteration-count: infinite;
+  `}
+  ${({ theme }) =>
+    !theme.enableAnimation && `transform: perspective(300px) rotateX(80deg) translateY(50px);`}
+
   @keyframes fly {
     0% {
       transform: perspective(300px) rotateX(80deg) translateY(0%);
@@ -98,10 +105,12 @@ const Grid = styled.div`
   }
 `
 
-export default () => (
-  <BackgroundContainer>
-    <GridWrapper>
-      <Grid />
-    </GridWrapper>
-  </BackgroundContainer>
-)
+export default function Background() {
+  return (
+    <BackgroundContainer>
+      <GridWrapper>
+        <Grid />
+      </GridWrapper>
+    </BackgroundContainer>
+  )
+}

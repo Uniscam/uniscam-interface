@@ -18,7 +18,7 @@ import { TokenAmount, JSBI } from '@lychees/uniscam-sdk'
 import { useTokenBalance } from '../../state/wallet/hooks'
 import { useActiveWeb3React } from '../../hooks'
 import { UNI, ZERO_ADDRESS, PROPOSAL_LENGTH_IN_DAYS } from '../../constants'
-import { isAddress, getBscScanLink } from '../../utils'
+import { isAddress, getScanLink } from '../../utils'
 
 const PageWrapper = styled(AutoColumn)`
   width: 100%;
@@ -136,7 +136,7 @@ export default function VotePage({
   // show links in propsoal details if content is an address
   const linkIfAddress = (content: string) => {
     if (isAddress(content) && chainId) {
-      return <ExternalLink href={getBscScanLink(chainId, content, 'address')}>{content}</ExternalLink>
+      return <ExternalLink href={getScanLink(chainId, content, 'address')}>{content}</ExternalLink>
     }
     return <span>{content}</span>
   }
@@ -269,7 +269,7 @@ export default function VotePage({
         <AutoColumn gap="md">
           <TYPE.mediumHeader fontWeight={600}>{t('proposer')}</TYPE.mediumHeader>
           <ExternalLink
-            href={proposalData?.proposer && chainId ? getBscScanLink(chainId, proposalData?.proposer, 'address') : ''}
+            href={proposalData?.proposer && chainId ? getScanLink(chainId, proposalData?.proposer, 'address') : ''}
           >
             <ReactMarkdown source={proposalData?.proposer} />
           </ExternalLink>

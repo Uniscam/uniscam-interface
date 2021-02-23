@@ -226,7 +226,8 @@ export default function CurrencyInputPanel({
                       currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
                     : currency !== ETHER
                     ? currency?.symbol
-                    : currency?.toDisplayableSymbol(chainId!)) || t('selectToken')}
+                    : // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                      currency?.toDisplayableSymbol(chainId!)) || t('selectToken')}
                 </StyledTokenName>
               )}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}

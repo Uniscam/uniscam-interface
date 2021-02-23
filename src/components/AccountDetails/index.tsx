@@ -5,14 +5,14 @@ import { useTranslation } from 'react-i18next'
 import { useActiveWeb3React } from '../../hooks'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
-import { shortenAddress } from '../../utils'
+import { getScanName, shortenAddress } from '../../utils'
 import { AutoRow } from '../Row'
 import Copy from './Copy'
 import Transaction from './Transaction'
 
 import { SUPPORTED_WALLETS } from '../../constants'
 import { ReactComponent as Close } from '../../assets/images/x.svg'
-import { getBscScanLink } from '../../utils'
+import { getScanLink } from '../../utils'
 import { injected, walletconnect, walletlink, fortmatic, portis } from '../../connectors'
 import CoinbaseWalletIcon from '../../assets/images/coinbaseWalletIcon.svg'
 import WalletConnectIcon from '../../assets/images/walletConnectIcon.svg'
@@ -361,10 +361,12 @@ export default function AccountDetails({
                           <AddressLink
                             hasENS={!!ENSName}
                             isENS={true}
-                            href={chainId && getBscScanLink(chainId, ENSName, 'address')}
+                            href={chainId && getScanLink(chainId, ENSName, 'address')}
                           >
                             <LinkIcon size={16} />
-                            <span style={{ marginLeft: '4px' }}>{t('viewOnBscscan')}</span>
+                            <span style={{ marginLeft: '4px' }}>
+                              {t('viewOnBscscan', { name: getScanName(chainId) })}
+                            </span>
                           </AddressLink>
                         )}
                       </div>
@@ -380,13 +382,11 @@ export default function AccountDetails({
                           </Copy>
                         )}
                         {chainId && account && (
-                          <AddressLink
-                            hasENS={!!ENSName}
-                            isENS={false}
-                            href={getBscScanLink(chainId, account, 'address')}
-                          >
+                          <AddressLink hasENS={!!ENSName} isENS={false} href={getScanLink(chainId, account, 'address')}>
                             <LinkIcon size={16} />
-                            <span style={{ marginLeft: '4px' }}>{t('viewOnBscscan')}</span>
+                            <span style={{ marginLeft: '4px' }}>
+                              {t('viewOnBscscan', { name: getScanName(chainId) })}
+                            </span>
                           </AddressLink>
                         )}
                       </div>

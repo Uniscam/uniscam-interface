@@ -1,16 +1,23 @@
-import { Currency, ETHER, Token } from '@lychees/uniscam-sdk'
+import { ChainId, Currency, ETHER, Token } from '@lychees/uniscam-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
 import EthereumLogo from '../../assets/images/ethereum-logo.png'
 import BinanceLogo from '../../assets/images/bnb.svg'
+import HTLogo from '../../assets/images/ht.png'
+import MATICLogo from '../../assets/images/matic.png'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import Logo from '../Logo'
 import { useActiveWeb3React } from '../../hooks'
 
-const getTokenLogoURL = (chainId: number | undefined, address: string) => {
-  if (chainId === 56 || chainId === 97) return `https://tokens.bscswap.com/images/${address}.png`
+const getTokenLogoURL = (chainId: number | undefined, address: string): string => {
+  if (chainId === ChainId.BSC_MAINNET || chainId === ChainId.BSC_TESTNET) {
+    return `https://tokens.bscswap.com/images/${address}.png`
+  }
+  if (chainId === ChainId.HECO_MAINNET) {
+    return `https://raw.githubusercontent.com/Uniscam/token-icons/master/heco-mainnet/${address.toLowerCase()}.png`
+  }
 
   return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`
 }
@@ -54,13 +61,16 @@ export default function CurrencyLogo({
     return []
   }, [currency, uriLocations, chainId])
   if (currency === ETHER) {
-    return (
-      <StyledEthereumLogo
-        src={chainId === 56 || chainId === 97 ? BinanceLogo : EthereumLogo}
-        size={size}
-        style={style}
-      />
-    )
+    if (chainId === ChainId.BSC_MAINNET || chainId === ChainId.BSC_TESTNET) {
+      return <StyledEthereumLogo src={BinanceLogo} size={size} style={style} />
+    }
+    if (chainId === ChainId.HECO_MAINNET) {
+      return <StyledEthereumLogo src={HTLogo} size={size} style={style} />
+    }
+    if (chainId === ChainId.MATIC_MAINNET) {
+      return <StyledEthereumLogo src={MATICLogo} size={size} style={style} />
+    }
+    return <StyledEthereumLogo src={EthereumLogo} size={size} style={style} />
   }
 
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />

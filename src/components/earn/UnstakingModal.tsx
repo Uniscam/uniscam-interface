@@ -89,7 +89,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
               </TYPE.body>
-              <TYPE.body>{t('unclaimed')} SCAM</TYPE.body>
+              <TYPE.body>{t('unclaimed')} Y3D</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
@@ -104,10 +104,10 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.body fontSize={20}>
-              {t('withdrawing')} {stakingInfo?.stakedAmount?.toSignificant(4)} SCAM-V2
+              {t('withdrawing')} {stakingInfo?.stakedAmount?.toSignificant(4)} Y3D-V2
             </TYPE.body>
             <TYPE.body fontSize={20}>
-              {t('claiming')} {stakingInfo?.earnedAmount?.toSignificant(4)} SCAM
+              {t('claiming')} {stakingInfo?.earnedAmount?.toSignificant(4)} Y3D
             </TYPE.body>
           </AutoColumn>
         </LoadingView>
@@ -116,8 +116,8 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
         <SubmittedView onDismiss={wrappedOndismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>{t('transactionSubmitted')}</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{t('withdrew')} SCAM-V2!</TYPE.body>
-            <TYPE.body fontSize={20}>{t('claimed')} SCAM!</TYPE.body>
+            <TYPE.body fontSize={20}>{t('withdrew')} Y3D-V2!</TYPE.body>
+            <TYPE.body fontSize={20}>{t('claimed')} Y3D!</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

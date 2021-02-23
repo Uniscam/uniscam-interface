@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React, { useCallback, useState } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
@@ -29,6 +30,7 @@ import { usePair } from '../../data/Reserves'
 import usePrevious from '../../hooks/usePrevious'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import { BIG_INT_ZERO } from '../../constants'
+import formatSymbol from '../../utils/formatSymbol'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -158,7 +160,7 @@ export default function Manage({
     <PageWrapper gap="lg" justify="center">
       <RowBetween style={{ gap: '24px' }}>
         <TYPE.mediumHeader style={{ margin: 0 }}>
-          {currencyA?.symbol}-{currencyB?.symbol} {t('liquidityMining')}
+          {formatSymbol(currencyA!, chainId)}-{formatSymbol(currencyB!, chainId)} {t('liquidityMining')}
         </TYPE.mediumHeader>
         <DoubleCurrencyLogo currency0={currencyA ?? undefined} currency1={currencyB ?? undefined} size={24} />
       </RowBetween>
@@ -181,7 +183,7 @@ export default function Manage({
               {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24 * 7).toString())
                 ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
-              {' SCAM / week'}
+              {' Y3D / week'}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -198,9 +200,12 @@ export default function Manage({
               </RowBetween>
               <RowBetween style={{ marginBottom: '1rem' }}>
                 <TYPE.white fontSize={14}>
-                  {`${t('scam-v2-lp-tokens-are-required-once-youve-added-liquidity-to-the')} ${currencyA?.symbol}-${
-                    currencyB?.symbol
-                  } ${t('pool-you-can-stake-your-liquidity-tokens-on-this-page')}`}
+                  {`${t('scam-v2-lp-tokens-are-required-once-youve-added-liquidity-to-the')} ${formatSymbol(
+                    currencyA,
+                    chainId
+                  )}-${formatSymbol(currencyB!, chainId)} ${t(
+                    'pool-you-can-stake-your-liquidity-tokens-on-this-page'
+                  )}`}
                 </TYPE.white>
               </RowBetween>
               <ButtonPrimary
@@ -210,7 +215,9 @@ export default function Manage({
                 as={Link}
                 to={`/add/${currencyA && currencyId(currencyA)}/${currencyB && currencyId(currencyB)}`}
               >
-                {`${t('add')} ${currencyA?.symbol}-${currencyB?.symbol} ${t('addLiquidity')}`}
+                {`${t('add')} ${formatSymbol(currencyA!, chainId)}-${formatSymbol(currencyB!, chainId)} ${t(
+                  'addLiquidity'
+                )}`}
               </ButtonPrimary>
             </AutoColumn>
           </CardSection>
@@ -255,7 +262,7 @@ export default function Manage({
                     {stakingInfo?.stakedAmount?.toSignificant(6) ?? '-'}
                   </TYPE.white>
                   <TYPE.white>
-                    SCAM-V2 {currencyA?.symbol}-{currencyB?.symbol}
+                    Y3D-V2 {formatSymbol(currencyA!, chainId)}-{formatSymbol(currencyB!, chainId)}
                   </TYPE.white>
                 </RowBetween>
               </AutoColumn>
@@ -299,7 +306,7 @@ export default function Manage({
                   {stakingInfo?.rewardRate
                     ?.multiply((60 * 60 * 24 * 7).toString())
                     ?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}
-                  {' SCAM / week'}
+                  {' Y3D / week'}
                 </TYPE.black>
               </RowBetween>
             </AutoColumn>
@@ -334,7 +341,7 @@ export default function Manage({
         )}
         {!userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
           <TYPE.main>
-            {userLiquidityUnstaked.toSignificant(6)} SCAM-V2 LP {t('tokensAvailable')}
+            {userLiquidityUnstaked.toSignificant(6)} Y3D-V2 LP {t('tokensAvailable')}
           </TYPE.main>
         )}
       </PositionInfo>

@@ -88,13 +88,13 @@ export default function ClaimPopup() {
           <AutoColumn style={{ padding: '2rem 0', zIndex: 10 }} justify="center">
             <UniToken width="48px" src={tokenLogo} />{' '}
             <TYPE.white style={{ marginTop: '1rem' }} fontSize={36} fontWeight={600}>
-              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} SCAM
+              {unclaimedAmount?.toFixed(0, { groupSeparator: ',' } ?? '-')} Y3D
             </TYPE.white>
             <TYPE.white style={{ paddingTop: '1.25rem', textAlign: 'center' }} fontWeight={600} color="white">
               <span role="img" aria-label="party">
                 🎉
               </span>{' '}
-              SCAM {t('hasArrived')}{' '}
+              Y3D {t('hasArrived')}{' '}
               <span role="img" aria-label="party">
                 🎉
               </span>

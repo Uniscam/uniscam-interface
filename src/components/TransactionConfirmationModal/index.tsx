@@ -13,7 +13,7 @@ import { ButtonPrimary } from '../Button'
 import { AutoColumn, ColumnCenter } from '../Column'
 import Circle from '../../assets/images/blue-loader.svg'
 
-import { getBscScanLink } from '../../utils'
+import { getScanLink, getScanName } from '../../utils'
 import { useActiveWeb3React } from '../../hooks'
 
 const Wrapper = styled.div`
@@ -25,7 +25,7 @@ const Section = styled(AutoColumn)`
 
 const BottomSection = styled(Section)`
   background-color: ${({ theme }) => theme.bg6};
-  color: #fff;
+  color: ${({ theme }) => theme.text1};
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 `
@@ -92,9 +92,9 @@ function TransactionSubmittedContent({
             {t('transactionSubmitted')}
           </Text>
           {chainId && hash && (
-            <ExternalLink href={getBscScanLink(chainId, hash, 'transaction')}>
+            <ExternalLink href={getScanLink(chainId, hash, 'transaction')}>
               <Text fontWeight={500} fontSize={14} color={theme.primary1}>
-                {t('viewOnBscscan')}
+                {t('viewOnBscscan', { name: getScanName(chainId) })}
               </Text>
             </ExternalLink>
           )}
@@ -120,11 +120,13 @@ export function ConfirmationModalContent({
   topContent: () => React.ReactNode
   bottomContent: () => React.ReactNode
 }) {
+  const theme = useContext(ThemeContext)
+
   return (
     <Wrapper>
       <Section>
         <RowBetween>
-          <Text fontWeight={500} fontSize={20} style={{ color: '#fff' }}>
+          <Text fontWeight={500} fontSize={20} style={{ color: theme.text1 }}>
             {title}
           </Text>
           <CloseIcon onClick={onDismiss} />

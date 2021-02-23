@@ -1,8 +1,9 @@
 import { BLOCKED_PRICE_IMPACT_NON_EXPERT } from '../constants'
-import { CurrencyAmount, Fraction, JSBI, Percent, TokenAmount, Trade } from '@lychees/uniscam-sdk'
+import { ChainId, CurrencyAmount, Fraction, JSBI, Percent, TokenAmount, Trade } from '@lychees/uniscam-sdk'
 import { ALLOWED_PRICE_IMPACT_HIGH, ALLOWED_PRICE_IMPACT_LOW, ALLOWED_PRICE_IMPACT_MEDIUM } from '../constants'
 import { Field } from '../state/swap/actions'
 import { basisPointsToPercent } from './index'
+import formatSymbol from './formatSymbol'
 
 const BASE_FEE = new Percent(JSBI.BigInt(30), JSBI.BigInt(10000))
 const ONE_HUNDRED_PERCENT = new Percent(JSBI.BigInt(10000), JSBI.BigInt(10000))
@@ -68,15 +69,13 @@ export function warningSeverity(priceImpact: Percent | undefined): 0 | 1 | 2 | 3
   return 0
 }
 
-export function formatExecutionPrice(trade?: Trade, inverted?: boolean): string {
+export function formatExecutionPrice(trade?: Trade, inverted?: boolean, chainId: ChainId = ChainId.MAINNET): string {
   if (!trade) {
     return ''
   }
+  const inputSymbol = formatSymbol(trade.inputAmount.currency, chainId)
+  const outputSymbol = formatSymbol(trade.outputAmount.currency, chainId)
   return inverted
-    ? `${trade.executionPrice.invert().toSignificant(6)} ${trade.inputAmount.currency.symbol} / ${
-        trade.outputAmount.currency.symbol
-      }`
-    : `${trade.executionPrice.toSignificant(6)} ${trade.outputAmount.currency.symbol} / ${
-        trade.inputAmount.currency.symbol
-      }`
+    ? `${trade.executionPrice.invert().toSignificant(6)} ${inputSymbol} / ${outputSymbol}`
+    : `${trade.executionPrice.toSignificant(6)} ${outputSymbol} / ${inputSymbol}`
 }

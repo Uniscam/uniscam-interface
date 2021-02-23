@@ -13,6 +13,7 @@ import { useV1ExchangeContract } from './useContract'
 import useTransactionDeadline from './useTransactionDeadline'
 import useENS from './useENS'
 import { Version } from './useToggledVersion'
+import formatSymbol from '../utils/formatSymbol'
 
 export enum SwapCallbackState {
   INVALID,
@@ -115,8 +116,6 @@ export function useSwapCallback(
 
   const swapCalls = useSwapCallArguments(trade, allowedSlippage, recipientAddressOrName)
 
-  console.warn('Call:', swapCalls)
-
   const addTransaction = useTransactionAdder()
 
   const { address: recipientAddress } = useENS(recipientAddressOrName)
@@ -204,8 +203,8 @@ export function useSwapCallback(
           ...(value && !isZero(value) ? { value, from: account } : { from: account })
         })
           .then((response: any) => {
-            const inputSymbol = trade.inputAmount.currency.symbol
-            const outputSymbol = trade.outputAmount.currency.symbol
+            const inputSymbol = formatSymbol(trade.inputAmount.currency, chainId)
+            const outputSymbol = formatSymbol(trade.outputAmount.currency, chainId)
             const inputAmount = trade.inputAmount.toSignificant(3)
             const outputAmount = trade.outputAmount.toSignificant(3)
 

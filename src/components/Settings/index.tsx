@@ -11,7 +11,9 @@ import {
   useDarkModeManager,
   useExpertModeManager,
   useUserTransactionTTL,
-  useUserSlippageTolerance
+  useUserSlippageTolerance,
+  useDirectSwapToggle,
+  useEnableAnimationToggle
 } from '../../state/user/hooks'
 import { TYPE } from '../../theme'
 import { ButtonError } from '../Button'
@@ -60,7 +62,7 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: ${lighten(0.05, '#1a3cb0')};
+    background-color: ${({ theme }) => (theme.isDarkMode ? lighten(0.05, theme.primary1) : lighten(0.05, theme.bg3))};
   }
 
   svg {
@@ -105,7 +107,7 @@ const MenuFlyout = styled.span`
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
     min-width: 18.125rem;
-    top: -22rem;
+    top: -29rem;
   `};
 `
 
@@ -139,6 +141,9 @@ export default function SettingsTab() {
   const [expertMode, toggleExpertMode] = useExpertModeManager()
 
   const [darkMode, toggleDarkMode] = useDarkModeManager()
+  const [enableAnimation, toggleEnableAnimation] = useEnableAnimationToggle()
+
+  const [directSwap, toggleDirectSwap] = useDirectSwapToggle()
 
   // show confirmation view before turning on
   const [showConfirmation, setShowConfirmation] = useState(false)
@@ -243,6 +248,25 @@ export default function SettingsTab() {
                 </TYPE.black>
               </RowFixed>
               <Toggle isActive={darkMode} toggle={toggleDarkMode} />
+            </RowBetween>
+            <RowBetween>
+              <RowFixed>
+                <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
+                  {t('enableAnimation')}
+                </TYPE.black>
+              </RowFixed>
+              <Toggle isActive={enableAnimation} toggle={toggleEnableAnimation} />
+            </RowBetween>
+            <Text fontWeight={600} fontSize={14}>
+              Other Settings
+            </Text>
+            <RowBetween>
+              <RowFixed>
+                <TYPE.black fontWeight={400} fontSize={14} color={theme.text2}>
+                  Toggle direct swap
+                </TYPE.black>
+              </RowFixed>
+              <Toggle isActive={directSwap} toggle={toggleDirectSwap} />
             </RowBetween>
           </AutoColumn>
         </MenuFlyout>

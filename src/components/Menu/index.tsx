@@ -8,6 +8,8 @@ import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 
 import { ExternalLink } from '../../theme'
+import { useActiveWeb3React } from '../../hooks'
+import useInfoLink from '../../hooks/useInfoLink'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
@@ -31,7 +33,7 @@ const StyledMenuButton = styled.button`
   :focus {
     cursor: pointer;
     outline: none;
-    background-color: ${lighten(0.05, '#1a3cb0')};
+    background-color: ${({ theme }) => (theme.isDarkMode ? lighten(0.05, theme.primary1) : lighten(0.05, theme.bg3))};
   }
 
   svg {
@@ -65,7 +67,7 @@ const MenuFlyout = styled.span`
   z-index: 100;
 
   ${({ theme }) => theme.mediaWidth.upToMedium`
-    top: -17.25rem;
+    top: -15.75rem;
   `};
 `
 
@@ -90,6 +92,8 @@ export default function Menu() {
   const open = useModalOpen(ApplicationModal.MENU)
   const toggle = useToggleModal(ApplicationModal.MENU)
   useOnClickOutside(node, open ? toggle : undefined)
+  const { chainId } = useActiveWeb3React()
+  const infoLink = useInfoLink(chainId)
 
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
@@ -100,11 +104,11 @@ export default function Menu() {
 
       {open && (
         <MenuFlyout>
-          <MenuItem id="link">
-            <Info size={14} href="https://medium.com/y3dscam/introduction-to-unisave-6ca3a85a0693" />
+          <MenuItem id="link" href="https://medium.com/y3dscam/introduction-to-unisave-6ca3a85a0693">
+            <Info size={14} />
             About
           </MenuItem>
-          <MenuItem id="link">
+          <MenuItem id="link" href="https://unisave.gitbook.io/unisave-doc/">
             <BookOpen size={14} />
             Docs
           </MenuItem>
@@ -120,7 +124,7 @@ export default function Menu() {
             <Navigation size={14} />
             Telegram
           </MenuItem>
-          <MenuItem id="link" href="https://info.y3d.finance/">
+          <MenuItem id="link" href={infoLink}>
             <PieChart size={14} />
             Info
           </MenuItem>

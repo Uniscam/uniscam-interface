@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { ChainId, TokenAmount, ETHER } from '@lychees/uniscam-sdk'
 import React, { useState } from 'react'
 import { Text } from 'rebass'
@@ -32,6 +33,9 @@ import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
 import { darken } from 'polished'
 import I18nSwitch from '../I18nSwitch'
+import useInfoLink from '../../hooks/useInfoLink'
+import useMiningLink from '../../hooks/useMiningLink'
+import useNetworkType from '../../hooks/useNetworkType'
 
 const HeaderFrame = styled.div`
   display: flex;
@@ -41,12 +45,12 @@ const HeaderFrame = styled.div`
   width: 100%;
   top: 0;
   position: relative;
-  padding-left: 110px;
-  padding-right: 110px;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding: 18px 80px;
   /* background-color: rgba(8, 8, 8, 0.25); */
   z-index: 2;
+  @media only screen and (max-width: 1120px) and (min-width: 961px) {
+    padding: 18px 20px;
+  }
   ${({ theme }) => theme.mediaWidth.upToMedium`
     grid-template-columns: 1fr;
     padding: 0 1rem;
@@ -103,8 +107,16 @@ const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     width: 100%;
   `};
-  @media screen and (max-width: 540px) {
-    flex-wrap: wrap;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+  `};
+  @media only screen and (max-width: 1120px) and (min-width: 961px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `
 
@@ -112,8 +124,13 @@ const HeaderLinks = styled(Row)`
   justify-content: center;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem 0 1rem 1rem;
-    justify-content: flex-end;
-`};
+  `};
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    grid-row: 1;
+  `};
+  @media only screen and (max-width: 1120px) and (min-width: 961px) {
+    padding-top: 6px;
+  }
 `
 
 const AccountElement = styled.div<{ active: boolean }>`
@@ -279,7 +296,10 @@ const NETWORK_LABELS: { [chainId in ChainId]?: string } = {
   [ChainId.GÖRLI]: 'Görli',
   [ChainId.KOVAN]: 'Kovan',
   [ChainId.BSC_MAINNET]: 'BSC Mainnet',
-  [ChainId.BSC_TESTNET]: 'BSC Testnet'
+  [ChainId.BSC_TESTNET]: 'BSC Testnet',
+  [ChainId.HECO_MAINNET]: 'HECO Mainnet',
+  [ChainId.HECO_TESTNET]: 'HECO Testnet',
+  [ChainId.MATIC_MAINNET]: 'Matic Mainnet'
 }
 
 export default function Header() {
@@ -302,6 +322,9 @@ export default function Header() {
 
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
+  const infoLink = useInfoLink(chainId)
+  const miningLink = useMiningLink(chainId)
+  const networkType = useNetworkType(chainId)
 
   return (
     <HeaderFrame>
@@ -338,15 +361,17 @@ export default function Header() {
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
             Vote
           </StyledNavLink> */}
-          <StyledExternalLink id={`stake-nav-link`} href={'https://mining.y3d.finance/'}>
+          <StyledExternalLink id={`stake-nav-link`} href={miningLink}>
             {t('mining')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://info.y3d.finance/'}>
+          <StyledExternalLink id={`stake-nav-link`} href={infoLink}>
             {t('info')} <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
-          <StyledExternalLink id={`stake-nav-link`} href={'https://www.binance.org/en/bridge'}>
-            {t('bridge')} <span style={{ fontSize: '11px' }}>↗</span>
-          </StyledExternalLink>
+          {networkType === 'BSC' && (
+            <StyledExternalLink id={`stake-nav-link`} href={'https://www.binance.org/en/bridge'}>
+              {t('bridge')} <span style={{ fontSize: '11px' }}>↗</span>
+            </StyledExternalLink>
+          )}
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
@@ -360,7 +385,7 @@ export default function Header() {
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
                 <TYPE.white padding="0 2px">
-                  {claimTxn && !claimTxn?.receipt ? <Dots>{t('claiming')} SCAM</Dots> : t('claimScam')}
+                  {claimTxn && !claimTxn?.receipt ? <Dots>{t('claiming')} Y3D</Dots> : t('claimScam')}
                 </TYPE.white>
               </UNIAmount>
               <CardNoise />
@@ -387,7 +412,7 @@ export default function Header() {
                     </TYPE.main>
                   </HideSmall>
                 )}
-                SCAM
+                Y3D
               </UNIAmount>
               <CardNoise />
             </UNIWrapper>
@@ -403,8 +428,8 @@ export default function Header() {
         </HeaderElement>
         <HeaderElementWrap>
           <Settings />
+          <I18nSwitch />
           <Menu />
-          <I18nSwitch></I18nSwitch>
         </HeaderElementWrap>
       </HeaderControls>
     </HeaderFrame>

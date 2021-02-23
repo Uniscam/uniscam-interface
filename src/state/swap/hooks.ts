@@ -19,6 +19,7 @@ import { SwapState } from './reducer'
 import useToggledVersion from '../../hooks/useToggledVersion'
 import { useUserSlippageTolerance } from '../user/hooks'
 import { computeSlippageAdjustedAmounts } from '../../utils/prices'
+import { formatSymbol } from '../../utils/formatSymbol'
 
 export function useSwapState(): AppState['swap'] {
   return useSelector<AppState, AppState['swap']>(state => state.swap)
@@ -205,8 +206,11 @@ export function useDerivedSwapInfo(): {
       : null
   ]
 
+  const { chainId } = useActiveWeb3React()
+
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-    inputError = 'Insufficient ' + amountIn.currency.symbol + ' balance'
+    const symbol = formatSymbol(amountIn.currency, chainId)
+    inputError = 'Insufficient ' + symbol + ' balance'
   }
 
   return {
@@ -223,10 +227,11 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
   if (typeof urlParam === 'string') {
     const valid = isAddress(urlParam)
     if (valid) return valid
-    if (urlParam.toUpperCase() === 'BNB') return 'BNB'
-    if (valid === false) return 'BNB'
+    if (urlParam.toUpperCase() === 'CURRENCY') return 'CURRENCY'
+    if (valid === false) return 'CURRENCY'
   }
-  return 'BNB' ?? ''
+
+  return 'CURRENCY' ?? ''
 }
 
 function parseTokenAmountURLParameter(urlParam: any): string {

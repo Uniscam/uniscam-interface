@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Currency, ETHER, Percent, Price } from '@lychees/uniscam-sdk'
 import React, { useContext } from 'react'
 import { Text } from 'rebass'
@@ -32,19 +33,19 @@ export function PoolPriceBar({
     <AutoColumn gap="md">
       <AutoRow justify="space-around" gap="4px">
         <AutoColumn justify="center">
-          <TYPE.black style={{ color: '#fff' }}>{price?.toSignificant(6) ?? '-'}</TYPE.black>
+          <TYPE.black style={{ color: theme.text1 }}>{price?.toSignificant(6) ?? '-'}</TYPE.black>
           <Text fontWeight={500} fontSize={14} color={theme.text4} pt={1}>
             {format(currencies[Field.CURRENCY_B])} {t('per')} {format(currencies[Field.CURRENCY_A])}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
-          <TYPE.black style={{ color: '#fff' }}>{price?.invert()?.toSignificant(6) ?? '-'}</TYPE.black>
+          <TYPE.black style={{ color: theme.text1 }}>{price?.invert()?.toSignificant(6) ?? '-'}</TYPE.black>
           <Text fontWeight={500} fontSize={14} color={theme.text4} pt={1}>
             {format(currencies[Field.CURRENCY_A])} {t('per')} {format(currencies[Field.CURRENCY_B])}
           </Text>
         </AutoColumn>
         <AutoColumn justify="center">
-          <TYPE.black style={{ color: '#fff' }}>
+          <TYPE.black style={{ color: theme.text1 }}>
             {noLiquidity && price
               ? '100'
               : (poolTokenPercentage?.lessThan(ONE_BIPS) ? '<0.01' : poolTokenPercentage?.toFixed(2)) ?? '0'}

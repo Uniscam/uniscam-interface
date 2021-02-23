@@ -17,7 +17,9 @@ import {
   updateUserDeadline,
   updateUserExpertMode,
   updateUserSlippageTolerance,
-  toggleURLWarning
+  toggleURLWarning,
+  toggleDirectSwap,
+  toggleEnableAnimation
 } from './actions'
 
 function serializeToken(token: Token): SerializedToken {
@@ -170,13 +172,43 @@ export function useURLWarningToggle(): () => void {
   return useCallback(() => dispatch(toggleURLWarning()), [dispatch])
 }
 
+export function useIsDirectSwap(): boolean {
+  return useSelector((state: AppState) => state.user.directSwap)
+}
+
+export function useDirectSwapToggle(): [boolean, () => void] {
+  const dispatch = useDispatch<AppDispatch>()
+  const isDirectSwap = useIsDirectSwap()
+
+  const directSwapToggle = useCallback(() => {
+    dispatch(toggleDirectSwap())
+  }, [dispatch])
+
+  return [isDirectSwap, directSwapToggle]
+}
+
+export function useEnableAnimation(): boolean {
+  return useSelector((state: AppState) => state.user.enableAnimation)
+}
+
+export function useEnableAnimationToggle(): [boolean, () => void] {
+  const dispatch = useDispatch<AppDispatch>()
+  const enableAnimation = useEnableAnimation()
+
+  const enableAnimationToggle = useCallback(() => {
+    dispatch(toggleEnableAnimation())
+  }, [dispatch])
+
+  return [enableAnimation, enableAnimationToggle]
+}
+
 /**
  * Given two tokens return the liquidity token that represents its liquidity shares
  * @param tokenA one of the two tokens
  * @param tokenB the other token
  */
 export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
-  return new Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'UNI-V2', 'Uniscam LP Token')
+  return new Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'UNI-V2', 'Unisave LP Token')
 }
 
 /**

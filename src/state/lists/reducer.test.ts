@@ -320,7 +320,7 @@ describe('list reducer', () => {
       store.dispatch(removeList('fake-url'))
       expect(store.getState()).toEqual({
         byUrl: {},
-        selectedListUrl: 'tokens.uniswap.eth'
+        selectedListUrl: 'https://unpkg.com/@lychees/default-token-list@1.0.1/build/uniscam-default.tokenlist.json'
       })
     })
   })
