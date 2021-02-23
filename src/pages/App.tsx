@@ -8,6 +8,7 @@ import Polling from '../components/Header/Polling'
 import URLWarning from '../components/Header/URLWarning'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
+import Footer from '../components/Footer'
 import { ApplicationModal } from '../state/application/actions'
 import { useModalOpen, useToggleModal } from '../state/application/hooks'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
@@ -114,6 +115,7 @@ export default function App() {
             </Web3ReactManager>
             <Marginer />
           </BodyWrapper>
+          <Footer></Footer>
         </AppWrapper>
       </Suspense>
     </>
