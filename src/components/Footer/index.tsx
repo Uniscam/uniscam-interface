@@ -19,6 +19,9 @@ const StyledFooter = styled.footer`
   z-index: 10;
   @media (max-width: 960px) {
     bottom: 72px;
+  }
+  @media (max-width: 540px) {
+    bottom: 72px;
     p {
       padding: 0 4px;
       margin: 4px 0;
