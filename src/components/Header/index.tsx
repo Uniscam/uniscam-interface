@@ -103,6 +103,9 @@ const HeaderRow = styled(RowFixed)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     width: 100%;
   `};
+  @media screen and (max-width: 540px) {
+    flex-wrap: wrap;
+  }
 `
 
 const HeaderLinks = styled(Row)`
