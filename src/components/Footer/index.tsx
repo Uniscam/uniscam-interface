@@ -12,16 +12,11 @@ interface LinkListInterface {
 }
 
 const StyledFooter = styled.footer`
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
+  width: 100%;
   @media (max-width: 960px) {
-    bottom: 72px;
+    margin-bottom: 72px;
   }
   @media (max-width: 540px) {
-    bottom: 72px;
     p {
       padding: 0 4px;
       margin: 4px 0;
