@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import MATATAKI from '../../assets/images/link-matataki.png'
 import YFII from '../../assets/images/link-yfii.png'
 import YFII_MOON from '../../assets/images/link-yfii-moon.png'
 import NASH from '../../assets/images/link-nash.png'
@@ -57,6 +58,11 @@ const StyledFooterItemLink = styled.a`
 
 export default function Footer() {
   const linkList: LinkListInterface[] = [
+    {
+      name: 'MATATAKI',
+      img: MATATAKI,
+      link: 'https://matataki.io'
+    },
     {
       name: 'YFII',
       img: YFII,
