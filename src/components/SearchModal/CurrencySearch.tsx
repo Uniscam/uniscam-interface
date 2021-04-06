@@ -12,7 +12,7 @@ import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
-// import { ThemeContext } from 'styled-components'
+import { ThemeContext } from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { useSelectedListInfo } from '../../state/lists/hooks'
@@ -52,7 +52,7 @@ export function CurrencySearch({
 CurrencySearchProps) {
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
-  // const theme = useContext(ThemeContext)
+  const theme = useContext(ThemeContext)
 
   const fixedList = useRef<FixedSizeList>()
   const [searchQuery, setSearchQuery] = useState<string>('')
