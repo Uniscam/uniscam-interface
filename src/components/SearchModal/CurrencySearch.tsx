@@ -40,7 +40,7 @@ export function CurrencySearch({
   showCommonBases,
   onDismiss,
   isOpen,
-  onChangeList,
+  onChangeList
 }: CurrencySearchProps) {
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
