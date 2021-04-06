@@ -4,5 +4,5 @@ export const DEFAULT_TOKEN_LIST_URL =
 
 export const DEFAULT_LIST_OF_LISTS: string[] = [
   DEFAULT_TOKEN_LIST_URL,
-  "https://unpkg.com/@lychees/matataki-token-list@1.0.0/build/unisave-matataki.tokenlist.json"
+  'https://unpkg.com/@lychees/matataki-token-list@1.0.0/build/unisave-matataki.tokenlist.json'
 ]
