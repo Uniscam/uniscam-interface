@@ -2,7 +2,6 @@ import { ChainId, Token } from '@lychees/uniscam-sdk'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { DEFAULT_TOKEN_LIST_URL } from '../../constants/lists'
 import { AppState } from '../index'
 
 type TagDetails = Tags[keyof Tags]
@@ -96,7 +95,7 @@ export function useSelectedListUrl(): string | undefined {
 }
 
 export function useSelectedTokenList(): TokenAddressMap {
-  return useTokenList(DEFAULT_TOKEN_LIST_URL)
+  return useTokenList(useSelectedListUrl())
 }
 
 export function useSelectedListInfo(): { current: TokenList | null; pending: TokenList | null; loading: boolean } {
