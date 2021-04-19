@@ -199,7 +199,7 @@ const ListRow = memo(function ListRow({ listUrl, onBack }: { listUrl: string; on
           <PopoverContainer show={true} ref={setPopperElement as any} style={styles.popper} {...attributes.popper}>
             <div>{list && listVersionLabel(list.version)}</div>
             <SeparatorDark />
-            <ExternalLink href={`https://tokenlists.org/token-list?url=${listUrl}`}>{t('viewList')}</ExternalLink>
+            <ExternalLink href={listUrl}>{t('viewList')}</ExternalLink>
             <UnpaddedLinkStyledButton onClick={handleRemoveList} disabled={Object.keys(listsByUrl).length === 1}>
               {t('removeList')}
             </UnpaddedLinkStyledButton>
@@ -377,11 +377,6 @@ export function ListSelect({ onDismiss, onBack }: { onDismiss: () => void; onBac
           <ListRow key={listUrl} listUrl={listUrl} onBack={onBack} />
         ))}
       </ListContainer>
-      <Separator />
-
-      <div style={{ padding: '16px', textAlign: 'center' }}>
-        <ExternalLink href="https://tokenlists.org">{t('browseLists')}</ExternalLink>
-      </div>
     </Column>
   )
 }
