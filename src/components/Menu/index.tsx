@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useCallback, useRef } from 'react'
 import { BookOpen, GitHub, Navigation, Info, Twitter, PieChart } from 'react-feather'
 import styled from 'styled-components'
 import { lighten } from 'polished'
@@ -10,6 +10,7 @@ import { useModalOpen, useToggleModal } from '../../state/application/hooks'
 import { ExternalLink } from '../../theme'
 import { useActiveWeb3React } from '../../hooks'
 import useInfoLink from '../../hooks/useInfoLink'
+import { useSelectedListUrl } from '../../state/lists/hooks'
 
 const StyledMenuIcon = styled(MenuIcon)`
   path {
@@ -95,6 +96,11 @@ export default function Menu() {
   const { chainId } = useActiveWeb3React()
   const infoLink = useInfoLink(chainId)
 
+  const l = useSelectedListUrl()
+  const c = useCallback(() => {
+    alert(l)
+  }, [l])
+
   return (
     // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/30451
     <StyledMenu ref={node as any}>
@@ -127,6 +133,9 @@ export default function Menu() {
           <MenuItem id="link" href={infoLink}>
             <PieChart size={14} />
             Info
+          </MenuItem>
+          <MenuItem onMouseUp={c}>
+            WTF
           </MenuItem>
         </MenuFlyout>
       )}
