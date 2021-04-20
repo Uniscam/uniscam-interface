@@ -134,9 +134,7 @@ export default function Menu() {
             <PieChart size={14} />
             Info
           </MenuItem>
-          <MenuItem onMouseUp={c}>
-            WTF
-          </MenuItem>
+          <MenuItem onMouseUp={c}>WTF</MenuItem>
         </MenuFlyout>
       )}
     </StyledMenu>
