@@ -1,9 +1,10 @@
 import { ChainId, Token } from '@lychees/uniscam-sdk'
 import { Tags, TokenInfo, TokenList } from '@uniswap/token-lists'
-import { useMemo } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { DEFAULT_TOKEN_LIST_URL } from '../../constants/lists'
-import { AppState } from '../index'
+import { AppDispatch, AppState } from '../index'
+import { selectList } from './actions'
 
 type TagDetails = Tags[keyof Tags]
 export interface TagInfo extends TagDetails {
@@ -103,6 +104,16 @@ export function useSelectedListInfo(): { current: TokenList | null; pending: Tok
   const selectedUrl = useSelectedListUrl()
   const listsByUrl = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
   const list = selectedUrl ? listsByUrl[selectedUrl] : undefined
+
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    if (selectedUrl && !listsByUrl[selectedUrl]) {
+      console.log('Force select list');
+      dispatch(selectList(DEFAULT_TOKEN_LIST_URL))
+    }
+  }, [dispatch, selectedUrl, listsByUrl])
+
   return {
     current: list?.current ?? null,
     pending: list?.pendingUpdate ?? null,
