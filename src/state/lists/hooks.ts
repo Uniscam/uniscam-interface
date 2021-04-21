@@ -109,7 +109,7 @@ export function useSelectedListInfo(): { current: TokenList | null; pending: Tok
 
   useEffect(() => {
     if (selectedUrl && !listsByUrl[selectedUrl]) {
-      console.log('Force select list');
+      console.log('Force select list')
       dispatch(selectList(DEFAULT_TOKEN_LIST_URL))
     }
   }, [dispatch, selectedUrl, listsByUrl])
