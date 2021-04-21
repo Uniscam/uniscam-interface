@@ -97,13 +97,13 @@ export function useSelectedListUrl(): string | undefined {
 }
 
 export function useSelectedTokenList(): TokenAddressMap {
-  return useTokenList(DEFAULT_TOKEN_LIST_URL)
+  return useTokenList(useSelectedListUrl())
 }
 
 export function useSelectedListInfo(): { current: TokenList | null; pending: TokenList | null; loading: boolean } {
   const selectedUrl = useSelectedListUrl()
   const listsByUrl = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
-  const list = selectedUrl ? listsByUrl[selectedUrl] : undefined
+  const list = selectedUrl ? listsByUrl[selectedUrl] : listsByUrl[DEFAULT_TOKEN_LIST_URL]
 
   const dispatch = useDispatch<AppDispatch>()
 
